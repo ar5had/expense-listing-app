@@ -1,0 +1,31 @@
+{
+  "name": "pleo-frontend-challenge",
+  "version": "1.0.0",
+  "description": "Implement an expenses list fetching all expenses from the provided API. Allow the user to add notes and upload receipt pictures to each expense.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [
+    "next.js",
+    "react.js",
+    "typescript",
+    "Arshad Khan"
+  ],
+  "author": "Arshad Khan<arshdkhn1@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.0.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.2",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "typescript": "^3.5.3"
+  }
+}
