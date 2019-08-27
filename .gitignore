@@ -1,3 +1,14 @@
+# Mac files
 .DS_Store
+
+# Dependency directories
 node_modules/
+
+# next.js build output
 .next
+
+# production server output
+dist
+
+# Reciept images folder
+receipts

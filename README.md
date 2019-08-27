@@ -1,8 +1,6 @@
 # Front-end challenge
 Implement an expenses list fetching all expenses from the provided API. Allow the user to add notes and upload receipt pictures to each expense.
 
-See the [API details](https://github.com/pleo-io/frontend-challenge/blob/master/api/README.md) for implementation.
-
 ## Functional requirements
 - User can list expenses
 - User can add a comment on an expense
@@ -31,5 +29,54 @@ Want to go the extra mile? Here's few suggestion of things we'd like to see (or 
 - Polish and visual creativity
 - Pride in craftsmanship
 
-## Super important 👇
-Please note that while you are free to use libraries of your choosing, we encourage you to write at least some your own code. This is your chance to really impress us with your skills.
+## API
+
+Note:
+
+> The API store the changes in memory, restarting the API server will wipe all changes.
+
+## Run the API
+In the `/api` folder run:
+```sh
+npm install
+npm start
+```
+
+API is now running at `http://localhost:3000`
+
+## Expenses API
+
+### Listing expenses
+
+```
+GET /expenses
+```
+
+#### Query parameters:
+- `limit`: number of expenses to fetch.
+- `offset`: number of expenses to skip, for pagination.
+
+Example:
+
+```
+GET /expenses?limit=25&offset=25
+```
+This query gets the second page of 25 expenses.
+
+#### Updating an expense
+```
+POST /expenses/:id
+```
+#### Path parameters:
+- `id`: The id of the expense to update
+
+#### Body parameters:
+- `comment`: The comment to set on an expense
+
+
+### Uploading a receipt to an expense
+```
+POST /expenses/:id/receipts
+```
+#### Form parameters:
+- `receipt`: The file to add to the expense
