@@ -29,14 +29,13 @@ export const typeDefs = gql`
   }
 
   type AllExpensesResponse {
-    expenses: [Expense]!
+    data: [Expense]!
     total: Int
   }
 
   type Query {
     expenses(limit: Int, offset: Int): AllExpensesResponse!
     expense(id: ID!): Expense!
-    receipts: [Receipt]!
   }
 
   type Mutation {

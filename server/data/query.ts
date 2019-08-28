@@ -1,12 +1,12 @@
 import { expenses } from './expenses'
 
 export const Query = {
-  expenses: (_, { limit = 25, offset = 0}) => {
+  expenses: (_, { limit = 25, offset = 0 }) => {
     limit = Math.round(limit)
     offset = Math.round(offset)
 
     return {
-      expenses: expenses
+      data: expenses
         .sort((a, b) => {
           const valA = Date.parse(a.date)
           const valB = Date.parse(b.date)
@@ -23,7 +23,5 @@ export const Query = {
       total: expenses.length
     }
   },
-  expense: (_, { id }) => expenses.find((expense) => expense.id === id),
-  receipts: () => expenses.map(expense => expense.receipts)
+  expense: (_, { id }) => expenses.find((expense) => expense.id === id)
 }
-
