@@ -12,3 +12,6 @@ dist
 
 # Reciept images folder
 receipts
+
+# .env file, which have environment variables
+.env
