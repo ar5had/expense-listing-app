@@ -4,7 +4,7 @@ import * as path from 'path'
 import * as logger from 'morgan'
 import * as bodyParser from 'body-parser'
 
-import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
+import { graphqlExpress } from 'graphql-server-express'
 import { makeExecutableSchema } from 'graphql-tools'
 
 import { typeDefs } from './data/schema'
@@ -36,11 +36,6 @@ app.prepare().then(() => {
   server.use('/receipts', express.static(path.join(__dirname, 'receipts')))
 
   server.use('/expenses', bodyParser.json(), graphqlExpress({ schema: executableSchema }))
-
-  // don't expose graphiql in production
-  if(dev) {
-    server.use('/graphiql', graphiqlExpress({ endpointURL: '/expenses' }))
-  }
 
   // next.js handling rest of the get requests
   server.get('*', (req, res) => handle(req, res))
