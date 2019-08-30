@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
 import { IndexHeaderProps } from '../types/components'
 import HeadingText from './styles/HeadingText'
+import { ReactSelectStyles, ReactSelectTheme } from './styles/ReactSelectStyles'
 
 const StyledHeading = styled.h1`
   font-family: ${gts('emFont')};
@@ -56,9 +57,8 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
 
   if (!selectedOption) {
     selectedOption = { value: perPage, label: `${perPage}` }
+    options.push(selectedOption)
   }
-
-  options.push(selectedOption)
 
   return (
     <Wrapper>
@@ -69,6 +69,8 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
       </StyledHeading>
       <HeadingText>Items per page: </HeadingText>
       <Select
+        styles={ReactSelectStyles}
+        theme={ReactSelectTheme}
         className="selectElem"
         value={selectedOption}
         onChange={onItemsPerPageChange}
