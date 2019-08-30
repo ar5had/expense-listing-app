@@ -11,7 +11,7 @@ export const Query = {
           const valA = Date.parse(a.date)
           const valB = Date.parse(b.date)
 
-          return valA - valB
+          return valB - valA
         })
         .slice(offset, offset + limit)
         .map((expense, index) => {
