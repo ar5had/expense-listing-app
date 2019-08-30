@@ -35,7 +35,7 @@ app.prepare().then(() => {
 
   server.use('/receipts', express.static(path.join(__dirname, 'receipts')))
 
-  server.use('/expenses', bodyParser.json(), graphqlExpress({ schema: executableSchema }))
+  server.use('/api', bodyParser.json(), graphqlExpress({ schema: executableSchema }))
 
   // next.js handling rest of the get requests
   server.get('*', (req, res) => handle(req, res))
