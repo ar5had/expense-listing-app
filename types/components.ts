@@ -48,6 +48,11 @@ export interface FilterButtonProps {}
 
 export interface PaginationProps {
   total: number;
-  page: number;
   perPage: number;
+  offset: number;
+}
+
+export interface IndexHeaderProps {
+  perPage: number;
+  offset: number;
 }

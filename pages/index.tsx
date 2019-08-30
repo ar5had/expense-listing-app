@@ -2,12 +2,16 @@ import { useState } from 'react'
 import gql from 'graphql-tag'
 import { NextPage } from 'next'
 import { Query, QueryResult } from 'react-apollo'
-import styled from 'styled-components'
 import Expenses from '../components/Expenses'
-import Filter from '../components/Filter'
+import IndexHeader from '../components/IndexHeader'
 import Pagination from '../components/Pagination'
-import { gts } from '../lib/getThemeStyle'
-import Link from 'next/link'
+
+interface HomeProps {
+  query: {
+    limit: string,
+    offset: string
+  };
+}
 
 const ALL_EXPENSES_QUERY = gql`
   query ALL_EXPENSES_QUERY($limit: Int, $offset: Int) {
@@ -34,38 +38,28 @@ const ALL_EXPENSES_QUERY = gql`
   }
 `
 
-const StyledHeading = styled.h1`
-  font-family: ${gts('emFont')};
-  font-size: 3.5rem;
-  text-align: center;
-  margin: ${gts('smMargin')}px 0 ${gts('xlMargin')}px;
-  line-height: 1.5;
-`
-
-const Home: NextPage<{ query: any }> = ({ query }) => {
-  const [limit, changeLimit] = useState(25)
-  const page = query.page ? parseInt(query.page, 10) : 1
-  const offset = (page - 1) * limit
+const Home: NextPage<HomeProps> = ({ query }) => {
+  const perPage = query.limit ? parseInt(query.limit, 10) : 25
+  const offset = query.offset ? parseInt(query.offset, 10) : 0
 
   return (
     <div>
-      <Query query={ALL_EXPENSES_QUERY} variables={{ limit, offset }}>
+      <Query query={ALL_EXPENSES_QUERY} variables={{ limit: perPage, offset }}>
         {({ data, error, loading }: QueryResult) => {
-          if (loading) return <p>Loading...</p>
-          if (error) return <p>Error: {error.message}</p>
+          if (loading) {
+            return <p>Loading...</p>
+          }
+          if (error) {
+            return <p>Error: {error.message}</p>
+          }
 
           const noExpenseOnPage = data.expenses.data.length === 0
           return (
             <>
-              <StyledHeading>
-                <Link href="/">
-                  <a>Expenses</a>
-                </Link>
-              </StyledHeading>
-              {/* <Filter /> */}
+              <IndexHeader perPage={perPage} offset={offset} />
               <Expenses data={data.expenses.data} />
               {noExpenseOnPage || (
-                <Pagination total={data.expenses.total} perPage={limit} page={page} />
+                <Pagination total={data.expenses.total} perPage={perPage} offset={offset} />
               )}
             </>
           )

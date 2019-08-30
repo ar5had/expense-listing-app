@@ -1,18 +1,15 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { ExpenseProps, ExpensesProps } from './types'
+import { ExpenseProps, ExpensesProps } from '../types/components'
 import Expense from './Expense'
 import { gts } from '../lib/getThemeStyle'
 import getRelativeTimeString from '../lib/relativeTime'
+import HeadingText from './styles/HeadingText'
 
 const StyledExpenses = styled.div`
   .rel-time {
-    color: ${gts('darkGrey')};
-    text-transform: uppercase;
-    margin: 100px 0 ${gts('mdMargin')}px ${gts('smMargin')}px;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
+    margin: 100px 0 ${gts('mdMargin')}px;
   }
   .rel-time:first-child {
     margin-top: 0;
@@ -23,14 +20,8 @@ const NoItemsHeading = styled.div`
   text-align: center;
   margin-bottom: ${gts('lgMargin')}px;
   h5 {
-    color: ${gts('darkGrey')};
-    text-align: center;
-    font-weight: normal;
-    text-transform: uppercase;
-    font-size: 1.4rem;
     margin-top: 25vh;
-    line-height: 2;
-    letter-spacing: 2px;
+    text-align: center;
   }
 
   a {
@@ -61,7 +52,7 @@ const Expenses: React.FC<ExpensesProps> = ({ data }) => {
   if (data.length === 0) {
     return (
       <NoItemsHeading>
-        <h5>You have reached end of the list!</h5>
+        <HeadingText>You have reached end of the list!</HeadingText>
         <Link href="/">
           <a>
             <svg>
@@ -81,7 +72,7 @@ const Expenses: React.FC<ExpensesProps> = ({ data }) => {
     timeString = newTimeString
     return (
       <Fragment key={expense.id}>
-        {showRelativeTimeString && <p className="rel-time">{newTimeString}</p>}
+        {showRelativeTimeString && <HeadingText className="rel-time">{newTimeString}</HeadingText>}
         <Link href={`/expense?id=${expense.id}`}>
           <a>
             <Expense {...expense} />

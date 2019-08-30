@@ -44,6 +44,7 @@ const ExpenseStyles = styled.div`
     color: ${gts('white')};
     font-size: calc(var(--dim) / 2);
     transition: 0.3s;
+    transition-delay: 0.1s;
     box-shadow: ${gts('insetBoxShadow')};
   }
   h3 {
