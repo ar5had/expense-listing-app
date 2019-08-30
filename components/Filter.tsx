@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { FilterProps } from './types'
+import { FilterProps } from '../types/components'
 import FilterValues from './FilterValues'
 import FilterButton from './FilterButton'
 import { gts } from '../lib/getThemeStyle'

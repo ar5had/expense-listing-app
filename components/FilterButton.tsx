@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FilterButtonProps } from './types'
+import { FilterButtonProps } from '../types/components'
 
 const StyledFilterButton = styled.button``
 

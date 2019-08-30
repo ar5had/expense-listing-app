@@ -2,16 +2,20 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import PaginationStyles from './styles/PaginationStyles'
-import { PaginationProps } from './types'
+import { PaginationProps } from '../types/components'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
+import { Router } from 'express'
 
 const PaginationWrapper = styled.div`
   padding: ${gts('mdMargin')}px 0 ${gts('lgMargin')}px;
 `
 
-const Pagination: React.FC<PaginationProps> = ({ page, total, perPage }) => {
+const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {
   const pages = Math.ceil(total / perPage)
+  const page = Math.ceil((offset + 1) / perPage)
+  const prevOffset = offset - perPage > 0 ? offset - perPage : 0
+  const nextOffset = offset + perPage
 
   return (
     <PaginationWrapper>
@@ -23,8 +27,11 @@ const Pagination: React.FC<PaginationProps> = ({ page, total, perPage }) => {
         </Head>
         <Link
           href={{
-            pathname: '/',
-            query: { page: page - 1 }
+            path: '/',
+            query: {
+              offset: prevOffset,
+              limit: perPage
+            }
           }}
         >
           <a className="prev" aria-disabled={page <= 1}>
@@ -37,8 +44,11 @@ const Pagination: React.FC<PaginationProps> = ({ page, total, perPage }) => {
         <p>{total} Items Total</p>
         <Link
           href={{
-            pathname: '/',
-            query: { page: page + 1 }
+            path: '/',
+            query: {
+              offset: nextOffset,
+              limit: perPage
+            }
           }}
         >
           <a className="next" aria-disabled={page >= pages}>

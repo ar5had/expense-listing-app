@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FilterListProps } from './types'
+import { FilterListProps } from '../types/components'
 
 const StyledFilterList =
   styled.li <

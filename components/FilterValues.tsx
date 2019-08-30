@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import FilterListItem from './FilterListItem'
-import { FilterValuesProps } from './types'
+import { FilterValuesProps } from '../types/components'
 import { gts } from '../lib/getThemeStyle'
 
 const StyledFilterValues = styled.ul`
