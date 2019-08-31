@@ -1,11 +1,6 @@
 import * as express from 'express'
-import * as fileUpload from 'express-fileupload'
-import * as path from 'path'
 import * as logger from 'morgan'
-import * as bodyParser from 'body-parser'
-
-import { graphqlExpress } from 'graphql-server-express'
-import { makeExecutableSchema } from 'graphql-tools'
+import { ApolloServer } from 'apollo-server-express'
 
 import { typeDefs } from './data/schema'
 import { Mutation } from './data/mutation'
@@ -20,22 +15,16 @@ const app = require('next')({ dev })
 const handle = app.getRequestHandler()
 const resolvers = { Query, Mutation }
 
-const executableSchema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-})
+const apolloServer = new ApolloServer({ typeDefs, resolvers })
 
 app.prepare().then(() => {
   const server = express()
+  // graphql endpoint
+  const path = '/graphql'
+
+  apolloServer.applyMiddleware({ app: server, path })
 
   server.use(logger('dev'))
-  server.use(fileUpload({ limit: { fileSize: Infinity } }))
-  server.use(express.json())
-  server.use(express.urlencoded({ extended: false }))
-
-  server.use('/receipts', express.static(path.join(__dirname, 'receipts')))
-
-  server.use('/api', bodyParser.json(), graphqlExpress({ schema: executableSchema }))
 
   // next.js handling rest of the get requests
   server.get('*', (req, res) => handle(req, res))
