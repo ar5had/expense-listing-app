@@ -35,11 +35,10 @@ export const typeDefs = gql`
 
   type Query {
     expenses(limit: Int, offset: Int): AllExpensesResponse!
-    expense(id: ID!): Expense!
+    expense(id: ID!): Expense
   }
 
   type Mutation {
-    updateComment(id: ID!, comment: String): Expense!
-    updateReceipt(id: ID!, receiptUrls: [String!]!): Expense!
+    updateExpense(id: ID!, comment: String, receiptUrls: String): Expense!
   }
 `

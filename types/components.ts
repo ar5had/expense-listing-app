@@ -56,3 +56,24 @@ export interface IndexHeaderProps {
   perPage: number;
   offset: number;
 }
+
+export interface StaticExpenseFieldsProps {
+  currency: string;
+  value: string;
+  first: string;
+  last: string;
+  email: string;
+  merchant: string;
+  category: string;
+  date: string;
+}
+
+export interface DynamicExpenseFieldsProps {
+  comment: string;
+  id: string;
+  receipts: Receipt[];
+}
+
+export interface ErrorMessageProps {
+  error: any;
+}

@@ -12,7 +12,7 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 1.3rem 1.3rem;
   border: solid 1px ${gts('grey')};
-  transition: 0.3s;
+  transition: 0.2s;
   line-height: 1;
   border-radius: ${gts('borderRadius')};
   margin-bottom: ${gts('xsMargin')}px;

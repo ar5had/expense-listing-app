@@ -9,8 +9,7 @@ const StyledPage = styled.div`
   background: white;
   color: ${gts('black')};
   padding: ${gts('smMargin')}px;
-  margin: ${gts('smMargin')}px;
-  min-height: calc(100% - 40px);
+  min-height: calc(100vh - 40px);
   border: solid ${gts('smMargin')}px ${gts('grey')};
 `
 

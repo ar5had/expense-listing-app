@@ -1,7 +1,7 @@
 import { expenses } from './expenses'
 
 export const Query = {
-  expenses: (_, { limit = 25, offset = 0 }) => {
+  expenses: (_, { limit = 10, offset = 0 }) => {
     limit = Math.round(limit)
     offset = Math.round(offset)
 

@@ -2,14 +2,12 @@ import styled from 'styled-components'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 
+// starts loading bar
 Router.events.on('routeChangeStart', () => {
   NProgress.start()
 })
 
-Router.events.on('routeChangeComplete', () => {
-  NProgress.done()
-})
-
+// completes loading bar
 Router.events.on('routeChangeError', () => {
   NProgress.done()
 })

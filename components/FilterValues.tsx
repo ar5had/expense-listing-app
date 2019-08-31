@@ -8,7 +8,7 @@ const StyledFilterValues = styled.ul`
   padding: 0;
   list-style: none;
   color: ${gts('darkGrey')};
-  transition: 0.3s;
+  transition: 0.2s;
 `
 
 const StyledParagraph = styled.p`
