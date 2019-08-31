@@ -1,6 +1,4 @@
 import * as express from 'express'
-import * as fileUpload from 'express-fileupload'
-import * as path from 'path'
 import * as logger from 'morgan'
 import * as bodyParser from 'body-parser'
 
@@ -29,13 +27,11 @@ app.prepare().then(() => {
   const server = express()
 
   server.use(logger('dev'))
-  server.use(fileUpload({ limit: { fileSize: Infinity } }))
   server.use(express.json())
   server.use(express.urlencoded({ extended: false }))
 
-  server.use('/receipts', express.static(path.join(__dirname, 'receipts')))
-
-  server.use('/api', bodyParser.json(), graphqlExpress({ schema: executableSchema }))
+  // graphql endpoint
+  server.use('/graphql', bodyParser.json(), graphqlExpress({ schema: executableSchema }))
 
   // next.js handling rest of the get requests
   server.get('*', (req, res) => handle(req, res))

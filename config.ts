@@ -1,1 +1,1 @@
-export const apiEndpoint = `http://localhost:3000/api`
+export const apiEndpoint = `http://localhost:3000/graphql`
