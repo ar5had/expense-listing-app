@@ -56,9 +56,9 @@ const GlobalStyle = createGlobalStyle`
     outline: ButtonText dotted 1px; 
   }
   fieldset {
-    border: 1px solid silver;
-    margin: 0 2px;
-    padding: .35em .625em .75em; 
+    border: none;
+    margin: 0;
+    padding: 0; 
   }
   legend {
     color: inherit;
@@ -95,9 +95,7 @@ const GlobalStyle = createGlobalStyle`
       background: white;
       margin: 0;
       -webkit-font-smoothing: antialiased;
-  }
-  body > div, body, html {
-    height: 100%;
+      padding: 20px;
   }
   a {
       text-decoration: none;

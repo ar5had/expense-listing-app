@@ -8,7 +8,7 @@ const ExpenseStyles = styled.div`
   padding: ${gts('smMargin')}px;
   border-radius: ${gts('borderRadius')};
   border: none;
-  transition: 0.3s;
+  transition: 0.2s;
   transition-delay: 0.1s;
   word-wrap: break-word;
   &:hover {
@@ -43,7 +43,7 @@ const ExpenseStyles = styled.div`
     font-family: ${gts('emFont')};
     color: ${gts('white')};
     font-size: calc(var(--dim) / 2);
-    transition: 0.3s;
+    transition: 0.2s;
     transition-delay: 0.1s;
     box-shadow: ${gts('insetBoxShadow')};
   }

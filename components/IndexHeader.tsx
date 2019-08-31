@@ -5,24 +5,16 @@ import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
 import { IndexHeaderProps } from '../types/components'
 import HeadingText from './styles/HeadingText'
+import Heading from './styles/Heading'
 import { ReactSelectStyles, ReactSelectTheme } from './styles/ReactSelectStyles'
-
-const StyledHeading = styled.h1`
-  font-family: ${gts('emFont')};
-  font-size: 4rem;
-  text-align: center;
-  margin: 0;
-  line-height: 1.5;
-`
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin: ${gts('mdMargin')}px 0 ${gts('xlMargin')}px;
-  h5 {
-    margin-left: auto;
+  .per-page-select-label {
     line-height: 1;
-    margin-right: ${gts('xsMargin')}px;
+    margin: 0 ${gts('xsMargin')}px 0 auto;
   }
   .selectElem {
     min-width: 100px;
@@ -62,12 +54,12 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
 
   return (
     <Wrapper>
-      <StyledHeading>
+      <Heading>
         <Link href="/">
           <a>Expenses</a>
         </Link>
-      </StyledHeading>
-      <HeadingText>Items per page: </HeadingText>
+      </Heading>
+      <HeadingText className="per-page-select-label">Items per page: </HeadingText>
       <Select
         styles={ReactSelectStyles}
         theme={ReactSelectTheme}

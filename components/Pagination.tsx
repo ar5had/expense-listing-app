@@ -22,7 +22,7 @@ const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {
       <PaginationStyles data-test="pagination">
         <Head>
           <title>
-            Pleo — Page {page} of {pages}
+            Expenses — Page {page} of {pages}
           </title>
         </Head>
         <Link

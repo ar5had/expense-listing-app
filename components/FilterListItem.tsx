@@ -5,7 +5,7 @@ const StyledFilterList =
   styled.li <
   { isActive: boolean } >
   `
-  transition: 0.3s;
+  transition: 0.2s;
   padding: 1rem 0;
   color: ${(props) => (props.isActive ? props.theme.black : props.theme.darkGrey)};
   &:hover {

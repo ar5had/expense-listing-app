@@ -3,9 +3,11 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { ExpenseProps, ExpensesProps } from '../types/components'
 import Expense from './Expense'
+import BackToHome from './BackToHome'
 import { gts } from '../lib/getThemeStyle'
-import getRelativeTimeString from '../lib/relativeTime'
+import { getRelativeTimeString } from '../lib/dateUtils'
 import HeadingText from './styles/HeadingText'
+import NoItemSection from './styles/NoItemSection'
 
 const StyledExpenses = styled.div`
   .rel-time {
@@ -16,53 +18,16 @@ const StyledExpenses = styled.div`
   }
 `
 
-const NoItemsHeading = styled.div`
-  text-align: center;
-  margin-bottom: ${gts('lgMargin')}px;
-  h5 {
-    margin-top: 25vh;
-    text-align: center;
-  }
-
-  a {
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    span {
-      line-height: 2rem;
-      margin-left: 5px;
-    }
-
-    span,
-    svg {
-      vertical-align: middle;
-    }
-  }
-
-  svg {
-    fill: ${gts('black')};
-    height: 24px;
-    width: 24px;
-  }
-`
-
 const Expenses: React.FC<ExpensesProps> = ({ data }) => {
   let timeString = ''
 
   // when no items are returned from the server
   if (data.length === 0) {
     return (
-      <NoItemsHeading>
-        <HeadingText>You have reached end of the list!</HeadingText>
-        <Link href="/">
-          <a>
-            <svg>
-              <path d="M15.41,16.59L10.83,12l4.58-4.59L14,6l-6,6l6,6L15.41,16.59z"></path>
-              <path fill="none" d="M0,0h24v24H0V0z"></path>
-            </svg>
-            <span>Back to Home</span>
-          </a>
-        </Link>
-      </NoItemsHeading>
+      <NoItemSection>
+        <HeadingText fontSize="1.6rem">You have reached end of the list!</HeadingText>
+        <BackToHome />
+      </NoItemSection>
     )
   }
 

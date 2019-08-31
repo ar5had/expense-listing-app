@@ -16,13 +16,14 @@ const PaginationStyles = styled.div`
   background: ${gts('white')};
   box-shadow: ${gts('insetBoxShadow')};
   border-radius: ${gts('borderRadius')};
+  align-items: stretch;
   & > * {
     margin: 0;
-    transition: 0.3s;
+    transition: 0.2s;
     transition-delay: 0.1s;
     padding: 15px 20px;
     border-right: 1px solid ${gts('grey')};
-    line-height: 1.2;
+    line-height: 1.5;
     &:last-child {
       border-right: 0;
     }
@@ -35,6 +36,9 @@ const PaginationStyles = styled.div`
   }
   a {
     color: ${gts('darkGrey')};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   a:first-child {
     border-radius: ${gts('borderRadius')} 0 0 ${gts('borderRadius')};
