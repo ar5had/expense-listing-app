@@ -34,6 +34,6 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    updateExpense(id: ID!, comment: String, receipt: String): Expense!
+    updateExpense(id: ID!, comment: String!, receipt: String!): Expense!
   }
 `

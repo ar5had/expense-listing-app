@@ -86,23 +86,26 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   html {
-      font-size: 10px;
+    font-size: 10px;
   }
   body {
-      font-size: 1.4rem;
-      line-height: 1;
-      font-family: ${theme.textFont};
-      background: white;
-      margin: 0;
-      -webkit-font-smoothing: antialiased;
-      padding: 20px;
+    font-size: 1.4rem;
+    line-height: 1;
+    font-family: ${theme.textFont};
+    background: white;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    padding: 20px;
   }
   a {
-      text-decoration: none;
-      color: ${theme.black};
+    text-decoration: none;
+    color: ${theme.black};
   }
   button {
-      font-family: ${theme.textFont};
+    font-family: ${theme.textFont};
+  }
+  &:focus {
+    outline: dotted 1px ${theme.black}
   }
 `
 

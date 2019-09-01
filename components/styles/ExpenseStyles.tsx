@@ -11,7 +11,8 @@ const ExpenseStyles = styled.div`
   transition: 0.2s;
   transition-delay: 0.1s;
   word-wrap: break-word;
-  &:hover {
+  &:hover,
+  a:focus > & {
     box-shadow: ${gts('btnBoxShadow')};
     cursor: pointer;
     transform: translateY(-5px);

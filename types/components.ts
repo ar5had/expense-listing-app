@@ -83,4 +83,5 @@ export interface CardWithBtnProps {
 
 export interface ImagePreviewProps {
   src: string;
+  deleteReceipt: () => void;
 }

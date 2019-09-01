@@ -32,18 +32,22 @@ const CardWithBtnWrapper = styled.div`
   }
 `
 
-const CircledButton = styled.span`
+const CircledButton = styled.button`
   display: block;
   height: 5rem;
   width: 5rem;
   background-color: ${gts('white')};
-  border: none;
+  border: 1px dotted transparent;
   border-radius: 50%;
   box-shadow: ${gts('raisedBtnBoxShadow')};
   transition: 0.2s;
   transition-delay: 0.1s;
   &:hover {
     cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+    border-color: ${gts('black')};
   }
   .add-icon {
     display: block;
@@ -58,7 +62,7 @@ const CircledButton = styled.span`
 
 const CardWithBtn: React.FC<CardWithBtnProps> = ({ onClick }) => (
   <CardWithBtnWrapper>
-    <CircledButton className="btn" onClick={onClick}>
+    <CircledButton className="btn" onClick={onClick} type="button">
       <span className="add-icon" />
     </CircledButton>
   </CardWithBtnWrapper>

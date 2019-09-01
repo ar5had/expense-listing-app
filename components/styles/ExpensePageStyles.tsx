@@ -46,8 +46,8 @@ const ExpensePageStyles = styled.div`
       grid-column: 1 / -1;
     }
   }
-  .receipt-row span + * {
-    margin-top: ${gts('xsMargin')}px;
+  .row:empty {
+    display: none;
   }
   .error-row > * {
     grid-column: 1 / -1;

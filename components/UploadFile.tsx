@@ -10,6 +10,7 @@ const UploadFileWrapper = styled.div`
     height: 0;
     visibility: hidden;
     display: inline;
+    float: right;
   }
 `
 

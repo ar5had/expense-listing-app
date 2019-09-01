@@ -28,7 +28,8 @@ const PaginationStyles = styled.div`
       border-right: 0;
     }
   }
-  & > a:hover {
+  & > a:hover,
+  & > a:focus {
     color: ${gts('black')};
     box-shadow: ${gts('btnBoxShadow')};
     background: white;
