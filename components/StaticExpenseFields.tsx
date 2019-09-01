@@ -1,4 +1,4 @@
-import getSymbolFromCurrency from '../lib/currencyMap'
+import { getSymbolFromCurrency } from '../lib/currencyMap'
 import Heading from './styles/Heading'
 import HeadingText from './styles/HeadingText'
 import { getFormattedTime } from '../lib/dateUtils'

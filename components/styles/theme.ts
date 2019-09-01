@@ -12,6 +12,7 @@ export const theme = {
   deepInsetBoxShadow: '0px 7px 15px rgba(0, 0, 0, 0.2) inset',
   btnBoxShadow: '0px 35px 27px -20px rgba(0, 0, 0, 0.2), 0px 3px 20px rgba(0, 0, 0, 0.1)',
   simpleBoxShadow: '0 10px 30px 0 rgba(46,61,73,.35)',
+  raisedBtnBoxShadow: '0px 30px 20px -10px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.1)',
   textFont: `'Roboto Mono', monospace`,
   emFont: `'EB Garamond', serif`,
   textLS: '3px',
@@ -20,5 +21,7 @@ export const theme = {
   mdMargin: 40,
   smMargin: 20,
   xsMargin: 10,
-  borderRadius: '8px'
+  borderRadius: '8px',
+  greyBackground: '#edededc2',
+  receiptImageDim: '15rem'
 }

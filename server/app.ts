@@ -1,5 +1,7 @@
 import * as express from 'express'
 import * as logger from 'morgan'
+import * as bodyParser from 'body-parser'
+
 import { ApolloServer } from 'apollo-server-express'
 
 import { typeDefs } from './data/schema'
@@ -19,12 +21,13 @@ const apolloServer = new ApolloServer({ typeDefs, resolvers })
 
 app.prepare().then(() => {
   const server = express()
-  // graphql endpoint
-  const path = '/graphql'
-
-  apolloServer.applyMiddleware({ app: server, path })
 
   server.use(logger('dev'))
+  server.use(bodyParser.json({ limit: '50mb' }))
+  server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+
+  // connect apollo server with express server
+  apolloServer.applyMiddleware({ app: server, path: '/graphql' })
 
   // next.js handling rest of the get requests
   server.get('*', (req, res) => handle(req, res))

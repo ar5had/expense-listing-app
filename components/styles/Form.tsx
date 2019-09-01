@@ -42,6 +42,7 @@ const Form = styled.form`
       background: ${gts('grey')};
       color: ${gts('darkGrey')};
       cursor: not-allowed;
+      opacity: 1;
     }
   }
 `

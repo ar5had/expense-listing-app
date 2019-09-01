@@ -26,9 +26,6 @@ const ALL_EXPENSES_QUERY = gql`
         date
         merchant
         comment
-        receipts {
-          url
-        }
         user {
           first
           last
@@ -76,3 +73,4 @@ const Home: NextPage<HomeProps> = ({ query }) => {
 }
 
 export default Home
+export { ALL_EXPENSES_QUERY }

@@ -1,4 +1,4 @@
-import { SyntheticEvent, FormEvent } from 'react'
+import { SyntheticEvent, ReactElement } from 'react'
 
 export interface Amount {
   value: string;
@@ -11,17 +11,12 @@ export interface User {
   email: string;
 }
 
-export interface Receipt {
-  id: string;
-  url: string;
-}
-
 export interface ExpenseProps {
   id: string;
   amount: Amount;
   date: string;
   merchant: string;
-  receipts: Receipt[];
+  receipt: string;
   comment: string;
   category: string;
   user: User;
@@ -71,9 +66,22 @@ export interface StaticExpenseFieldsProps {
 export interface DynamicExpenseFieldsProps {
   comment: string;
   id: string;
-  receipts: Receipt[];
+  receipt: string;
 }
 
 export interface ErrorMessageProps {
   error: any;
+}
+
+export interface UploadFileProps {
+  addReceipt: (value: string) => void;
+}
+
+export interface CardWithBtnProps {
+  onClick: (e: SyntheticEvent) => void;
+}
+
+export interface ImagePreviewProps {
+  src: string;
+  deleteReceipt: () => void;
 }

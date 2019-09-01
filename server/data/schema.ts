@@ -12,19 +12,14 @@ export const typeDefs = gql`
     email: String!
   }
 
-  type Receipt {
-    id: ID!
-    url: String!
-  }
-
   type Expense {
     id: ID!
     amount: Amount!
     date: String!
     merchant: String!
-    receipts: [Receipt]!
-    comment: String
-    category: String
+    receipt: String!
+    comment: String!
+    category: String!
     user: User!
   }
 
@@ -39,6 +34,6 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    updateExpense(id: ID!, comment: String, receiptUrls: String): Expense!
+    updateExpense(id: ID!, comment: String!, receipt: String!): Expense!
   }
 `
