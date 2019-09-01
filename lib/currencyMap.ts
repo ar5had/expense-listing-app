@@ -180,4 +180,4 @@ const getSymbolFromCurrency: (currencyCode: string) => string | undefined = (cur
   return currencySymbolMap[code]
 }
 
-export default getSymbolFromCurrency
+export { getSymbolFromCurrency }

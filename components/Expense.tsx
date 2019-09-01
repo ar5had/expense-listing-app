@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ExpenseProps } from '../types/components'
-import getSymbolFromCurrency from '../lib/currencyMap'
+import { getSymbolFromCurrency } from '../lib/currencyMap'
 import ExpenseStyles from './styles/ExpenseStyles'
 
 const Expense: React.FC<ExpenseProps> = (props) => {

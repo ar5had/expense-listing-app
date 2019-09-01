@@ -26,9 +26,7 @@ const ALL_EXPENSES_QUERY = gql`
         date
         merchant
         comment
-        receipts {
-          url
-        }
+        receipt
         user {
           first
           last

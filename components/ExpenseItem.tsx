@@ -11,11 +11,11 @@ const ExpenseItem: React.FC<ExpenseProps> = ({
   category,
   merchant,
   date,
-  receipts,
+  receipt,
   id
 }) => {
   const staticFieldsProps = { first, last, email, currency, value, category, merchant, date }
-  const dynamicFieldProps = { receipts, comment, id }
+  const dynamicFieldProps = { receipt, comment, id }
 
   return (
     <ExpensePageStyles>

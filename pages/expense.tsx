@@ -25,10 +25,7 @@ const EXPENSE_QUERY = gql`
       }
       date
       merchant
-      receipts {
-        url
-        id
-      }
+      receipt
       comment
       category
       user {

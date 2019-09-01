@@ -22,14 +22,11 @@ const ExpensePageStyles = styled.div`
     max-width: 500px;
     margin: auto;
     display: grid;
+    grid-template-columns: 1fr;
+    grid-templayte-rows: auto auto;
     width: 100%;
     margin-bottom: ${gts('mdMargin')}px;
-    grid-template-columns: 100px 1fr;
-    grid-gap: ${gts('mdMargin')}px;
-    img {
-      width: 40px;
-      height: 40px;
-    }
+    grid-gap: 10px;
     & > span,
     & > input {
       line-height: 1.5;
@@ -38,7 +35,9 @@ const ExpensePageStyles = styled.div`
     }
     .label {
       color: ${gts('darkGrey')};
-      text-align: right;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .value {
       border-bottom: solid 1px ${gts('grey')};
@@ -46,6 +45,9 @@ const ExpensePageStyles = styled.div`
     .save-btn {
       grid-column: 1 / -1;
     }
+  }
+  .receipt-row span + * {
+    margin-top: ${gts('xsMargin')}px;
   }
   .error-row > * {
     grid-column: 1 / -1;
