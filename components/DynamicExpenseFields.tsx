@@ -19,14 +19,6 @@ const UPDATE_EXPENSE_MUTATION = gql`
   }
 `
 
-const usePrevious = (value: string) => {
-  const ref = useRef(value)
-  useEffect(() => {
-    ref.current = value
-  })
-  return ref.current
-}
-
 const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, receipt, id }) => {
   const [expenseComment, changeComment] = useState(comment)
   const [expenseReceipt, changeReceipt] = useState(receipt)
