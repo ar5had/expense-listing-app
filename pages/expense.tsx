@@ -37,57 +37,55 @@ const EXPENSE_QUERY = gql`
   }
 `
 
-const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => {
-  return (
-    <div>
-      <Query query={EXPENSE_QUERY} variables={{ id }}>
-        {({ data, error, loading }: QueryResult) => {
-          if (loading) {
-            return null
-          }
-          if (error) {
-            return <p>Error: {error.message}</p>
-          }
+const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => (
+  <div>
+    <Query query={EXPENSE_QUERY} variables={{ id }}>
+      {({ data, error, loading }: QueryResult) => {
+        if (loading) {
+          return null
+        }
+        if (error) {
+          return <p>Error: {error.message}</p>
+        }
 
-          // completes loading bar
-          Router.events.on('routeChangeComplete', () => {
-            NProgress.done()
-          })
+        // completes loading bar
+        Router.events.on('routeChangeComplete', () => {
+          NProgress.done()
+        })
 
-          // show expense item and change document title accordingly
-          if (data.expense) {
-            const {
-              user: { first, last },
-              merchant
-            } = data.expense
+        // show expense item and change document title accordingly
+        if (data.expense) {
+          const {
+            user: { first, last },
+            merchant
+          } = data.expense
 
-            return (
-              <>
-                <Head>
-                  <title>
-                    Expense — {first} {last} &lt;{merchant}&gt;
-                  </title>
-                </Head>
-                <ExpenseItem {...data.expense} />
-              </>
-            )
-          }
-
-          // show error and change document title accordingly
           return (
-            <NoItemSection>
+            <>
               <Head>
-                <title>Expense Not Found!</title>
+                <title>
+                  Expense — {first} {last} &lt;{merchant}&gt;
+                </title>
               </Head>
-              <HeadingText fontSize="1.6rem">Expense not found - 404</HeadingText>
-              <BackToHome />
-            </NoItemSection>
+              <ExpenseItem {...data.expense} />
+            </>
           )
-        }}
-      </Query>
-    </div>
-  )
-}
+        }
+
+        // show error and change document title accordingly
+        return (
+          <NoItemSection>
+            <Head>
+              <title>Expense Not Found!</title>
+            </Head>
+            <HeadingText fontSize="1.6rem">Expense not found - 404</HeadingText>
+            <BackToHome />
+          </NoItemSection>
+        )
+      }}
+    </Query>
+  </div>
+)
 
 export default Expense
 export { EXPENSE_QUERY }
