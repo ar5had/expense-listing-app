@@ -9,13 +9,18 @@ const ReactSelectStyles: StylesConfig = {
     }
     return { ...provided, ...customStyles }
   },
-  control: (provided, state) => ({
+  control: (provided) => ({
     ...provided,
     borderWidth: 1,
     width: 110,
     cursor: 'pointer'
   }),
-  option: (provided) => ({ ...provided, cursor: 'pointer' })
+  option: (provided, { isFocused }) => ({
+    ...provided,
+    cursor: 'pointer',
+    background: isFocused ? theme.grey : theme.white,
+    color: theme.black
+  })
 }
 
 const ReactSelectTheme = (defaultTheme: any) => ({
