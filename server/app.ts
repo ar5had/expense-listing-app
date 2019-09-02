@@ -1,6 +1,6 @@
-import * as express from 'express'
-import * as logger from 'morgan'
-import * as bodyParser from 'body-parser'
+import express from 'express'
+import logger from 'morgan'
+import bodyParser from 'body-parser'
 
 import { ApolloServer } from 'apollo-server-express'
 

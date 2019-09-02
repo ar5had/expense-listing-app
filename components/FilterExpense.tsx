@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 import { FilterExpenseProps } from '../types/components'
 import FilterType from './FilterType'

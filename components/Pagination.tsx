@@ -5,7 +5,6 @@ import PaginationStyles from './styles/PaginationStyles'
 import { PaginationProps } from '../types/components'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
-import { Router } from 'express'
 
 const PaginationWrapper = styled.div`
   padding: ${gts('mdMargin')}px 0 ${gts('lgMargin')}px;

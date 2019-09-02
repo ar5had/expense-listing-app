@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "build:client": "next build",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build": "npm run build:client && npm run build:server",
+    "start": "cross-env NODE_ENV=production node dist/app.js",
     "prettier": "prettier --write './**/*.{ts,tsx}' --config ./.prettierrc"
   },
   "keywords": [

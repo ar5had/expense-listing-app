@@ -16,8 +16,6 @@ const UploadFileWrapper = styled.div`
 
 const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
   // ref holding the receipt image element
-  const imgElem: any = useRef<HTMLImageElement>(null)
-  // ref holding the receipt image element
   const inputElem: any = useRef<HTMLInputElement>(null)
 
   const onChange = ({ target: { validity, files } }: any) => {
