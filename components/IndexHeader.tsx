@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import Router from 'next/router'
-import Select from 'react-select'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
 import { IndexHeaderProps } from '../types/components'
 import HeadingText from './styles/HeadingText'
 import Heading from './styles/Heading'
-import { ReactSelectStyles, ReactSelectTheme } from './styles/ReactSelectStyles'
+import Dropdown from './Dropdown'
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,8 +15,8 @@ const Wrapper = styled.div`
     line-height: 1;
     margin: 0 ${gts('xsMargin')}px 0 auto;
   }
-  .selectElem {
-    min-width: 100px;
+  .selectElem .react-select__control {
+    width: 140px;
   }
 `
 
@@ -60,9 +59,7 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
         </Link>
       </Heading>
       <HeadingText className="per-page-select-label">Items per page: </HeadingText>
-      <Select
-        styles={ReactSelectStyles}
-        theme={ReactSelectTheme}
+      <Dropdown
         className="selectElem"
         value={selectedOption}
         onChange={onItemsPerPageChange}

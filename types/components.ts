@@ -12,6 +12,7 @@ export interface User {
 }
 
 export interface ExpenseProps {
+  [index: string]: any;
   id: string;
   amount: Amount;
   date: string;
@@ -25,21 +26,6 @@ export interface ExpenseProps {
 export interface ExpensesProps {
   data: ExpenseProps[];
 }
-
-export interface FilterProps {}
-
-export interface FilterValuesProps {
-  open: boolean;
-}
-
-export interface FilterListProps {
-  value: string;
-  textVal: string;
-  isActive: boolean;
-  onClick: (e: SyntheticEvent) => void;
-}
-
-export interface FilterButtonProps {}
 
 export interface PaginationProps {
   total: number;
@@ -88,4 +74,21 @@ export interface ImagePreviewProps {
 
 export interface UpdateStatusProps {
   text: string;
+}
+
+export interface FilterExpenseProps {
+  filterText: string,
+  filterType: string,
+  changeFilterText: (text: string) => void
+  changeFilterType: (text: string) => void
+}
+
+export interface FilterTypeProps {
+  filterType: string;
+  changeFilterType: (text: string) => void;
+}
+
+export interface FilterOption {
+  value: string;
+  label: string;
 }
