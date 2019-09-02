@@ -15,7 +15,7 @@ interface HomeProps {
 }
 
 const ALL_EXPENSES_QUERY = gql`
-  query ALL_EXPENSES_QUERY($limit: Int, $offset: Int) {
+  query ALL_EXPENSES_QUERY($limit: Int = 10, $offset: Int = 0) {
     expenses(limit: $limit, offset: $offset) {
       data {
         id

@@ -3,12 +3,12 @@ import { Mutation, MutationResult } from 'react-apollo'
 import gql from 'graphql-tag'
 import Input from './styles/Input'
 import Button from './styles/Button'
-import { DynamicExpenseFieldsProps } from '../types/components'
+import { DynamicExpenseFieldsProps, ExpenseProps } from '../types/components'
 import Form from './styles/Form'
 import ErrorMessage from './ErrorMessage'
 import UploadFile from './UploadFile'
 import ImagePreview from './ImagePreview'
-import { ALL_EXPENSES_QUERY } from '../pages'
+import { EXPENSE_QUERY } from '../pages/expense'
 
 const UPDATE_EXPENSE_MUTATION = gql`
   mutation UPDATE_EXPENSE_MUTATION($id: ID!, $comment: String!, $receipt: String!) {
@@ -23,10 +23,25 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
   const [expenseReceipt, changeReceipt] = useState(receipt)
 
   const updateCache = (cache: any, payload: { [index: string]: any }) => {
+    const updatedExpenseId = payload.data.updateExpense.id
+
     // manually update the cache on the client, so it matches the server
-    // 1. Read the cache for the items we want
-    // Dont know why I am getting error - Invariant Violation: Can't find field expenses({}) on object
-    // const data = cache.readQuery({ query: ALL_EXPENSES_QUERY })
+    try {
+      // 1. Read the cache for the items we want
+      const data = cache.readQuery({
+        query: EXPENSE_QUERY,
+        variables: {
+          id: updatedExpenseId
+        }
+      })
+      // 2. Update the expense item
+      data.expense.comment = expenseComment
+      data.expense.receipt = expenseReceipt
+      // 3. Put the expenses back!
+      cache.writeQuery({ query: EXPENSE_QUERY, data })
+    } catch (err) {
+      console.log(err, `Expense:${updatedExpenseId} not found in cache!`)
+    }
   }
 
   const commentNotChanged = comment === expenseComment
@@ -44,8 +59,6 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
       update={updateCache}
     >
       {(updateExpense: any, { loading, error }: MutationResult) => (
-        // updateExpense is only available inside render prop callback
-        // that's why onSubmit function is not moved outside jsx
         <Form
           onSubmit={async (event: SyntheticEvent) => {
             // stop the form submission

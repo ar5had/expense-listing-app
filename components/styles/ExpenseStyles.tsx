@@ -70,7 +70,7 @@ const ExpenseStyles = styled.div`
     flex-direction: column;
     border-left: solid 4px ${gts('grey')};
     padding: 5px 15px 10px;
-    line-height: 1.2;
+    line-height: 1.5;
     small {
       margin-top: 10px;
       font-weight: bold;
