@@ -90,3 +90,4 @@ const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => {
 }
 
 export default Expense
+export { EXPENSE_QUERY }
