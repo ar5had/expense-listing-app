@@ -33,10 +33,10 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
     }
 
     imageToBase64(file)
-      .then((result) => {
-        addReceipt(result as string)
+      .then((result: any) => {
+        addReceipt(result)
       })
-      .catch((e) => {
+      .catch(() => {
         console.log("Error: Image can't be converted into base64 format!")
       })
   }

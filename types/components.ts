@@ -77,10 +77,10 @@ export interface UpdateStatusProps {
 }
 
 export interface FilterExpenseProps {
-  filterText: string,
-  filterType: string,
-  changeFilterText: (text: string) => void
-  changeFilterType: (text: string) => void
+  filterText: string;
+  filterType: string;
+  changeFilterText: (text: string) => void;
+  changeFilterType: (text: string) => void;
 }
 
 export interface FilterTypeProps {
