@@ -85,3 +85,7 @@ export interface ImagePreviewProps {
   src: string;
   deleteReceipt: () => void;
 }
+
+export interface UpdateStatusProps {
+  text: string;
+}
