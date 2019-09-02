@@ -1,7 +1,9 @@
 import withApollo from 'next-with-apollo'
 import ApolloClient from 'apollo-boost'
-import { apiEndpoint } from '../config'
+import { localApiEndpoint, productionApiEndpoint } from '../config'
 
-const createClient = () => new ApolloClient({ uri: apiEndpoint })
+const uri = process.env.NODE_ENV !== 'production' ? localApiEndpoint : productionApiEndpoint
+
+const createClient = () => new ApolloClient({ uri })
 
 export default withApollo(createClient)
