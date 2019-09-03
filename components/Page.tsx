@@ -8,9 +8,21 @@ import { gts } from '../lib/getThemeStyle'
 const StyledPage = styled.div`
   background: white;
   color: ${gts('black')};
-  padding: ${gts('smMargin')}px;
   min-height: calc(100vh - 40px);
+  padding: ${gts('smMargin')}px;
   border: solid ${gts('smMargin')}px ${gts('grey')};
+  @media (max-width: ${gts('maxWidth')}) {
+    padding: 0;
+    border: none;
+    .hide-sm {
+      display: none;
+    }
+  }
+  @media (max-width: ${gts('mobileScreenRes')}) {
+    .hide-xs {
+      display: none;
+    }
+  }
 `
 
 const Inner = styled.div`

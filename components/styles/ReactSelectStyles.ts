@@ -6,6 +6,7 @@ const ReactSelectStyles: StylesConfig = {
   control: (provided, { menuIsOpen, isFocused }) => ({
     ...provided,
     border: 'none',
+    width: 80,
     boxShadow: menuIsOpen || isFocused ? `0 0 0 1px ${theme.black}` : `0 0 0 1px ${theme.darkGrey}`,
     cursor: 'pointer',
     textTransform: 'uppercase',
@@ -20,12 +21,10 @@ const ReactSelectStyles: StylesConfig = {
     letterSpacing: '2px',
     padding: '15px 10px',
     margin: '5px 0',
-    width: 140,
     fontSize: '1.3rem'
   }),
-  indicatorSeparator: (provided, { isFocused, menuIsOpen }) => ({
-    ...provided,
-    backgroundColor: isFocused || menuIsOpen ? theme.black : theme.darkGrey
+  indicatorSeparator: () => ({
+    display: 'none'
   }),
   noOptionsMessage: (provided) => ({
     ...provided,

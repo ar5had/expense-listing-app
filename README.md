@@ -17,7 +17,7 @@ A single page application using a modern JS library/framework including:
 
 ## Nice to have
 Want to go the extra mile? Here's few suggestion of things we'd like to see (or go crazy and implement what you think will impress us).
-- [ ] Responsive design
+- [x] Responsive design
 - [x] Implement with a state management library (Redux, Mobx, VueX, ...)
 - [x] Implement solution in TypeScript
 - [ ] Localization: support for multiple languages (English, French, ...)

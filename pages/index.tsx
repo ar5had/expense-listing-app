@@ -6,6 +6,9 @@ import NProgress from 'nprogress'
 import Expenses from '../components/Expenses'
 import IndexHeader from '../components/IndexHeader'
 import Pagination from '../components/Pagination'
+import ExpenseFilter from '../components/ExpenseFilter'
+import { useState } from 'react'
+import { ExpenseProps } from 'types/components'
 
 interface HomeProps {
   query: {
@@ -39,6 +42,14 @@ const ALL_EXPENSES_QUERY = gql`
 const Home: NextPage<HomeProps> = ({ query }) => {
   const perPage = parseInt(query.limit, 10) || 10
   const offset = parseInt(query.offset, 10) || 0
+  const [filterText, changeFilterText] = useState('')
+
+  const filterData = (data: ExpenseProps) =>
+    data.filter((expense: ExpenseProps) => {
+      const regex = new RegExp(filterText, 'gi')
+      const filterFields = ['first', 'last', 'comment', 'merchant']
+      return filterFields.some((filterField) => regex.test(expense[filterField]))
+    })
 
   return (
     <div>
@@ -56,13 +67,17 @@ const Home: NextPage<HomeProps> = ({ query }) => {
             NProgress.done()
           })
 
-          const noExpenseOnPage = data.expenses.data.length === 0
+          const { expenses } = data
+          const filteredData = filterData(expenses.data)
+          const showPagination = expenses.data.length > 0 && filterText !== ''
+
           return (
             <>
               <IndexHeader perPage={perPage} offset={offset} />
-              <Expenses data={data.expenses.data} />
-              {noExpenseOnPage || (
-                <Pagination total={data.expenses.total} perPage={perPage} offset={offset} />
+              <ExpenseFilter filterText={filterText} changeFilterText={changeFilterText} />
+              <Expenses data={filteredData} />
+              {showPagination || (
+                <Pagination total={expenses.total} perPage={perPage} offset={offset} />
               )}
             </>
           )

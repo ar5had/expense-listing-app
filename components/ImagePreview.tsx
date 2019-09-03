@@ -25,10 +25,15 @@ const ImagePreviewStyles = styled.div`
 `
 
 const Img = styled.img`
-  height: ${gts('receiptImageDim')};
-  width: ${gts('receiptImageDim')};
+  height: 15rem;
+  width: 15rem;
+  transition: 0.2s;
   border-radius: ${gts('borderRadius')};
   object-fit: cover;
+  @media (max-width: ${gts('maxWidth')}) {
+    height: 12rem;
+    width: 12rem;
+  }
 `
 
 const Overlay = styled.div`

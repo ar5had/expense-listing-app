@@ -9,7 +9,7 @@ const Button = styled.button`
   border-radius: ${gts('borderRadius')};
   background: ${gts('black')};
   color: ${gts('white')};
-  width: 100%;
+  width: auto;
   padding: 18px 10px;
   text-transform: uppercase;
   letter-spacing: 2px;

@@ -16,16 +16,14 @@ const ExpensePageStyles = styled.div`
     letter-spacing: 0;
   }
   .amount {
-    letter-spacing: 1px;
+    text-align: center;
   }
   .row {
-    max-width: 500px;
-    margin: auto;
     display: grid;
     grid-template-columns: 1fr;
-    grid-templayte-rows: auto auto;
     width: 100%;
-    margin-bottom: ${gts('mdMargin')}px;
+    max-width: 500px;
+    margin: auto auto ${gts('mdMargin')}px auto;
     grid-gap: 10px;
     & > span,
     & > input {
@@ -42,8 +40,9 @@ const ExpensePageStyles = styled.div`
     .value {
       border-bottom: solid 1px ${gts('grey')};
     }
-    .save-btn {
-      grid-column: 1 / -1;
+    @media (max-width: ${gts('maxWidth')}) {
+      max-width: 1000%;
+      margin: 0 0 ${gts('mdMargin')}px 0;
     }
   }
   .row:empty {

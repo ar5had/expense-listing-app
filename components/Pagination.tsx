@@ -37,10 +37,10 @@ const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {
             ← Prev
           </a>
         </Link>
-        <p>
+        <p className="hide-xs">
           Page {page} of <span className="totalPages">{pages}</span>
         </p>
-        <p>{total} Items Total</p>
+        <p className="hide-sm">{total} Items Total</p>
         <Link
           href={{
             path: '/',

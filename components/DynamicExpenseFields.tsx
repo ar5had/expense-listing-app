@@ -60,8 +60,9 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
               <span className="label">Comment</span>
               <Input
                 className="comment-input"
-                placeholder="Add a comment"
+                placeholder="Add a comment..."
                 type="text"
+                maxLength={300}
                 value={expenseComment}
                 onChange={onCommentChange}
               />
@@ -78,11 +79,7 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
               <ErrorMessage error={error} />
             </div>
             <div className="row">
-              <Button
-                className="save-btn"
-                type="submit"
-                disabled={commentNotChanged && receiptNotChanged}
-              >
+              <Button type="submit" disabled={commentNotChanged && receiptNotChanged}>
                 {loading ? <span className="spinner" /> : <span>Save Changes</span>}
               </Button>
             </div>

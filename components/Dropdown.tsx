@@ -25,6 +25,7 @@ const Dropdown: React.FC<SelectComponentsProps> = (props) => (
       styles={ReactSelectStyles}
       classNamePrefix="react-select"
       theme={ReactSelectTheme}
+      isSearchable={false}
       {...props}
     />
   </DropdownStyles>
