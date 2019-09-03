@@ -16,8 +16,6 @@ const UploadFileWrapper = styled.div`
 
 const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
   // ref holding the receipt image element
-  const imgElem: any = useRef<HTMLImageElement>(null)
-  // ref holding the receipt image element
   const inputElem: any = useRef<HTMLInputElement>(null)
 
   const onChange = ({ target: { validity, files } }: any) => {
@@ -33,10 +31,10 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
     }
 
     imageToBase64(file)
-      .then((result) => {
-        addReceipt(result as string)
+      .then((result: any) => {
+        addReceipt(result)
       })
-      .catch((e) => {
+      .catch(() => {
         console.log("Error: Image can't be converted into base64 format!")
       })
   }

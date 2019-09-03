@@ -1,4 +1,4 @@
-import { SyntheticEvent, ReactElement } from 'react'
+import { SyntheticEvent } from 'react'
 
 export interface Amount {
   value: string;
@@ -77,10 +77,10 @@ export interface UpdateStatusProps {
 }
 
 export interface FilterExpenseProps {
-  filterText: string,
-  filterType: string,
-  changeFilterText: (text: string) => void
-  changeFilterType: (text: string) => void
+  filterText: string;
+  filterType: string;
+  changeFilterText: (text: string) => void;
+  changeFilterType: (text: string) => void;
 }
 
 export interface FilterTypeProps {

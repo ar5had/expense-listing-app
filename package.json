@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "remove-dist": "rimraf ./dist",
+    "build:client": "next build",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build": "npm run build:client && npm run remove-dist && npm run build:server",
+    "start": "cross-env NODE_ENV=production node dist/app.js",
     "prettier": "prettier --write './**/*.{ts,tsx}' --config ./.prettierrc"
   },
   "keywords": [
@@ -15,7 +18,8 @@
     "react.js",
     "typescript",
     "Arshad Khan",
-    "graphql"
+    "graphql",
+    "styled-components"
   ],
   "author": "Arshad Khan<arshdkhn1@gmail.com>",
   "license": "ISC",
@@ -37,6 +41,7 @@
     "react-apollo": "^2.5.8",
     "react-dom": "^16.9.0",
     "react-select": "^3.0.4",
+    "rimraf": "^3.0.0",
     "shortid": "^2.2.14",
     "styled-components": "^4.3.2"
   },
