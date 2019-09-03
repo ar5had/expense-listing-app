@@ -2,15 +2,11 @@ import { useRef } from 'react'
 import styled from 'styled-components'
 import { UploadFileProps } from '../types/components'
 import { imageToBase64 } from '../lib/base64Utils'
-import CardWithBtn from './CardWithBtn'
+import UploadIcon from './UploadIcon'
 
 const UploadFileWrapper = styled.div`
   input[type='file'] {
-    width: 0;
-    height: 0;
-    visibility: hidden;
-    display: inline;
-    float: right;
+    display: none;
   }
 `
 
@@ -43,7 +39,7 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
 
   return (
     <UploadFileWrapper>
-      <CardWithBtn onClick={openImageSelectWindow} />
+      <UploadIcon onClick={openImageSelectWindow} />
       <input ref={inputElem} type="file" accept="image/*" onChange={onChange} />
     </UploadFileWrapper>
   )

@@ -57,6 +57,12 @@ const PaginationStyles = styled.div`
     color: ${gts('grey')};
     pointer-events: none;
   }
+  @media (max-width: ${gts('maxWidth')}) {
+    grid-template-columns: repeat(3, auto);
+  }
+  @media (max-width: ${gts('mobileScreenRes')}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 export default PaginationStyles

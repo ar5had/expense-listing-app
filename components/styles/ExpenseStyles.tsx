@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { gts } from '../../lib/getThemeStyle'
 
 const ExpenseStyles = styled.div`
-  --dim: 60px;
+  --dim: 6rem;
   margin-bottom: ${gts('lgMargin')}px;
   overflow: visible;
   padding: ${gts('smMargin')}px;
@@ -26,11 +26,15 @@ const ExpenseStyles = styled.div`
     grid-gap: ${gts('smMargin')}px;
   }
   .amount {
+    --headingFontSize: 2.5rem;
     color: ${gts('darkGrey')};
     font-weight: bold;
     font-size: 2rem;
     letter-spacing: 1px;
     font-family: ${gts('emFont')};
+    span {
+      line-height: calc(1.5 * var(--headingFontSize));
+    }
   }
   .image {
     width: var(--dim);
@@ -64,16 +68,41 @@ const ExpenseStyles = styled.div`
     grid-gap: ${gts('smMargin')}px;
   }
   blockquote {
+    font-size: 1.3rem;
     margin: 0;
     display: flex;
     color: ${gts('lightBlack')};
     flex-direction: column;
-    border-left: solid 4px ${gts('grey')};
+    border-left: solid 5px ${gts('grey')};
     padding: 5px 15px 10px;
     line-height: 1.5;
     small {
       margin-top: 10px;
       font-weight: bold;
+    }
+    grid-column: 2 / -1;
+  }
+  @media (max-width: ${gts('maxWidth')}) {
+    h3 {
+      font-size: 2rem;
+    }
+    .amount {
+      --headingFontSize: 2rem;
+    }
+    blockquote {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: ${gts('mobileScreenRes')}) {
+    margin-bottom: ${gts('mdMargin')}px;
+  }
+  /* for extra small mobile screens */
+  @media (max-width: 320px) {
+    .image {
+      grid-column: 1 / -1;
+    }
+    .name-currency-wrapper {
+      grid-column: 1 / -1;
     }
   }
 `

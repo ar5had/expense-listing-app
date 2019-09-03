@@ -23,5 +23,5 @@ export const theme = {
   xsMargin: 10,
   borderRadius: '8px',
   greyBackground: '#edededc2',
-  receiptImageDim: '15rem'
+  mobileScreenRes: '479px'
 }

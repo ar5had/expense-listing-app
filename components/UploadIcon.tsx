@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { CardWithBtnProps } from '../types/components'
+import { UploadIconProps } from '../types/components'
 import { gts } from '../lib/getThemeStyle'
 
 const bounce = keyframes`
@@ -17,9 +17,9 @@ const bounce = keyframes`
   }
 `
 
-const CardWithBtnWrapper = styled.div`
-  height: ${gts('receiptImageDim')};
-  width: ${gts('receiptImageDim')};
+const UploadIconWrapper = styled.div`
+  height: 15rem;
+  width: 15rem;
   border-radius: ${gts('borderRadius')};
   background-color: ${gts('greyBackground')};
   display: flex;
@@ -29,6 +29,10 @@ const CardWithBtnWrapper = styled.div`
     .btn {
       animation: ${bounce} 0.4s ease-in-out forwards;
     }
+  }
+  @media (max-width: ${gts('maxWidth')}) {
+    width: 12rem;
+    height: 12rem;
   }
 `
 
@@ -54,18 +58,23 @@ const CircledButton = styled.button`
     width: 100%;
     height: 100%;
     background-image: url('/static/images/add.svg');
-    background-size: 30% 30%;
+    background-size: 35% 35%;
     background-repeat: no-repeat;
     background-position: center;
   }
+  @media (max-width: ${gts('maxWidth')}) {
+    width: 4rem;
+    height: 4rem;
+    background-size: 50% 50%;
+  }
 `
 
-const CardWithBtn: React.FC<CardWithBtnProps> = ({ onClick }) => (
-  <CardWithBtnWrapper>
+const UploadIcon: React.FC<UploadIconProps> = ({ onClick }) => (
+  <UploadIconWrapper>
     <CircledButton className="btn" onClick={onClick} type="button">
       <span className="add-icon" />
     </CircledButton>
-  </CardWithBtnWrapper>
+  </UploadIconWrapper>
 )
 
-export default CardWithBtn
+export default UploadIcon

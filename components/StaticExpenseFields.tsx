@@ -16,9 +16,7 @@ const StaticExpenseFields: React.FC<StaticExpenseFieldsProps> = ({
 }) => (
   <>
     <div className="currency-row">
-      <Heading fontSize="3rem" className="amount">
-        {`${getSymbolFromCurrency(currency)}${value}`}
-      </Heading>
+      <Heading className="amount">{`${getSymbolFromCurrency(currency)}${value}`}</Heading>
       <HeadingText className="time">{getFormattedTime(date)}</HeadingText>
     </div>
     <div className="row">

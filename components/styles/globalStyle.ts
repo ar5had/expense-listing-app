@@ -107,6 +107,15 @@ const GlobalStyle = createGlobalStyle`
   &:focus {
     outline: dotted 1px ${theme.black}
   }
+  input, fieldset {
+    min-width: 0;
+  }
+  /* mobile screen resolution */
+  @media(max-width: 479px) {
+    html {
+      font-size: 8px;
+    }
+  }
 `
 
 export default GlobalStyle

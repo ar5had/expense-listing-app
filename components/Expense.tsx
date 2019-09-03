@@ -26,14 +26,7 @@ const Expense: React.FC<ExpenseProps> = (props) => {
             <span>{value}</span>
           </div>
         </div>
-        {comment && (
-          <>
-            <span />
-            <div>
-              <blockquote>{comment}</blockquote>
-            </div>
-          </>
-        )}
+        {comment && <blockquote>{comment}</blockquote>}
       </div>
     </ExpenseStyles>
   )

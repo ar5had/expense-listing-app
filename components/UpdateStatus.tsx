@@ -27,7 +27,10 @@ const slideOut = keyframes`
 const Status = styled.div`
   --showY: 50px;
   --hideY: calc(-100% - 5px);
+  pointer-events: none;
+  width: auto;
   max-width: ${gts('maxWidth')};
+  min-width: 250px;
   padding: 10px;
   box-shadow: ${gts('btnBoxShadow')};
   position: fixed;
@@ -42,6 +45,8 @@ const Status = styled.div`
   .heading {
     margin: 0;
     color: ${gts('black')};
+    text-align: center;
+    line-height: 2;
   }
 `
 

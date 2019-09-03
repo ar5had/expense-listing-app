@@ -63,7 +63,7 @@ export interface UploadFileProps {
   addReceipt: (value: string) => void;
 }
 
-export interface CardWithBtnProps {
+export interface UploadIconProps {
   onClick: (e: SyntheticEvent) => void;
 }
 
@@ -76,16 +76,9 @@ export interface UpdateStatusProps {
   text: string;
 }
 
-export interface FilterExpenseProps {
+export interface ExpenseFilterProps {
   filterText: string;
-  filterType: string;
   changeFilterText: (text: string) => void;
-  changeFilterType: (text: string) => void;
-}
-
-export interface FilterTypeProps {
-  filterType: string;
-  changeFilterType: (text: string) => void;
 }
 
 export interface FilterOption {
