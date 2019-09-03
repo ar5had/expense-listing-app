@@ -1,4 +1,4 @@
-import { SyntheticEvent, ReactElement } from 'react'
+import { SyntheticEvent } from 'react'
 
 export interface Amount {
   value: string;

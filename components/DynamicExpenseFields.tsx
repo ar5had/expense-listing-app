@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent, useEffect, useRef } from 'react'
+import { useState, SyntheticEvent } from 'react'
 import { Mutation, MutationResult } from 'react-apollo'
 import gql from 'graphql-tag'
 import Input from './styles/Input'
