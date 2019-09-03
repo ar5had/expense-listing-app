@@ -4,9 +4,8 @@ import bodyParser from 'body-parser'
 
 import { ApolloServer } from 'apollo-server-express'
 
-import { typeDefs } from './data/schema'
-import { Mutation } from './data/mutation'
-import { Query } from './data/query'
+import { typeDefs } from './config/schema'
+import { resolvers } from './config/resolvers'
 
 // load environment variables
 require('dotenv').config()
@@ -15,7 +14,6 @@ const port = parseInt(process.env.PORT || '3000', 10)
 const dev = process.env.NODE_ENV !== 'production'
 const app = require('next')({ dev })
 const handle = app.getRequestHandler()
-const resolvers = { Query, Mutation }
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers })
 
