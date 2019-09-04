@@ -51,5 +51,12 @@ const ExpensePageStyles = styled.div`
   .error-row > * {
     grid-column: 1 / -1;
   }
+  @media (max-width: ${gts('mobileScreenRes')}) {
+    margin: ${gts('smMargin')}px 0 ${gts('mdMargin')}px;
+    .back-btn-row,
+    .currency-row {
+      margin-bottom: ${gts('mdMargin')}px;
+    }
+  }
 `
 export default ExpensePageStyles

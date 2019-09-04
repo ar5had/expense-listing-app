@@ -101,6 +101,7 @@ const ExpenseStyles = styled.div`
   @media (max-width: 320px) {
     .image {
       grid-column: 1 / -1;
+      margin: auto;
     }
     .name-currency-wrapper {
       grid-column: 1 / -1;

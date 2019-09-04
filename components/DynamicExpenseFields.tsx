@@ -36,9 +36,7 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
 
   // this effect works as componentWillUnmount, to avoid memory leak, in case when user has made
   // changes and moves to new page before 3 seconds(the time in which status updates are shown)
-  useEffect(() => {
-    return () => clearTimeout(timeoutRef.current)
-  }, [])
+  useEffect(() => clearTimeout(timeoutRef.current), [])
 
   return (
     <Mutation

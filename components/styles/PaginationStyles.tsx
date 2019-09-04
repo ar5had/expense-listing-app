@@ -31,7 +31,7 @@ const PaginationStyles = styled.div`
   & > a:hover {
     color: ${gts('black')};
     box-shadow: ${gts('btnBoxShadow')};
-    background: white;
+    background: ${gts('white')};
     border-color: transparent;
   }
   a {

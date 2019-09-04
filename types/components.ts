@@ -72,6 +72,12 @@ export interface ImagePreviewProps {
   deleteReceipt: () => void;
 }
 
+export interface ImageOverlayProps {
+  src: string;
+  hideOverlay: () => void;
+  show: boolean;
+}
+
 export interface UpdateStatusProps {
   text: string;
 }
