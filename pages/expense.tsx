@@ -1,9 +1,7 @@
-import Router from 'next/router'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { Query, QueryResult } from 'react-apollo'
 import gql from 'graphql-tag'
-import NProgress from 'nprogress'
 import BackToHome from '../components/BackToHome'
 import ExpenseItem from '../components/ExpenseItem'
 import NoItemSection from '../components/styles/NoItemSection'
@@ -47,11 +45,6 @@ const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => (
         if (error) {
           return <p>Error: {error.message}</p>
         }
-
-        // completes loading bar when data is available
-        Router.events.on('routeChangeComplete', () => {
-          NProgress.done()
-        })
 
         // show expense item and change document title accordingly
         if (data.expense) {

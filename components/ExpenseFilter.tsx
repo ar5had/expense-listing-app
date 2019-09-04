@@ -21,7 +21,7 @@ const StyledFilter = styled.div`
   }
   .search-icon {
     position: absolute;
-    top: 10px;
+    bottom: 10px;
     right: 10px;
     --dim: 2rem;
     display: block;
@@ -63,6 +63,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, changeFilterT
         id="filter"
         value={filterText}
         onChange={({ currentTarget: { value } }) => changeFilterText(value)}
+        autoComplete="off"
       />
       <label htmlFor="filter" className="search-icon" />
     </StyledFilter>

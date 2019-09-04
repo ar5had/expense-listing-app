@@ -10,7 +10,7 @@ export const theme = {
   boxShadow: '0px 70px 40px -50px rgba(0, 0, 0, 0.2), 0px 3px 20px rgba(0, 0, 0, 0.1)',
   insetBoxShadow: '0px 3px 10px rgba(0, 0, 0, 0.1) inset',
   deepInsetBoxShadow: '0px 7px 15px rgba(0, 0, 0, 0.2) inset',
-  btnBoxShadow: '0px 35px 27px -20px rgba(0, 0, 0, 0.2), 0px 3px 20px rgba(0, 0, 0, 0.1)',
+  btnBoxShadow: '0px 35px 27px -20px rgba(0, 0, 0, 0.08), 0px 3px 20px rgba(0, 0, 0, 0.1)',
   simpleBoxShadow: '0 10px 30px 0 rgba(46,61,73,.35)',
   raisedBtnBoxShadow: '0px 30px 20px -10px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.1)',
   textFont: `'Roboto Mono', monospace`,

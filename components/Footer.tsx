@@ -31,7 +31,9 @@ const Img = styled.img`
 
 const Footer: React.FC = () => (
   <StyledFooter>
-    <Img src="/static/images/sign.png" alt="Arshad" />
+    <a href="http://iamarshad.com/resume.html">
+      <Img src="/static/images/sign.png" alt="Arshad" />
+    </a>
     <Link href="/credits">
       <a>Credits</a>
     </Link>
