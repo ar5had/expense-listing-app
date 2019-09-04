@@ -6,7 +6,7 @@ export const theme = {
   darkGrey: 'rgba(0, 0, 0, 0.3)',
   white: '#fff',
   red: 'rgb(236, 62, 61)',
-  maxWidth: '648px',
+  maxWidth: '678px',
   boxShadow: '0px 70px 40px -50px rgba(0, 0, 0, 0.2), 0px 3px 20px rgba(0, 0, 0, 0.1)',
   insetBoxShadow: '0px 3px 10px rgba(0, 0, 0, 0.1) inset',
   deepInsetBoxShadow: '0px 7px 15px rgba(0, 0, 0, 0.2) inset',

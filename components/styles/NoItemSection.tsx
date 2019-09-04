@@ -5,7 +5,7 @@ const NoItemSection = styled.div`
   text-align: center;
   margin-bottom: ${gts('lgMargin')}px;
   h5 {
-    margin-top: 25vh;
+    margin: 20vh 0;
     text-align: center;
   }
 `

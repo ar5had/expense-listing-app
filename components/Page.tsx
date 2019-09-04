@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components'
-import Header from './Header'
 import Meta from './Meta'
+import Header from './Header'
+import Footer from './Footer'
 import { theme } from './styles/theme'
 import GlobalStyle from './styles/globalStyle'
 import { gts } from '../lib/getThemeStyle'
@@ -17,6 +18,7 @@ const StyledPage = styled.div`
     .hide-sm {
       display: none;
     }
+    min-height: 0;
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     .hide-xs {
@@ -37,6 +39,7 @@ const Page: React.FC = ({ children }) => (
       <GlobalStyle />
       <Header />
       <Inner>{children}</Inner>
+      <Footer />
     </StyledPage>
   </ThemeProvider>
 )
