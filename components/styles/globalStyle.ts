@@ -109,6 +109,7 @@ const GlobalStyle = createGlobalStyle`
   }
   input, fieldset {
     min-width: 0;
+    border-radius: 0;
   }
   /* mobile screen resolution */
   @media(max-width: 479px) {

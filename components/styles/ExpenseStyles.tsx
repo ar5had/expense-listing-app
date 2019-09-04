@@ -96,6 +96,7 @@ const ExpenseStyles = styled.div`
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     margin-bottom: ${gts('mdMargin')}px;
+    border: solid 1px ${gts('grey')};
   }
   /* for extra small mobile screens */
   @media (max-width: 320px) {

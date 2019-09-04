@@ -63,9 +63,9 @@ const CircledButton = styled.button`
     background-position: center;
   }
   @media (max-width: ${gts('maxWidth')}) {
-    width: 4rem;
-    height: 4rem;
-    background-size: 50% 50%;
+    width: 5rem;
+    height: 5rem;
+    background-size: 70% 70%;
   }
 `
 
