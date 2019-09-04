@@ -45,11 +45,11 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, deleteReceipt }) => {
 
   return (
     <ImagePreviewStyles>
-      <ImageOverlay hideOverlay={hideOverlay} src={src} show={isOverlayVisible} />
       <Img src={src} alt="Receipt" />
       <TextButton type="button" onClick={showOverlay}>
         View Receipt
       </TextButton>
+      <ImageOverlay hideOverlay={hideOverlay} src={src} show={isOverlayVisible} />
       <TextButton type="button" onClick={deleteReceipt}>
         Delete Receipt
       </TextButton>

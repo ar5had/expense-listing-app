@@ -40,7 +40,6 @@ const Overlay =
     width: 100%;
   }
 `
-
 const ImageOverlay: React.FC<ImageOverlayProps> = ({ hideOverlay, src, show }) => {
   const [zindex, setZindex] = useState(-1)
 

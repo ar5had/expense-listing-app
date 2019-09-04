@@ -6,6 +6,7 @@ import { gts } from '../lib/getThemeStyle'
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-left: auto;
   .per-page-select-label {
     line-height: 1;
     margin: 0 ${gts('xsMargin')}px 0 auto;
