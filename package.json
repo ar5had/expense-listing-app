@@ -11,6 +11,7 @@
     "build:server": "tsc --project tsconfig.server.json",
     "build": "npm run build:client && npm run remove-dist && npm run build:server",
     "start": "cross-env NODE_ENV=production node dist/app.js",
+    "heroku:start": "node dist/app.js",
     "prettier": "prettier --write './**/*.{ts,tsx}' --config ./.prettierrc"
   },
   "keywords": [
@@ -58,7 +59,7 @@
     "@types/react-select": "^3.0.4",
     "@types/styled-components": "^4.1.18",
     "babel-plugin-styled-components": "^1.10.6",
-    "cross-env": "^5.2.0",
+    "cross-env": "^5.2.1",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
