@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent } from 'react'
+import { useState, SyntheticEvent, useRef, useEffect } from 'react'
 import { Mutation, MutationResult } from 'react-apollo'
 import gql from 'graphql-tag'
 import Input from './styles/Input'
@@ -23,14 +23,22 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
   const [expenseComment, changeComment] = useState(comment)
   const [expenseReceipt, changeReceipt] = useState(receipt)
   const [showUpdateStatus, changeUpdateStatus] = useState(false)
+  // passing a number just to make typescript happy else it will complain when timeoutRef.current
+  // will be assinged to setTimeout id
+  const timeoutRef = useRef(1)
 
   const commentNotChanged = comment === expenseComment
   const receiptNotChanged = receipt === expenseReceipt
 
   const onCommentChange = (event: any) => changeComment(event.target.value)
   const onReceiptChange = (value: string) => changeReceipt(value)
-
   const deleteReceipt = () => changeReceipt('')
+
+  // this effect works as componentWillUnmount, to avoid memory leak, in case when user has made
+  // changes and moves to new page before 3 seconds(the time in which status updates are shown)
+  useEffect(() => {
+    return () => clearTimeout(timeoutRef.current)
+  }, [])
 
   return (
     <Mutation
@@ -50,8 +58,10 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
             // NOTE: below code will only be called if expense updated successfully
             // show successful update status
             changeUpdateStatus(true)
+
+            // NOTE: such async calls must be cleared before the component unmounts
             // hide update status after 3 seconds
-            setTimeout(() => changeUpdateStatus(false), 3000)
+            timeoutRef.current = setTimeout(() => changeUpdateStatus(false), 3000)
           }}
         >
           {showUpdateStatus && <UpdateStatus text="Expense changes saved ✅" />}
