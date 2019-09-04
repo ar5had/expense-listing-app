@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import Router from 'next/router'
 import { ExpenseFilterProps } from '../types/components'
 import Input from './styles/Input'
 import { gts } from '../lib/getThemeStyle'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, SyntheticEvent, ChangeEvent } from 'react'
 import { getTypewriterStrings } from '../lib/filterUtils'
 
 const StyledFilter = styled.div`
@@ -38,14 +39,16 @@ const StyledFilter = styled.div`
   }
 `
 
-const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, changeFilterText }) => {
+const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offset }) => {
   const [counter, changeCounter] = useState(0)
+  const [filterVal, changeFilterVal] = useState(filterText)
+
   const placeholderStrings = getTypewriterStrings(['name', 'comment', 'merchant'])
 
   useEffect(() => {
     let timeoutId: undefined | number
 
-    if (!filterText) {
+    if (!filterVal) {
       timeoutId = setTimeout(() => {
         changeCounter((counter + 1) % (placeholderStrings.length - 1))
       }, 250)
@@ -54,18 +57,32 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, changeFilterT
     }
 
     return () => clearTimeout(timeoutId)
-  }, [counter, filterText])
+  }, [counter, filterVal])
+
+  useEffect(() => {
+    changeFilterVal('')
+  }, [offset, perPage])
+
+  const onFilterChange = ({ currentTarget: { value } }: ChangeEvent<HTMLInputElement>) =>
+    changeFilterVal(value)
+
+  const onSubmit = (event: SyntheticEvent) => {
+    event.preventDefault()
+    Router.push(`/?offset=${offset}&limit=${perPage}&search=${filterVal}`)
+  }
 
   return (
     <StyledFilter>
-      <Input
-        placeholder={`Search expense by ${placeholderStrings[counter]}_`}
-        id="filter"
-        value={filterText}
-        onChange={({ currentTarget: { value } }) => changeFilterText(value)}
-        autoComplete="off"
-      />
-      <label htmlFor="filter" className="search-icon" />
+      <form onSubmit={onSubmit}>
+        <Input
+          placeholder={`Search expense by ${placeholderStrings[counter]}_`}
+          id="filter"
+          value={filterVal}
+          onChange={onFilterChange}
+          autoComplete="off"
+        />
+        <label htmlFor="filter" className="search-icon" />
+      </form>
     </StyledFilter>
   )
 }

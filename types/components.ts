@@ -84,7 +84,8 @@ export interface UpdateStatusProps {
 
 export interface ExpenseFilterProps {
   filterText: string;
-  changeFilterText: (text: string) => void;
+  perPage: number;
+  offset: number;
 }
 
 export interface FilterOption {

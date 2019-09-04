@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import gql from 'graphql-tag'
 import { NextPage } from 'next'
 import { Query, QueryResult } from 'react-apollo'
@@ -42,14 +41,7 @@ const ALL_EXPENSES_QUERY = gql`
 const Home: NextPage<HomeProps> = ({ query }) => {
   const perPage = parseInt(query.limit, 10) || 10
   const offset = parseInt(query.offset, 10) || 0
-  const search = query.search
-
-  const [filterText, changeFilterText] = useState('')
-
-  useEffect(() => {
-    // reset filter text when offset or query parameter is changed
-    changeFilterText('')
-  }, [offset, perPage, search])
+  const filterText = query.search || ''
 
   const filterData = (data: ExpenseProps[]) =>
     data.filter(({ merchant, comment, user: { first, last } }) =>
@@ -77,7 +69,7 @@ const Home: NextPage<HomeProps> = ({ query }) => {
           return (
             <>
               <IndexHeader perPage={perPage} offset={offset} />
-              <ExpenseFilter filterText={filterText} changeFilterText={changeFilterText} />
+              <ExpenseFilter filterText={filterText} perPage={perPage} offset={offset} />
               <Expenses data={filteredData} />
               {showPagination && (
                 <Pagination total={expenses.total} perPage={perPage} offset={offset} />
