@@ -6,7 +6,7 @@ import GlobalStyle from './styles/globalStyle'
 import { gts } from '../lib/getThemeStyle'
 
 const StyledPage = styled.div`
-  background: white;
+  background: ${gts('white')};
   color: ${gts('black')};
   min-height: calc(100vh - 40px);
   padding: ${gts('smMargin')}px;

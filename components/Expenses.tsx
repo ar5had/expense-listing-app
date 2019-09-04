@@ -9,7 +9,7 @@ import NoItemSection from './styles/NoItemSection'
 
 const StyledExpenses = styled.div`
   .rel-time {
-    margin: ${gts('lgMargin')} 0 ${gts('mdMargin')}px;
+    margin: ${gts('lgMargin')}px 0 ${gts('mdMargin')}px;
   }
   .rel-time:first-child {
     margin-top: 0;

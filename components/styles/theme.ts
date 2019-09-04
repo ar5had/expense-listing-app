@@ -4,7 +4,7 @@ export const theme = {
   black: 'rgba(0, 0, 0, 0.87)',
   lightBlack: 'rgba(0, 0, 0, 0.5)',
   darkGrey: 'rgba(0, 0, 0, 0.3)',
-  white: '#ffffff',
+  white: '#fff',
   red: 'rgb(236, 62, 61)',
   maxWidth: '648px',
   boxShadow: '0px 70px 40px -50px rgba(0, 0, 0, 0.2), 0px 3px 20px rgba(0, 0, 0, 0.1)',
