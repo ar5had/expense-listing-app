@@ -57,6 +57,7 @@ const ExpenseStyles = styled.div`
     line-height: 1.5;
     font-family: ${gts('emFont')};
     font-size: 2.5rem;
+    letter-spacing: 1px;
   }
   .merchant {
     margin: 0;

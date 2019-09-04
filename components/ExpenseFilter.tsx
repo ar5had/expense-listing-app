@@ -23,7 +23,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, changeFilterT
   return (
     <StyledFilter>
       <Input
-        placeholder="Filter expense..."
+        placeholder="Search expense..."
         value={filterText}
         onChange={({ currentTarget: { value } }) => changeFilterText(value)}
       />

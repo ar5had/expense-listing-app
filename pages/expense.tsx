@@ -48,7 +48,7 @@ const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => (
           return <p>Error: {error.message}</p>
         }
 
-        // completes loading bar
+        // completes loading bar when data is available
         Router.events.on('routeChangeComplete', () => {
           NProgress.done()
         })

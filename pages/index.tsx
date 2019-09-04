@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Router from 'next/router'
 import gql from 'graphql-tag'
 import { NextPage } from 'next'
@@ -7,8 +8,8 @@ import Expenses from '../components/Expenses'
 import IndexHeader from '../components/IndexHeader'
 import Pagination from '../components/Pagination'
 import ExpenseFilter from '../components/ExpenseFilter'
-import { useState } from 'react'
-import { ExpenseProps } from 'types/components'
+import { objectHasText } from '../lib/filterUtils'
+import { ExpenseProps } from '../types/components'
 
 interface HomeProps {
   query: {
@@ -44,12 +45,18 @@ const Home: NextPage<HomeProps> = ({ query }) => {
   const offset = parseInt(query.offset, 10) || 0
   const [filterText, changeFilterText] = useState('')
 
-  const filterData = (data: ExpenseProps) =>
-    data.filter((expense: ExpenseProps) => {
-      const regex = new RegExp(filterText, 'gi')
-      const filterFields = ['first', 'last', 'comment', 'merchant']
-      return filterFields.some((filterField) => regex.test(expense[filterField]))
-    })
+  useEffect(() => {
+    // reset filter text when offset or query parameter is changed
+    changeFilterText('')
+  }, [offset, perPage])
+
+  const filterData = (data: ExpenseProps[]) =>
+    data.filter(({ merchant, comment, user: { first, last } }) =>
+      objectHasText(
+        { merchant, comment, firstLastName: `${first} ${last}`, lastFirstName: `${last} ${first}` },
+        filterText
+      )
+    )
 
   return (
     <div>
@@ -62,21 +69,21 @@ const Home: NextPage<HomeProps> = ({ query }) => {
             return <p>Error: {error.message}</p>
           }
 
-          // completes loading bar
+          // completes loading bar when data is available
           Router.events.on('routeChangeComplete', () => {
             NProgress.done()
           })
 
           const { expenses } = data
           const filteredData = filterData(expenses.data)
-          const showPagination = expenses.data.length > 0 && filterText !== ''
+          const showPagination = expenses.data.length > 0 && filterText === ''
 
           return (
             <>
               <IndexHeader perPage={perPage} offset={offset} />
               <ExpenseFilter filterText={filterText} changeFilterText={changeFilterText} />
               <Expenses data={filteredData} />
-              {showPagination || (
+              {showPagination && (
                 <Pagination total={expenses.total} perPage={perPage} offset={offset} />
               )}
             </>

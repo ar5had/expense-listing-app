@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Router from 'next/router'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
@@ -29,11 +28,7 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
 
   return (
     <Wrapper>
-      <Heading className="heading">
-        <Link href="/">
-          <a>Expenses</a>
-        </Link>
-      </Heading>
+      <Heading className="heading">Expenses</Heading>
       <ItemsPerPage onChange={onItemsPerPageChange} perPage={perPage} />
     </Wrapper>
   )
