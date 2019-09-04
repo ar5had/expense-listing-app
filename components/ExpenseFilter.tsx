@@ -44,13 +44,15 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, changeFilterT
 
   useEffect(() => {
     let timeoutId: undefined | number
+
     if (!filterText) {
       timeoutId = setTimeout(() => {
         changeCounter((counter + 1) % (placeholderStrings.length - 1))
-      }, 300)
+      }, 250)
     } else {
       clearInterval(timeoutId)
     }
+
     return () => clearTimeout(timeoutId)
   }, [counter, filterText])
 
