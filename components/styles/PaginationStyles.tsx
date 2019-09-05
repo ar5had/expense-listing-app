@@ -14,8 +14,8 @@ const PaginationStyles = styled.div`
   font-size: 1.3rem;
   color: ${gts('darkGrey')};
   background: ${gts('white')};
-  box-shadow: ${gts('insetBoxShadow')};
   border-radius: ${gts('borderRadius')};
+  border: solid 1px ${gts('grey')};
   align-items: stretch;
   & > * {
     margin: 0;

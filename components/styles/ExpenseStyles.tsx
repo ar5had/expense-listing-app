@@ -11,8 +11,7 @@ const ExpenseStyles = styled.div`
   transition: 0.2s;
   transition-delay: 0.1s;
   word-wrap: break-word;
-  &:hover,
-  a:focus > & {
+  &:hover {
     box-shadow: ${gts('btnBoxShadow')};
     cursor: pointer;
     transform: translateY(-5px);
@@ -48,9 +47,6 @@ const ExpenseStyles = styled.div`
     font-family: ${gts('emFont')};
     color: ${gts('white')};
     font-size: calc(var(--dim) / 2);
-    transition: 0.2s;
-    transition-delay: 0.1s;
-    box-shadow: ${gts('insetBoxShadow')};
   }
   h3 {
     margin: 0 0 10px;
@@ -95,8 +91,8 @@ const ExpenseStyles = styled.div`
     }
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
-    margin-bottom: ${gts('mdMargin')}px;
-    border: solid 1px ${gts('grey')};
+    margin: 0 -20px ${gts('mdMargin')}px -20px;
+    border-radius: 0;
   }
   /* for extra small mobile screens */
   @media (max-width: 320px) {

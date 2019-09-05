@@ -14,6 +14,9 @@ const StyledExpenses = styled.div`
   .rel-time:first-child {
     margin-top: 0;
   }
+  a {
+    display: block;
+  }
 
   @media (max-width: ${gts('mobileScreenRes')}) {
     .rel-time {

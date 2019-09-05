@@ -7,6 +7,7 @@ import Pagination from '../components/Pagination'
 import ExpenseFilter from '../components/ExpenseFilter'
 import { objectHasText } from '../lib/filterUtils'
 import { ExpenseProps } from '../types/components'
+import Footer from '../components/Footer'
 
 interface HomeProps {
   query: {
@@ -74,6 +75,7 @@ const Home: NextPage<HomeProps> = ({ query }) => {
               {showPagination && (
                 <Pagination total={expenses.total} perPage={perPage} offset={offset} />
               )}
+              <Footer />
             </>
           )
         }}
