@@ -32,7 +32,7 @@ const Status = styled.div`
   max-width: ${gts('maxWidth')};
   min-width: 250px;
   padding: 10px;
-  box-shadow: ${gts('btnBoxShadow')};
+  box-shadow: ${gts('boxShadow')};
   position: fixed;
   top: 0;
   left: 50%;

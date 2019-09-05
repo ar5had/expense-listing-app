@@ -92,3 +92,8 @@ export interface FilterOption {
   value: string;
   label: string;
 }
+
+export interface FilterResultsHeadingProps {
+  length: number;
+  filterText: string;
+}

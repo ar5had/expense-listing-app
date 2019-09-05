@@ -1,12 +1,41 @@
-const objectHasText = (obj: Record<string, any>, text: string) => {
+import { ExpenseProps } from 'types/components'
+
+const arrHasText = (arr: string[], text: string) => {
   const filterText = text
     .trim()
     .replace(/\s+/g, ' ')
     .toLowerCase()
-  const values = Object.values(obj)
 
-  return values.some((value) => value.toLowerCase().includes(filterText))
+  return arr.some((elem) => elem.toLowerCase().includes(filterText))
 }
+
+const filterExpenseData = (data: ExpenseProps[], text: string) =>
+  data.filter((expense) => {
+    const {
+      merchant,
+      comment,
+      user: { first, last },
+      amount: { value, currency }
+    } = expense
+    const firstLastName = `${first} ${last}`
+    const lastFirstName = `${last} ${first}`
+    const currVal = `${value} ${currency}`
+    const valCurr = `${currency} ${value}`
+    const sCurrVal = `${value}${currency}`
+    const sValCurr = `${currency}${value}`
+    const flattenedExpenseData = [
+      merchant,
+      comment,
+      firstLastName,
+      lastFirstName,
+      currVal,
+      valCurr,
+      sCurrVal,
+      sValCurr
+    ]
+
+    return arrHasText(flattenedExpenseData, text)
+  })
 
 const getTypewriterStrings: (arr: string[]) => string[] = (arr: string[]) => {
   let res: string[] = []
@@ -31,4 +60,4 @@ const getTypewriterStrings: (arr: string[]) => string[] = (arr: string[]) => {
   return res
 }
 
-export { objectHasText, getTypewriterStrings }
+export { filterExpenseData, getTypewriterStrings }

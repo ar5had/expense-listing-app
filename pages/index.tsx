@@ -5,9 +5,9 @@ import Expenses from '../components/Expenses'
 import IndexHeader from '../components/IndexHeader'
 import Pagination from '../components/Pagination'
 import ExpenseFilter from '../components/ExpenseFilter'
-import { objectHasText } from '../lib/filterUtils'
-import { ExpenseProps } from '../types/components'
 import Footer from '../components/Footer'
+import FilterResultsHeading from '../components/FilterResultsHeading'
+import { filterExpenseData } from '../lib/filterUtils'
 
 interface HomeProps {
   query: {
@@ -44,14 +44,6 @@ const Home: NextPage<HomeProps> = ({ query }) => {
   const offset = parseInt(query.offset, 10) || 0
   const filterText = query.search || ''
 
-  const filterData = (data: ExpenseProps[]) =>
-    data.filter(({ merchant, comment, user: { first, last } }) =>
-      objectHasText(
-        { merchant, comment, firstLastName: `${first} ${last}`, lastFirstName: `${last} ${first}` },
-        filterText
-      )
-    )
-
   return (
     <div>
       <Query query={ALL_EXPENSES_QUERY} variables={{ limit: perPage, offset }}>
@@ -59,18 +51,20 @@ const Home: NextPage<HomeProps> = ({ query }) => {
           if (loading) {
             return null
           }
+
           if (error) {
             return <p>Error: {error.message}</p>
           }
 
           const { expenses } = data
-          const filteredData = filterData(expenses.data)
+          const filteredData = filterExpenseData(expenses.data, filterText)
           const showPagination = expenses.data.length > 0 && filterText === ''
 
           return (
             <>
               <IndexHeader perPage={perPage} offset={offset} />
               <ExpenseFilter filterText={filterText} perPage={perPage} offset={offset} />
+              <FilterResultsHeading length={filteredData.length} filterText={filterText} />
               <Expenses data={filteredData} />
               {showPagination && (
                 <Pagination total={expenses.total} perPage={perPage} offset={offset} />

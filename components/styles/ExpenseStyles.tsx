@@ -12,7 +12,7 @@ const ExpenseStyles = styled.div`
   transition-delay: 0.1s;
   word-wrap: break-word;
   &:hover {
-    box-shadow: ${gts('btnBoxShadow')};
+    box-shadow: ${gts('boxShadow')};
     cursor: pointer;
     transform: translateY(-5px);
     .image {
