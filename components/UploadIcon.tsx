@@ -40,6 +40,7 @@ const CircledButton = styled.button`
   display: block;
   height: 5rem;
   width: 5rem;
+  padding: 1.8rem;
   background-color: ${gts('white')};
   border: 1px dotted transparent;
   border-radius: 50%;
@@ -58,16 +59,14 @@ const CircledButton = styled.button`
     width: 100%;
     height: 100%;
     background-image: url('/static/images/add.svg');
-    background-size: 35% 35%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
   }
   @media (max-width: ${gts('maxWidth')}) {
     width: 4rem;
     height: 4rem;
-    .add-icon {
-      background-size: 60% 60%;
-    }
+    padding: 1.2rem;
   }
 `
 

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { NextPage } from 'next'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
@@ -29,6 +30,9 @@ const StyledDiv = styled.div`
 
 const Credits: NextPage = () => (
   <StyledDiv>
+    <Head>
+      <title>Credits</title>
+    </Head>
     <BackToHome />
     <Heading className="heading">Icon Credits</Heading>
     <div className="link-container">
