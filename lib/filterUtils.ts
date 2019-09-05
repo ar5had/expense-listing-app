@@ -23,7 +23,7 @@ const getTypewriterStrings: (arr: string[]) => string[] = (arr: string[]) => {
       strArr[len + extraElem - i - 1] = chars
     }
 
-    res = res.concat(strArr).concat(['', '', ''])
+    res = res.concat(strArr).concat(['', '', '', ''])
   }
 
   arr.forEach(getAllStr)

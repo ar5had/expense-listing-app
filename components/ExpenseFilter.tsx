@@ -16,26 +16,29 @@ const StyledFilter = styled.div`
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 2px;
-  }
-  input:focus + .search-icon {
-    opacity: 1;
-  }
-  .search-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    --dim: 2rem;
-    display: block;
-    opacity: 0.2;
-    transiton: 0.2s;
-    width: var(--dim);
-    height: var(--dim);
-    background-image: url('/static/images/search.svg');
-    background-repeat: no-repeat;
-    cursor: text;
+    &:focus + label {
+      opacity: 1;
+    }
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     margin-bottom: ${gts('mdMargin')}px;
+  }
+`
+const StyledLabel = styled.label`
+  --dim: 2rem;
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  display: block;
+  opacity: 0.2;
+  transiton: 0.2s;
+  width: var(--dim);
+  height: var(--dim);
+  background-image: url('/static/images/search.svg');
+  background-color: ${gts('white')};
+  background-repeat: no-repeat;
+  &:hover {
+    cursor: text;
   }
 `
 
@@ -46,12 +49,12 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
   const placeholderStrings = getTypewriterStrings(['name', 'comment', 'merchant'])
 
   useEffect(() => {
-    let timeoutId: undefined | number
+    let timeoutId: number | undefined
 
     if (!filterVal) {
       timeoutId = setTimeout(() => {
         changeCounter((counter + 1) % (placeholderStrings.length - 1))
-      }, 250)
+      }, 200)
     } else {
       clearInterval(timeoutId)
     }
@@ -81,7 +84,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
           onChange={onFilterChange}
           autoComplete="off"
         />
-        <label htmlFor="filter" className="search-icon" />
+        <StyledLabel htmlFor="filter" />
       </form>
     </StyledFilter>
   )

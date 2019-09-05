@@ -114,7 +114,7 @@ const GlobalStyle = createGlobalStyle`
   /* mobile screen resolution */
   @media(max-width: 479px) {
     html {
-      font-size: 8px;
+      font-size: 9px;
     }
   }
 `
