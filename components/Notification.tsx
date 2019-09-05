@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import HeadingText from './styles/HeadingText'
-import { UpdateStatusProps } from '../types/components'
+import { NotificationProps } from '../types/components'
 import { gts } from '../lib/getThemeStyle'
 
 const slideIn = keyframes`
@@ -24,7 +24,7 @@ const slideOut = keyframes`
   }
 `
 
-const Status = styled.div`
+const Wrapper = styled.div`
   --showY: 50px;
   --hideY: calc(-100% - 5px);
   pointer-events: none;
@@ -50,12 +50,12 @@ const Status = styled.div`
   }
 `
 
-const UpdateStatus: React.FC<UpdateStatusProps> = ({ text }) => {
+const Notifcation: React.FC<NotificationProps> = ({ text }) => {
   return (
-    <Status>
+    <Wrapper>
       <HeadingText className="heading">{text}</HeadingText>
-    </Status>
+    </Wrapper>
   )
 }
 
-export default UpdateStatus
+export default Notifcation

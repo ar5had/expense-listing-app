@@ -1,5 +1,5 @@
-import gql from 'graphql-tag'
 import { NextPage } from 'next'
+import gql from 'graphql-tag'
 import { Query, QueryResult } from 'react-apollo'
 import Expenses from '../components/Expenses'
 import IndexHeader from '../components/IndexHeader'
@@ -79,4 +79,3 @@ const Home: NextPage<HomeProps> = ({ query }) => {
 }
 
 export default Home
-export { ALL_EXPENSES_QUERY }

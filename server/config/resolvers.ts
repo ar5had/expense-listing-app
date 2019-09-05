@@ -32,7 +32,7 @@ const Mutation = {
     const expense = sortedExpenses.find((expense) => expense.id === id)
 
     if (expense) {
-      expense.comment = comment
+      expense.comment = comment.trim()
       expense.receipt = receipt
     }
 

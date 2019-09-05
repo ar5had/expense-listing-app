@@ -2,7 +2,9 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
 
-const StyledAnchor = styled.a`
+const StyledButton = styled.button`
+  background: none;
+  border: none;
   letter-spacing: 2px;
   text-transform: uppercase;
   span {
@@ -25,13 +27,13 @@ const StyledAnchor = styled.a`
 
 const BackToHome: React.FC = () => (
   <Link href="/">
-    <StyledAnchor>
+    <StyledButton type="button">
       <svg>
         <path d="M15.41,16.59L10.83,12l4.58-4.59L14,6l-6,6l6,6L15.41,16.59z"></path>
         <path fill="none" d="M0,0h24v24H0V0z"></path>
       </svg>
       <span>Back to Home</span>
-    </StyledAnchor>
+    </StyledButton>
   </Link>
 )
 

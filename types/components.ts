@@ -61,6 +61,7 @@ export interface ErrorMessageProps {
 
 export interface UploadFileProps {
   addReceipt: (value: string) => void;
+  inputId?: string;
 }
 
 export interface UploadIconProps {
@@ -77,7 +78,7 @@ export interface ImageOverlayProps {
   hideOverlay: () => void;
 }
 
-export interface UpdateStatusProps {
+export interface NotificationProps {
   text: string;
 }
 

@@ -111,6 +111,9 @@ const GlobalStyle = createGlobalStyle`
     min-width: 0;
     border-radius: 0;
   }
+  label:hover {
+    cursor: text;
+  }
   /* mobile screen resolution */
   @media(max-width: 479px) {
     html {

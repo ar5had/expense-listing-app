@@ -14,7 +14,7 @@ class MyDocument extends Document<{ styleTags: ReactElement }> {
     return (
       <html>
         <Head>{this.props.styleTags}</Head>
-        <body>
+        <body tabIndex={1}>
           <Main />
           <NextScript />
         </body>
