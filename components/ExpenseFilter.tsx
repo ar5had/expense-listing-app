@@ -1,10 +1,10 @@
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import Router from 'next/router'
 import { ExpenseFilterProps } from '../types/components'
 import Input from './styles/Input'
 import { gts } from '../lib/getThemeStyle'
-import { useState, useEffect, SyntheticEvent, ChangeEvent } from 'react'
 import { getTypewriterStrings } from '../lib/filterUtils'
 
 const placeholderStrings = getTypewriterStrings([
@@ -75,9 +75,12 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
   const onFilterChange = ({ currentTarget: { value } }: ChangeEvent<HTMLInputElement>) =>
     changeFilterVal(value)
 
-  const onSubmit = (event: SyntheticEvent) => {
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    Router.push(`/?offset=${offset}&limit=${perPage}&search=${filterVal.trim()}`)
+    const val = event.currentTarget.search.value.trim()
+    if (val) {
+      Router.push(`/?offset=${offset}&limit=${perPage}&search=${val}`)
+    }
   }
 
   return (
@@ -90,6 +93,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
           placeholder={`Search expense by ${placeholderStrings[counter]}_`}
           id="filter"
           type="text"
+          name="search"
           value={filterVal}
           onChange={onFilterChange}
           autoComplete="off"
