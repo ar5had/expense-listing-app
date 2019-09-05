@@ -29,7 +29,8 @@
     ".next",
     "out",
     "next.config.js",
-    "server"
+    "server",
+    "node_modules"
   ],
   "include": [
     "next-env.d.ts",

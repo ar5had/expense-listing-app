@@ -1,13 +1,14 @@
-import { NextPage } from 'next'
 import gql from 'graphql-tag'
 import { Query, QueryResult } from 'react-apollo'
+
 import Expenses from '../components/Expenses'
-import IndexHeader from '../components/IndexHeader'
+import IndexHeader from '../components/HomeHeader'
 import Pagination from '../components/Pagination'
 import ExpenseFilter from '../components/ExpenseFilter'
 import Footer from '../components/Footer'
 import FilterResultsHeading from '../components/FilterResultsHeading'
 import { filterExpenseData } from '../lib/filterUtils'
+import { I18nPage } from '../lib/i18n'
 
 interface HomeProps {
   query: {
@@ -39,7 +40,7 @@ const ALL_EXPENSES_QUERY = gql`
   }
 `
 
-const Home: NextPage<HomeProps> = ({ query }) => {
+const Home: I18nPage<HomeProps> = ({ query }) => {
   const perPage = parseInt(query.limit, 10) || 10
   const offset = parseInt(query.offset, 10) || 0
   const filterText = query.search || ''
@@ -77,5 +78,9 @@ const Home: NextPage<HomeProps> = ({ query }) => {
     </div>
   )
 }
+
+Home.getInitialProps = async () => ({
+  namespacesRequired: ['home', 'common']
+})
 
 export default Home

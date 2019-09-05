@@ -1,0 +1,8 @@
+{
+    "heading": "Expenses",
+    "items-per-page": "items per page",
+    "next": "next",
+    "prev": "prev",
+    "page-x-of-total-y": "page {{page}} of {{total}}",
+    "x-items-total": "{{total}} items total"
+}

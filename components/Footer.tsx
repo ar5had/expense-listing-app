@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import Link from 'next/link'
+
 import { gts } from '../lib/getThemeStyle'
+import { useTranslation, Link } from '../lib/i18n'
 
 const StyledFooter = styled.footer`
   display: grid;
@@ -28,14 +29,18 @@ const Img = styled.img`
   width: 10rem;
 `
 
-const Footer: React.FC = () => (
-  <StyledFooter>
-    <a href="http://iamarshad.com/resume.html">
-      <Img src="/static/images/sign.svg" alt="Arshad" />
-    </a>
-    <Link href="/credits">
-      <a>Credits</a>
-    </Link>
-  </StyledFooter>
-)
+const Footer: React.FC = () => {
+  const { t } = useTranslation()
+
+  return (
+    <StyledFooter>
+      <a href="http://iamarshad.com/resume.html">
+        <Img src="/static/images/sign.svg" alt="Arshad" />
+      </a>
+      <Link href="/credits">
+        <a>{t('credits')}</a>
+      </Link>
+    </StyledFooter>
+  )
+}
 export default Footer

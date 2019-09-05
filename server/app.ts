@@ -1,18 +1,20 @@
 import express from 'express'
-import logger from 'morgan'
+import next from 'next'
 import bodyParser from 'body-parser'
+import dotenv from 'dotenv'
+const nextI18NextMiddleware = require('next-i18next/middleware').default
 
 import { ApolloServer } from 'apollo-server-express'
 
+import nextI18next from '../lib/i18n'
 import { typeDefs } from './config/schema'
 import { resolvers } from './config/resolvers'
 
 // load environment variables
-require('dotenv').config()
+dotenv.config()
 
 const port = parseInt(process.env.PORT || '3000', 10)
-const dev = process.env.NODE_ENV !== 'production'
-const app = require('next')({ dev })
+const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers })
@@ -20,14 +22,15 @@ const apolloServer = new ApolloServer({ typeDefs, resolvers })
 app.prepare().then(() => {
   const server = express()
 
-  server.use(logger('dev'))
   server.use(bodyParser.json({ limit: '50mb' }))
   server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
-  // connect apollo server with express server
   apolloServer.applyMiddleware({ app: server, path: '/graphql' })
 
-  // next.js handling rest of the get requests
+  // nextI18 middleware redirects when `localeSubpaths` are turned on, therefore it is important to
+  // place apollo server middleware before it
+  server.use(nextI18NextMiddleware(nextI18next))
+
   server.get('*', (req, res) => handle(req, res))
 
   server.listen(port, (err) => {
@@ -35,6 +38,6 @@ app.prepare().then(() => {
       throw err
     }
 
-    console.log(`> Server listening at http://localhost:${port}`)
+    console.log(`> Ready on http://localhost:${port}`)
   })
 })

@@ -33,7 +33,7 @@ export interface PaginationProps {
   offset: number;
 }
 
-export interface IndexHeaderProps {
+export interface HomeHeaderProps {
   perPage: number;
   offset: number;
 }

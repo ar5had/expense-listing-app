@@ -10,6 +10,7 @@
   "exclude": [
     "dist",
     ".next",
+    "node_modules",
     "out",
     "next.config.js"],
   "include": ["server/**/*.ts"]

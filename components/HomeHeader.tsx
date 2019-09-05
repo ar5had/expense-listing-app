@@ -1,10 +1,10 @@
-import Router from 'next/router'
-import Link from 'next/link'
 import styled from 'styled-components'
+
 import { gts } from '../lib/getThemeStyle'
-import { IndexHeaderProps } from '../types/components'
+import { HomeHeaderProps } from '../types/components'
 import Heading from './styles/Heading'
 import ItemsPerPage from './ItemsPerPage'
+import { useTranslation, Router, Link } from '../lib/i18n'
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +21,8 @@ const Wrapper = styled.div`
   }
 `
 
-const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
+const HomeHeader: React.FC<HomeHeaderProps> = ({ perPage, offset }) => {
+  const { t } = useTranslation()
   const onItemsPerPageChange = (value: number) => {
     Router.push(`/?offset=${offset}&limit=${value}`)
   }
@@ -30,11 +31,12 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ perPage, offset }) => {
     <Wrapper>
       <Link href="/">
         <a>
-          <Heading className="heading">Expenses</Heading>
+          <Heading className="heading">{t('home:heading')}</Heading>
         </a>
       </Link>
       <ItemsPerPage onChange={onItemsPerPageChange} perPage={perPage} />
     </Wrapper>
   )
 }
-export default IndexHeader
+
+export default HomeHeader

@@ -3,22 +3,19 @@ import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-client'
 import Page from '../components/Page'
 import withData from '../lib/withData'
-
-interface PageProps {
-  [index: string]: any;
-}
+import { appWithTranslation } from '../lib/i18n'
 
 class MyApp extends App<{ apollo: ApolloClient<{}> }> {
   static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps: PageProps = {}
+    let pageProps: Record<string, any> = {}
 
-    // makes sure all the queries and mutations on the page are fired up
-    // before component is rendered
+    // Makes sure all the queries and mutations on the page are fired up before component is
+    // rendered
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    // this exposes the query to the user
+    // Exposes the query
     pageProps.query = ctx.query
 
     return { pageProps }
@@ -36,4 +33,4 @@ class MyApp extends App<{ apollo: ApolloClient<{}> }> {
   }
 }
 
-export default withData(MyApp)
+export default withData(appWithTranslation(MyApp))
