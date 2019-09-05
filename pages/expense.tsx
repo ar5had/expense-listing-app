@@ -6,6 +6,7 @@ import BackToHome from '../components/BackToHome'
 import ExpenseItem from '../components/ExpenseItem'
 import NoItemSection from '../components/styles/NoItemSection'
 import HeadingText from '../components/styles/HeadingText'
+import Footer from '../components/Footer'
 
 interface ExpenseProps {
   query: {
@@ -61,6 +62,7 @@ const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => (
                 </title>
               </Head>
               <ExpenseItem {...data.expense} />
+              <Footer />
             </>
           )
         }
