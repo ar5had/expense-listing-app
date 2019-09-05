@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
 
 const PaginationWrapper = styled.div`
-  padding: ${gts('mdMargin')}px 0;
+  padding: ${gts('mdMargin')}px 0 0;
 `
 
 const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {

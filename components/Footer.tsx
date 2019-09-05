@@ -20,7 +20,7 @@ const StyledFooter = styled.footer`
     color: ${gts('darkGrey')};
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
-    margin: ${gts('mdMargin')}px 0 ${gts('mdMargin')}px;
+    margin-bottom: ${gts('xlMargin')}px 0 ${gts('mdMargin')}px;
   }
 `
 
