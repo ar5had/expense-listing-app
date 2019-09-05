@@ -7,7 +7,7 @@ const StyledFooter = styled.footer`
   grid-template-rows: 1fr;
   justify-content: center;
   grid-gap: 10px;
-  margin: ${gts('xlMargin')}px 0;
+  margin: ${gts('xxlMargin')}px 0 ${gts('xlMargin')}px;
   align-items: center;
   align-content: start;
   & > a {
@@ -20,7 +20,7 @@ const StyledFooter = styled.footer`
     color: ${gts('darkGrey')};
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
-    margin-bottom: ${gts('xlMargin')}px 0 ${gts('mdMargin')}px;
+    margin: ${gts('xxlMargin')}px 0 ${gts('mdMargin')}px;
   }
 `
 

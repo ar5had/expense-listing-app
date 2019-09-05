@@ -13,6 +13,7 @@ export const theme = {
   raisedBtnBoxShadow: '0px 30px 20px -10px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.1)',
   textFont: `'Roboto Mono', monospace`,
   emFont: `'EB Garamond', serif`,
+  xxlMargin: 120,
   xlMargin: 80,
   lgMargin: 60,
   mdMargin: 40,

@@ -10,7 +10,7 @@ const UploadFileWrapper = styled.div`
   }
 `
 
-const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
+const UploadFile: React.FC<UploadFileProps> = ({ addReceipt, inputId = '' }) => {
   // ref holding the receipt image element
   const inputElem: any = useRef<HTMLInputElement>(null)
 
@@ -40,7 +40,7 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt }) => {
   return (
     <UploadFileWrapper>
       <UploadIcon onClick={openImageSelectWindow} />
-      <input ref={inputElem} type="file" accept="image/*" onChange={onChange} />
+      <input id={inputId} ref={inputElem} type="file" accept="image/*" onChange={onChange} />
     </UploadFileWrapper>
   )
 }

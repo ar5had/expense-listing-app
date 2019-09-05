@@ -26,6 +26,7 @@ const ExpensePageStyles = styled.div`
     margin: auto auto ${gts('mdMargin')}px auto;
     grid-gap: 10px;
     & > span,
+    & > label,
     & > input {
       line-height: 1.5;
       padding: 5px;

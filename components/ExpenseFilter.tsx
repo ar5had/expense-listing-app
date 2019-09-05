@@ -48,9 +48,6 @@ const StyledLabel = styled.label`
   background-image: url('/static/images/search.svg');
   background-color: ${gts('white')};
   background-repeat: no-repeat;
-  &:hover {
-    cursor: text;
-  }
 `
 
 const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offset }) => {
@@ -65,7 +62,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
         changeCounter((counter + 1) % (placeholderStrings.length - 1))
       }, 200)
     } else {
-      clearInterval(timeoutId)
+      clearTimeout(timeoutId)
     }
 
     return () => clearTimeout(timeoutId)
@@ -92,6 +89,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
         <Input
           placeholder={`Search expense by ${placeholderStrings[counter]}_`}
           id="filter"
+          type="text"
           value={filterVal}
           onChange={onFilterChange}
           autoComplete="off"
