@@ -19,6 +19,9 @@ const StyledFilter = styled.div`
     &:focus + label {
       opacity: 1;
     }
+    &:placholder {
+      line-height: 1;
+    }
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     margin-bottom: ${gts('mdMargin')}px;

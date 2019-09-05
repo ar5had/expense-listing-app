@@ -19,8 +19,10 @@ const StyledExpenses = styled.div`
   }
 
   @media (max-width: ${gts('mobileScreenRes')}) {
+    margin: 0 -20px;
     .rel-time {
       margin: ${gts('mdMargin')}px 0 ${gts('smMargin')}px;
+      padding: 0 20px;
     }
   }
 `

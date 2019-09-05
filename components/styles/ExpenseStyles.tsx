@@ -91,7 +91,7 @@ const ExpenseStyles = styled.div`
     }
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
-    margin: 0 -20px ${gts('mdMargin')}px -20px;
+    margin-bottom: ${gts('mdMargin')}px;
     border-radius: 0;
   }
   /* for extra small mobile screens */
