@@ -28,7 +28,6 @@ const ImagePreviewStyles = styled.div`
 const Img = styled.img`
   height: 15rem;
   width: 15rem;
-  transition: 0.2s;
   border-radius: ${gts('borderRadius')};
   object-fit: cover;
   @media (max-width: ${gts('maxWidth')}) {
@@ -49,7 +48,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, deleteReceipt }) => {
       <TextButton type="button" onClick={showOverlay}>
         View Receipt
       </TextButton>
-      <ImageOverlay hideOverlay={hideOverlay} src={src} show={isOverlayVisible} />
+      {isOverlayVisible && <ImageOverlay hideOverlay={hideOverlay} src={src} />}
       <TextButton type="button" onClick={deleteReceipt}>
         Delete Receipt
       </TextButton>

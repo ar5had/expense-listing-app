@@ -30,7 +30,7 @@ const Status = styled.div`
   pointer-events: none;
   width: auto;
   max-width: ${gts('maxWidth')};
-  min-width: 250px;
+  min-width: 280px;
   padding: 10px;
   box-shadow: ${gts('boxShadow')};
   position: fixed;

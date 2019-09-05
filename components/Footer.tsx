@@ -25,14 +25,13 @@ const StyledFooter = styled.footer`
 `
 
 const Img = styled.img`
-  background: ${gts('black')};
-  width: 9rem;
+  width: 10rem;
 `
 
 const Footer: React.FC = () => (
   <StyledFooter>
     <a href="http://iamarshad.com/resume.html">
-      <Img src="/static/images/sign.png" alt="Arshad" />
+      <Img src="/static/images/sign.svg" alt="Arshad" />
     </a>
     <Link href="/credits">
       <a>Credits</a>

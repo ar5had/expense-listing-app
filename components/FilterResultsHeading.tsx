@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `
 
 const FilterResultsHeading: React.FC<FilterResultsHeadingProps> = ({ length, filterText }) =>
-  filterText && length ? (
+  filterText ? (
     <Wrapper>
       <p className="content">
         Showing {length} result{length > 1 ? 's' : ''} for <b>'{filterText}'</b>

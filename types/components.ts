@@ -75,7 +75,6 @@ export interface ImagePreviewProps {
 export interface ImageOverlayProps {
   src: string;
   hideOverlay: () => void;
-  show: boolean;
 }
 
 export interface UpdateStatusProps {
