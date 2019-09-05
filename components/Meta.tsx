@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 const Meta: React.FC = () => (
   <Head>
+    <meta name="theme-color" content="#000000de"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charSet="utf-8" />
     <link rel="shortcut icon" href="/static/images/favicon.ico" />
