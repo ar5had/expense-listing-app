@@ -30,7 +30,7 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
   const commentNotChanged = comment === expenseComment
   const receiptNotChanged = receipt === expenseReceipt
 
-  const onCommentChange = (event: any) => changeComment(event.target.value)
+  const onCommentChange = (event: any) => changeComment(event.target.value.trim())
   const onReceiptChange = (value: string) => changeReceipt(value)
   const deleteReceipt = () => changeReceipt('')
 

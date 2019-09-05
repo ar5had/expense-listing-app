@@ -34,7 +34,7 @@ const Expenses: React.FC<ExpensesProps> = ({ data }) => {
   if (data.length === 0) {
     return (
       <NoItemSection>
-        <HeadingText fontSize="1.6rem">You have reached the end of the list!</HeadingText>
+        <HeadingText fontSize="1.6rem">No expense found!</HeadingText>
       </NoItemSection>
     )
   }

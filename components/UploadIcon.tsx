@@ -21,7 +21,7 @@ const UploadIconWrapper = styled.div`
   height: 15rem;
   width: 15rem;
   border-radius: ${gts('borderRadius')};
-  background-color: ${gts('greyBackground')};
+  background-color: ${gts('grey')};
   display: flex;
   justify-content: center;
   align-items: center;

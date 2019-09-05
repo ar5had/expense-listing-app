@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import styled from 'styled-components'
 import Router from 'next/router'
 import { ExpenseFilterProps } from '../types/components'
@@ -5,6 +6,14 @@ import Input from './styles/Input'
 import { gts } from '../lib/getThemeStyle'
 import { useState, useEffect, SyntheticEvent, ChangeEvent } from 'react'
 import { getTypewriterStrings } from '../lib/filterUtils'
+
+const placeholderStrings = getTypewriterStrings([
+  'NAME',
+  'COMMENT',
+  'MERCHANT',
+  'CURRENCY',
+  'AMOUNT'
+])
 
 const StyledFilter = styled.div`
   margin-bottom: ${gts('xlMargin')}px;
@@ -14,8 +23,7 @@ const StyledFilter = styled.div`
     padding: 10px calc(2rem + 20px) 10px 5px;
     transition: 0.2s;
     line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 1.5rem;
     &:focus + label {
       opacity: 1;
     }
@@ -49,8 +57,6 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
   const [counter, changeCounter] = useState(0)
   const [filterVal, changeFilterVal] = useState(filterText)
 
-  const placeholderStrings = getTypewriterStrings(['name', 'comment', 'merchant'])
-
   useEffect(() => {
     let timeoutId: number | undefined
 
@@ -74,11 +80,14 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
 
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
-    Router.push(`/?offset=${offset}&limit=${perPage}&search=${filterVal}`)
+    Router.push(`/?offset=${offset}&limit=${perPage}&search=${filterVal.trim()}`)
   }
 
   return (
     <StyledFilter>
+      <Head>
+        <title>Search - {filterVal}</title>
+      </Head>
       <form onSubmit={onSubmit}>
         <Input
           placeholder={`Search expense by ${placeholderStrings[counter]}_`}
