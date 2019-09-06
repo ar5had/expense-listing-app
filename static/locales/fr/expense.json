@@ -1,3 +1,10 @@
 {
-    "expense": "dépenses"
+    "receipt": "Réception",
+    "category": "Catégorie",
+    "saveBtn": "Sauvegarder",
+    "viewReceiptBtn": "voir le reçu",
+    "deleteReceiptBtn": "supprimer le reçu",
+    "successNotification": "Changements sauvegardés ✅",
+    "closeBtn": "Fermer",
+    "addCommentPlaceholder": "Ajouter un commentaire..."
 }

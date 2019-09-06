@@ -49,7 +49,7 @@ const ItemsPerPage: React.FC<{ perPage: number, onChange: any }> = ({ perPage, o
 
   return (
     <Wrapper className="hide-xs">
-      <HeadingText className="per-page-select-label">{t('home:items-per-page')}:</HeadingText>
+      <HeadingText className="per-page-select-label">{t('home:itemsPerPage')}:</HeadingText>
       <Dropdown
         className="selectElem"
         value={selectedOption}

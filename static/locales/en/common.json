@@ -1,6 +1,12 @@
 {
     "credits": "Credits",
-    "back-to-home": "Back to home",
-    "error-with-status": "A {{statusCode}} error occurred on server",
-    "error-without-status": "An error occurred on the server"
+    "backToHomeBtn": "Back to home",
+    "name": "Name",
+    "merchant": "Merchant",
+    "email": "Email",
+    "amount": "Amount",
+    "currency": "Currency",
+    "comment": "Comment",
+    "noExpenseText": "Expense not found",
+    "expense": "Expense"
 }

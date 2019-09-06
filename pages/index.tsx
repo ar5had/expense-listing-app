@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 import { Query, QueryResult } from 'react-apollo'
 
-import Expenses from '../components/Expenses'
 import IndexHeader from '../components/HomeHeader'
+import Expenses from '../components/Expenses'
 import Pagination from '../components/Pagination'
 import ExpenseFilter from '../components/ExpenseFilter'
 import Footer from '../components/Footer'

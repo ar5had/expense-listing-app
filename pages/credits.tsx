@@ -41,7 +41,7 @@ const Credits: I18nPage = () => {
       <Heading className="heading">{t('credits:heading')}</Heading>
       <div className="link-container">
         <div>
-          {t('credits:icon-made-by')}{' '}
+          {t('credits:iconMadeBy')}{' '}
           <a href="https://www.flaticon.com/authors/lucy-g" title="Lucy G">
             Lucy G
           </a>{' '}
@@ -51,7 +51,7 @@ const Credits: I18nPage = () => {
           </a>
         </div>
         <div>
-          {t('credits:icon-made-by')}{' '}
+          {t('credits:iconMadeBy')}{' '}
           <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay">
             GraphicsBay
           </a>{' '}

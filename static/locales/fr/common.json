@@ -1,6 +1,12 @@
 {
     "credits": "Crédits",
-    "back-to-home": "Retour à la page principale",
-    "error-with-status": "A {{statusCode}} error occurred on server",
-    "error-without-status": "An error occurred on the server"
+    "backToHomeBtn": "Retour à la page principale",
+    "name": "Nom",
+    "merchant": "Marchand",
+    "email": "Email",
+    "amount": "Somme",
+    "currency": "Monnaie",
+    "comment": "Commentaire",
+    "noExpenseText": "Aucune dépense trouvée",
+    "expense": "Dépenses"
 }
