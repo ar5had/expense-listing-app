@@ -8,5 +8,6 @@
     "currency": "Currency",
     "comment": "Comment",
     "noExpenseText": "Expense not found",
-    "expense": "Expense"
+    "expense": "Expense",
+    "pageNotFound": "Page not found"
 }

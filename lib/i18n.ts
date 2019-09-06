@@ -5,13 +5,13 @@ import { NextComponentType, NextPageContext } from 'next'
 const NextI18NextInstance = new NextI18Next({
   browserLanguageDetection: true,
   defaultLanguage: 'en',
-  defaultNS: 'common',
   fallbackLng: 'en',
   otherLanguages: ['fr'],
   localeSubpaths: {
-    fr: 'fr',
-    en: 'en'
-  }
+    en: 'en',
+    fr: 'fr'
+  },
+  serverLanguageDetection: true
 })
 
 export default NextI18NextInstance

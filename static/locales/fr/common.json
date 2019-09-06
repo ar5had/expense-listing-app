@@ -8,5 +8,6 @@
     "currency": "Monnaie",
     "comment": "Commentaire",
     "noExpenseText": "Aucune dépense trouvée",
-    "expense": "Dépenses"
+    "expense": "Dépenses",
+    "pageNotFound": "Page non trouvée"
 }
