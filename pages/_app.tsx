@@ -9,8 +9,7 @@ class MyApp extends App<{ apollo: ApolloClient<{}> }> {
   static async getInitialProps({ Component, ctx }: AppContext) {
     let pageProps: Record<string, any> = {}
 
-    // Makes sure all the queries and mutations on the page are fired up before component is
-    // rendered
+    // Makes sure all the queries and mutations are fired up before component is rendered
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
