@@ -33,6 +33,7 @@ const ALL_EXPENSES_QUERY = gql`
         user {
           first
           last
+          email
         }
       }
       total

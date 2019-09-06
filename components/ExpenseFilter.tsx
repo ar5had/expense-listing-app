@@ -10,7 +10,9 @@ import { useTranslation, Router } from '../lib/i18n'
 
 const StyledFilter = styled.div`
   margin-bottom: ${gts('xlMargin')}px;
-  position: relative;
+  form {
+    position: relative;
+  }
   input {
     width: 100%;
     padding: 10px calc(2rem + 20px) 10px 5px;

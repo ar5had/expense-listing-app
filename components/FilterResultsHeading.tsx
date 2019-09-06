@@ -5,12 +5,9 @@ import { useTranslation } from '../lib/i18n'
 
 const Wrapper = styled.div`
   .content {
-    color: ${gts('darkGrey')};
+    color: ${gts('black')};
     font-size: 1.5rem;
     line-height: 1.5;
-    b {
-      color: ${gts('black')};
-    }
   }
   margin-bottom: ${gts('mdMargin')}px;
   @media (max-width: ${gts('mobileScreenRes')}) {
