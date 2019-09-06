@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { gts } from '../../lib/getThemeStyle'
 
 const ExpensePageStyles = styled.div`
-  margin: ${gts('mdMargin')}px 0 ${gts('xlMargin')}px;
+  margin: 0 0 ${gts('xlMargin')}px;
   .back-btn-row {
     text-align: center;
     margin-bottom: ${gts('xlMargin')}px;
@@ -22,7 +22,6 @@ const ExpensePageStyles = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
-    max-width: 500px;
     margin: auto auto ${gts('mdMargin')}px auto;
     grid-gap: 10px;
     & > span,

@@ -9,7 +9,7 @@ import { useTranslation, Router, Link } from '../lib/i18n'
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: ${gts('mdMargin')}px 0 ${gts('xlMargin')}px;
+  margin: 0 0 ${gts('xlMargin')}px;
   .heading {
     line-height: 1;
   }

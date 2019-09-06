@@ -23,6 +23,18 @@ Router.events.on('routeChangeComplete', () => {
 
 const StyledHeader = styled.header`
   max-width: ${gts('maxWidth')};
+  margin: auto;
+  text-align: right;
+  span {
+    color: ${gts('darkGrey')};
+    text-transform: uppercase;
+    padding: 0 5px;
+    letter-spacing: 2px;
+  }
+  margin-bottom: ${gts('xlMargin')}px;
+  @media (max-width: ${gts('mobileScreenRes')}) {
+    margin-bottom: ${gts('mdMargin')}px;
+  }
 `
 
 const Header: React.FC = () => {
@@ -33,6 +45,7 @@ const Header: React.FC = () => {
 
   return (
     <StyledHeader>
+      <span>language:</span>
       <TextButton onClick={changeLanguageToEn} type="button">
         en
       </TextButton>
