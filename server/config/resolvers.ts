@@ -1,9 +1,25 @@
 import { expenses } from '../data/expenses'
 import { IResolvers } from 'graphql-tools'
 
-type IParentQuery = Record<string, any>
+type ParentQuery = Record<string, any>
 
-const sortedExpenses = expenses.sort((a, b) => {
+interface ExpensesQueryArgs {
+  limit: number
+  offset: number
+}
+
+interface ExpenseQueryArgs {
+  id: string
+}
+
+interface UpdateExpenseArgs {
+  id: string
+  comment: string
+  receipt: string
+}
+
+// sort expenses by date
+expenses.sort((a, b) => {
   const valA = Date.parse(a.date)
   const valB = Date.parse(b.date)
 
@@ -11,25 +27,22 @@ const sortedExpenses = expenses.sort((a, b) => {
 })
 
 const Query = {
-  expenses: (_: IParentQuery, { limit = 10, offset = 0 }: { limit: number, offset: number }) => {
-    limit = Math.round(limit)
-    offset = Math.round(offset)
+  expenses: (_: ParentQuery, { limit = 10, offset = 0 }: ExpensesQueryArgs) => {
+    const rLimit = Math.round(limit)
+    const rOffset = Math.round(offset)
 
     return {
-      data: sortedExpenses.slice(offset, offset + limit),
-      total: sortedExpenses.length
+      data: expenses.slice(rOffset, rOffset + rLimit),
+      total: expenses.length
     }
   },
-  expense: (_: IParentQuery, { id }: { id: string }) =>
-    sortedExpenses.find((expense) => expense.id === id)
+  expense: (_: ParentQuery, { id }: ExpenseQueryArgs) =>
+    expenses.find((expense) => expense.id === id)
 }
 
 const Mutation = {
-  updateExpense: (
-    _: IParentQuery,
-    { id, comment, receipt }: { id: string, comment: string, receipt: string }
-  ) => {
-    const expense = sortedExpenses.find((expense) => expense.id === id)
+  updateExpense: (_: ParentQuery, { id, comment, receipt }: UpdateExpenseArgs) => {
+    const expense = expenses.find((expense) => expense.id === id)
 
     if (expense) {
       expense.comment = comment.trim()

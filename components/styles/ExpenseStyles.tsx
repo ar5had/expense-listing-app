@@ -11,9 +11,11 @@ const ExpenseStyles = styled.div`
   transition: 0.2s;
   transition-delay: 0.1s;
   word-wrap: break-word;
-  &:hover {
+  &:hover,
+  a:focus > & {
     box-shadow: ${gts('boxShadow')};
     cursor: pointer;
+    outline: none;
     transform: translateY(-5px);
     .image {
       box-shadow: none;

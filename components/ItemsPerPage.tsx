@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   }
 `
 
-const ItemsPerPage: React.FC<{ perPage: number, onChange: any }> = ({ perPage, onChange }) => {
+const ItemsPerPage: React.FC<{ perPage: number; onChange: any }> = ({ perPage, onChange }) => {
   const { t } = useTranslation()
 
   const options = [

@@ -1,13 +1,13 @@
 {
-    "credits": "Credits",
-    "backToHomeBtn": "Back to home",
-    "name": "Name",
-    "merchant": "Merchant",
-    "email": "Email",
-    "amount": "Amount",
-    "currency": "Currency",
-    "comment": "Comment",
-    "noExpenseText": "Expense not found",
-    "expense": "Expense",
-    "pageNotFound": "Page not found"
+  "credits": "Credits",
+  "backToHomeBtn": "Back to home",
+  "name": "Name",
+  "merchant": "Merchant",
+  "email": "Email",
+  "amount": "Amount",
+  "currency": "Currency",
+  "comment": "Comment",
+  "ExpenseNotFoundText": "Expense not found",
+  "expense": "Expense",
+  "pageNotFound": "Page not found"
 }

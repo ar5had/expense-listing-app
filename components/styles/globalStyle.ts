@@ -85,6 +85,9 @@ const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: border-box;
   }
+  &:focus {
+    outline: dotted 1px ${theme.black};
+  }
   html {
     font-size: 10px;
   }
@@ -97,15 +100,15 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     padding: 20px;
   }
+  body:focus {
+    outline: none;
+  }
   a {
     text-decoration: none;
     color: ${theme.black};
   }
   button {
     font-family: ${theme.textFont};
-  }
-  &:focus {
-    outline: dotted 1px ${theme.black}
   }
   input, fieldset {
     min-width: 0;

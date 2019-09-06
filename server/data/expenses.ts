@@ -1,19 +1,19 @@
 interface Expense {
-  id: string;
+  id: string
   amount: {
-    value: string,
+    value: string
     currency: string
-  };
-  date: string;
-  merchant: string;
-  receipt: string;
-  comment: string;
-  category: string;
+  }
+  date: string
+  merchant: string
+  receipt: string
+  comment: string
+  category: string
   user: {
-    first: string,
-    last: string,
+    first: string
+    last: string
     email: string
-  };
+  }
 }
 
 export const expenses: Expense[] = [

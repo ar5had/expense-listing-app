@@ -42,8 +42,8 @@ const filterByString = (data: ExpenseProps[], text: string) =>
     } = expense
 
     // By doing this we are supporting multiple formats of name and currency-value pair
-    // EX - First LAST and  LAST FIRST -> Arshad khan, khan arshad
-    // EX - CURR VAL and VAL CURR -> USD 10, 10 USD
+    // for example - <FIRST LAST> and <LAST FIRST> -> Arshad khan, khan arshad
+    // for example - <CURR VAL> and <VAL CURR> -> USD 10, 10 USD
     const firstLastName = `${first} ${last}`
     const lastFirstName = `${last} ${first}`
     const currVal = `${value} ${currency}`

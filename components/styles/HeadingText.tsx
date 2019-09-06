@@ -2,14 +2,11 @@ import styled from 'styled-components'
 import { gts } from '../../lib/getThemeStyle'
 
 interface HeadingTextProps {
-  fontSize?: string;
-  marginBottom?: string;
+  fontSize?: string
+  marginBottom?: string
 }
 
-const HeadingText =
-  styled.h5 <
-  HeadingTextProps >
-  `
+const HeadingText = styled.h5<HeadingTextProps>`
   color: ${gts('darkGrey')};
   font-weight: normal;
   text-transform: uppercase;

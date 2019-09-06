@@ -1,25 +1,21 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 
-import { gts } from '../lib/getThemeStyle'
 import Heading from '../components/styles/Heading'
 import BackToHome from '../components/BackToHome'
+import { gts } from '../lib/getThemeStyle'
 import { I18nPage, useTranslation } from '../lib/i18n'
 
 const StyledDiv = styled.div`
   margin: ${gts('mdMargin')}px 0 ${gts('xlMargin')}px;
-  color: ${gts('darkGrey')};
   .heading {
     margin: ${gts('mdMargin')}px 0;
-    color: ${gts('black')};
   }
   line-height: 2;
   text-align: center;
-  grid-gap: ${gts('smMargin')}px;
-  .link-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: ${gts('smMargin')}px;
+  .links-container > * {
+    margin-bottom: 2rem;
+    color: ${gts('darkGrey')};
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     margin: ${gts('smMargin')}px 0 ${gts('mdMargin')}px;
@@ -39,8 +35,8 @@ const Credits: I18nPage = () => {
       </Head>
       <BackToHome />
       <Heading className="heading">{t('credits:heading')}</Heading>
-      <div className="link-container">
-        <div>
+      <div className="links-container">
+        <p>
           {t('credits:iconMadeBy')}{' '}
           <a href="https://www.flaticon.com/authors/lucy-g" title="Lucy G">
             Lucy G
@@ -49,8 +45,8 @@ const Credits: I18nPage = () => {
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
           </a>
-        </div>
-        <div>
+        </p>
+        <p>
           {t('credits:iconMadeBy')}{' '}
           <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay">
             GraphicsBay
@@ -59,7 +55,7 @@ const Credits: I18nPage = () => {
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
           </a>
-        </div>
+        </p>
       </div>
     </StyledDiv>
   )

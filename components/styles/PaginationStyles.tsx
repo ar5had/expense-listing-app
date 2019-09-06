@@ -34,6 +34,9 @@ const PaginationStyles = styled.div`
     background: ${gts('white')};
     border-color: transparent;
   }
+  & > a:focus {
+    color: ${gts('black')};
+  }
   a {
     color: ${gts('darkGrey')};
     display: flex;

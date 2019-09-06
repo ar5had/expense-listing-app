@@ -17,6 +17,9 @@ const StyledExpenses = styled.div`
   }
   a {
     display: block;
+    &:focus {
+      outline: none;
+    }
   }
 
   @media (max-width: ${gts('mobileScreenRes')}) {
@@ -39,7 +42,7 @@ const Expenses: React.FC<ExpensesProps> = ({ data }) => {
   if (data.length === 0) {
     return (
       <NoItemSection>
-        <HeadingText fontSize="1.6rem">{t('common:noExpenseText')}!</HeadingText>
+        <HeadingText>{t('common:ExpenseNotFoundText')}!</HeadingText>
       </NoItemSection>
     )
   }

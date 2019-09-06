@@ -1,6 +1,4 @@
-interface Theme {
-  [index: string]: string;
-}
+type Theme = Record<string, string>
 
 const getThemeStyle = (prop: string) => ({ theme }: { theme: Theme }) => theme[prop]
 
