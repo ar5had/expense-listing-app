@@ -1,0 +1,10 @@
+{
+    "receipt": "Receipt",
+    "category": "Category",
+    "saveBtn": "Save changes",
+    "viewReceiptBtn": "View Receipt",
+    "deleteReceiptBtn": "Delete Receipt",
+    "successNotification": "Expense changes saved ✅",
+    "closeBtn": "Close",
+    "addCommentPlaceholder": "Add a comment..."
+}

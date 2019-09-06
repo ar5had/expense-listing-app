@@ -1,12 +1,13 @@
-import { NextPage } from 'next'
 import Head from 'next/head'
 import { Query, QueryResult } from 'react-apollo'
 import gql from 'graphql-tag'
+
 import BackToHome from '../components/BackToHome'
 import ExpenseItem from '../components/ExpenseItem'
 import NoItemSection from '../components/styles/NoItemSection'
 import HeadingText from '../components/styles/HeadingText'
 import Footer from '../components/Footer'
+import { I18nPage, useTranslation } from '../lib/i18n'
 
 interface ExpenseProps {
   query: {
@@ -36,51 +37,59 @@ const EXPENSE_QUERY = gql`
   }
 `
 
-const Expense: NextPage<ExpenseProps> = ({ query: { id } }) => (
-  <div>
-    <Query query={EXPENSE_QUERY} variables={{ id }}>
-      {({ data, error, loading }: QueryResult) => {
-        if (loading) {
-          return null
-        }
-        if (error) {
-          return <p>Error: {error.message}</p>
-        }
+const Expense: I18nPage<ExpenseProps> = ({ query: { id } }) => {
+  const { t } = useTranslation()
 
-        // show expense item and change document title accordingly
-        if (data.expense) {
-          const {
-            user: { first, last },
-            merchant
-          } = data.expense
+  return (
+    <div>
+      <Query query={EXPENSE_QUERY} variables={{ id }}>
+        {({ data, error, loading }: QueryResult) => {
+          if (loading) {
+            return null
+          }
+          if (error) {
+            return <p>Error: {error.message}</p>
+          }
 
+          // show expense item and change document title accordingly
+          if (data.expense) {
+            const {
+              user: { first, last },
+              merchant
+            } = data.expense
+
+            return (
+              <>
+                <Head>
+                  <title>
+                    {t('common:expense')} — {first} {last} &lt;{merchant}&gt;
+                  </title>
+                </Head>
+                <ExpenseItem {...data.expense} />
+                <Footer />
+              </>
+            )
+          }
+
+          // show error and change document title accordingly
           return (
-            <>
+            <NoItemSection>
               <Head>
-                <title>
-                  Expense — {first} {last} &lt;{merchant}&gt;
-                </title>
+                <title>{t('common:noExpenseText')}!</title>
               </Head>
-              <ExpenseItem {...data.expense} />
-              <Footer />
-            </>
+              <HeadingText fontSize="1.6rem">{t('common:noExpenseText')} - 404</HeadingText>
+              <BackToHome />
+            </NoItemSection>
           )
-        }
+        }}
+      </Query>
+    </div>
+  )
+}
 
-        // show error and change document title accordingly
-        return (
-          <NoItemSection>
-            <Head>
-              <title>Expense Not Found!</title>
-            </Head>
-            <HeadingText fontSize="1.6rem">Expense not found - 404</HeadingText>
-            <BackToHome />
-          </NoItemSection>
-        )
-      }}
-    </Query>
-  </div>
-)
+Expense.getInitialProps = async () => ({
+  namespacesRequired: ['expense', 'common']
+})
 
 export default Expense
 export { EXPENSE_QUERY }

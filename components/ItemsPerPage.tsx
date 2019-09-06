@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+
 import HeadingText from './styles/HeadingText'
 import Dropdown from './Dropdown'
 import { gts } from '../lib/getThemeStyle'
+import { useTranslation } from '../lib/i18n'
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,6 +16,8 @@ const Wrapper = styled.div`
 `
 
 const ItemsPerPage: React.FC<{ perPage: number, onChange: any }> = ({ perPage, onChange }) => {
+  const { t } = useTranslation()
+
   const options = [
     {
       value: 10,
@@ -45,7 +49,7 @@ const ItemsPerPage: React.FC<{ perPage: number, onChange: any }> = ({ perPage, o
 
   return (
     <Wrapper className="hide-xs">
-      <HeadingText className="per-page-select-label">Items per page:</HeadingText>
+      <HeadingText className="per-page-select-label">{t('home:itemsPerPage')}:</HeadingText>
       <Dropdown
         className="selectElem"
         value={selectedOption}

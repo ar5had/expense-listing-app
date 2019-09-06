@@ -1,6 +1,7 @@
 import { useState, SyntheticEvent, useRef, useEffect, ChangeEvent } from 'react'
 import { Mutation, MutationResult } from 'react-apollo'
 import gql from 'graphql-tag'
+
 import Input from './styles/Input'
 import Button from './styles/Button'
 import { DynamicExpenseFieldsProps } from '../types/components'
@@ -10,6 +11,7 @@ import UploadFile from './UploadFile'
 import ImagePreview from './ImagePreview'
 import { EXPENSE_QUERY } from '../pages/expense'
 import Notification from './Notification'
+import { useTranslation } from '../lib/i18n'
 
 const UPDATE_EXPENSE_MUTATION = gql`
   mutation UPDATE_EXPENSE_MUTATION($id: ID!, $comment: String!, $receipt: String!) {
@@ -20,6 +22,7 @@ const UPDATE_EXPENSE_MUTATION = gql`
 `
 
 const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, receipt, id }) => {
+  const { t } = useTranslation()
   const [expenseComment, changeComment] = useState(comment)
   const [expenseReceipt, changeReceipt] = useState(receipt)
   const [showNotification, changeNotificationVisibility] = useState(false)
@@ -63,15 +66,15 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
             timeoutRef.current = setTimeout(() => changeNotificationVisibility(false), 3000)
           }}
         >
-          {showNotification && <Notification text="Expense changes saved ✅" />}
+          {showNotification && <Notification text={t('expense:successNotification')} />}
           <fieldset disabled={loading || showNotification} aria-busy={loading || showNotification}>
             <div className="row">
               <label htmlFor="comment-input" className="label">
-                Comment
+                {t('common:comment')}
               </label>
               <Input
                 className="comment-input"
-                placeholder="Add a comment..."
+                placeholder={t('expense:addCommentPlaceholder')}
                 type="text"
                 id="comment-input"
                 autoComplete="off"
@@ -82,7 +85,7 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
             </div>
             <div className="row receipt-row">
               <label htmlFor="image-input" className="label">
-                Receipt
+                {t('expense:receipt')}
               </label>
               {expenseReceipt ? (
                 <ImagePreview src={expenseReceipt} deleteReceipt={deleteReceipt} />
@@ -95,7 +98,7 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
             </div>
             <div className="row">
               <Button type="submit" disabled={commentNotChanged && receiptNotChanged}>
-                {loading ? <span className="spinner" /> : <span>Save Changes</span>}
+                {loading ? <span className="spinner" /> : <span>{t('expense:saveBtn')}</span>}
               </Button>
             </div>
           </fieldset>

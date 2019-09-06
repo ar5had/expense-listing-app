@@ -1,19 +1,12 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
+import { useState, useEffect, ChangeEvent, FormEvent, useRef } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import Router from 'next/router'
+
 import { ExpenseFilterProps } from '../types/components'
 import Input from './styles/Input'
 import { gts } from '../lib/getThemeStyle'
 import { getTypewriterStrings } from '../lib/filterUtils'
-
-const placeholderStrings = getTypewriterStrings([
-  'NAME',
-  'COMMENT',
-  'MERCHANT',
-  'CURRENCY',
-  'AMOUNT'
-])
+import { useTranslation, Router } from '../lib/i18n'
 
 const StyledFilter = styled.div`
   margin-bottom: ${gts('xlMargin')}px;
@@ -51,15 +44,25 @@ const StyledLabel = styled.label`
 `
 
 const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offset }) => {
+  const { t } = useTranslation()
   const [counter, changeCounter] = useState(0)
   const [filterVal, changeFilterVal] = useState(filterText)
+  const pStringsRef = useRef(
+    getTypewriterStrings([
+      t('common:name'),
+      t('common:comment'),
+      t('common:merchant'),
+      t('common:currency'),
+      t('common:amount')
+    ])
+  )
 
   useEffect(() => {
     let timeoutId: number | undefined
 
     if (!filterVal) {
       timeoutId = setTimeout(() => {
-        changeCounter((counter + 1) % (placeholderStrings.length - 1))
+        changeCounter((counter + 1) % (pStringsRef.current.length - 1))
       }, 200)
     } else {
       clearTimeout(timeoutId)
@@ -86,11 +89,13 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
   return (
     <StyledFilter>
       <Head>
-        <title>Search - {filterVal}</title>
+        <title>
+          {t('home:search')} — {filterVal}
+        </title>
       </Head>
       <form onSubmit={onSubmit}>
         <Input
-          placeholder={`Search expense by ${placeholderStrings[counter]}_`}
+          placeholder={`${t('home:filterPlaceholder')} ${pStringsRef.current[counter]}_`}
           id="filter"
           type="text"
           name="search"

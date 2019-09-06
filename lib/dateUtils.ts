@@ -1,7 +1,12 @@
 import moment from 'moment'
-const getRelativeTimeString: (time: string) => string = (time) => moment(new Date(time)).fromNow()
+const getRelativeTimeString: (time: string, locale: string) => string = (time, locale) =>
+  moment(new Date(time))
+    .locale(locale || 'en')
+    .fromNow()
 
-const getFormattedTime: (time: string) => string = (time) =>
-  moment(new Date(time)).format('MMM Do, YY')
+const getFormattedTime: (time: string, locale: string) => string = (time, locale) =>
+  moment(new Date(time))
+    .locale(locale || 'en')
+    .format('MMM Do, YY')
 
 export { getRelativeTimeString, getFormattedTime }

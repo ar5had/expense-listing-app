@@ -1,0 +1,11 @@
+{
+    "heading": "Expenses",
+    "title": "Page {{page}} of {{pages}}",
+    "itemsPerPage": "items per page",
+    "next": "next",
+    "prev": "prev",
+    "resultsHeading": "Showing {{length}} results for'",
+    "filterPlaceholder": "Search expense by",
+    "totalItems": "{{total}} items total",
+    "search": "Search"
+}

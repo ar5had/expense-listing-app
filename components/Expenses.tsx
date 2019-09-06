@@ -1,11 +1,12 @@
-import Link from 'next/link'
 import styled from 'styled-components'
+
 import { ExpenseProps, ExpensesProps } from '../types/components'
 import Expense from './Expense'
 import { gts } from '../lib/getThemeStyle'
 import { getRelativeTimeString } from '../lib/dateUtils'
 import HeadingText from './styles/HeadingText'
 import NoItemSection from './styles/NoItemSection'
+import { useTranslation, Link } from '../lib/i18n'
 
 const StyledExpenses = styled.div`
   .rel-time {
@@ -28,19 +29,23 @@ const StyledExpenses = styled.div`
 `
 
 const Expenses: React.FC<ExpensesProps> = ({ data }) => {
+  const {
+    t,
+    i18n: { language }
+  } = useTranslation()
   let timeString = ''
 
   // when there are no expense items
   if (data.length === 0) {
     return (
       <NoItemSection>
-        <HeadingText fontSize="1.6rem">No expense found!</HeadingText>
+        <HeadingText fontSize="1.6rem">{t('common:noExpenseText')}!</HeadingText>
       </NoItemSection>
     )
   }
 
   const allExpenseItems = data.map((expense: ExpenseProps) => {
-    const newTimeString = getRelativeTimeString(expense.date).replace(/^A\s/i, '1 ')
+    const newTimeString = getRelativeTimeString(expense.date, language).replace(/^A\s/i, '1 ')
     const showRelativeTimeString = newTimeString !== timeString
     timeString = newTimeString
     return (

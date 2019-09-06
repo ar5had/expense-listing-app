@@ -3,6 +3,7 @@ import Heading from './styles/Heading'
 import HeadingText from './styles/HeadingText'
 import { getFormattedTime } from '../lib/dateUtils'
 import { StaticExpenseFieldsProps } from '../types/components'
+import { useTranslation } from '../lib/i18n'
 
 const StaticExpenseFields: React.FC<StaticExpenseFieldsProps> = ({
   currency,
@@ -13,29 +14,36 @@ const StaticExpenseFields: React.FC<StaticExpenseFieldsProps> = ({
   email,
   merchant,
   category
-}) => (
-  <>
-    <div className="currency-row">
-      <Heading className="amount">{`${getSymbolFromCurrency(currency)}${value}`}</Heading>
-      <HeadingText className="time">{getFormattedTime(date)}</HeadingText>
-    </div>
-    <div className="row">
-      <span className="label">Name</span>
-      <span className="value">{`${first} ${last}`}</span>
-    </div>
-    <div className="row">
-      <span className="label">Email</span>
-      <span className="value">{email}</span>
-    </div>
-    <div className="row">
-      <span className="label">Merchant</span>
-      <span className="value">{merchant}</span>
-    </div>
-    <div className="row">
-      <span className="label">Category</span>
-      <span className="value">{category || 'No category added'}</span>
-    </div>
-  </>
-)
+}) => {
+  const {
+    t,
+    i18n: { language }
+  } = useTranslation()
+
+  return (
+    <>
+      <div className="currency-row">
+        <Heading className="amount">{`${getSymbolFromCurrency(currency)}${value}`}</Heading>
+        <HeadingText className="time">{getFormattedTime(date, language)}</HeadingText>
+      </div>
+      <div className="row">
+        <span className="label">{t('common:name')}</span>
+        <span className="value">{`${first} ${last}`}</span>
+      </div>
+      <div className="row">
+        <span className="label">{t('common:email')}</span>
+        <span className="value">{email}</span>
+      </div>
+      <div className="row">
+        <span className="label">{t('common:merchant')}</span>
+        <span className="value">{merchant}</span>
+      </div>
+      <div className="row">
+        <span className="label">{t('expense:category')}</span>
+        <span className="value">{category || 'No category added'}</span>
+      </div>
+    </>
+  )
+}
 
 export default StaticExpenseFields

@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import { NextPage } from 'next'
 import styled from 'styled-components'
+
 import { gts } from '../lib/getThemeStyle'
 import Heading from '../components/styles/Heading'
 import BackToHome from '../components/BackToHome'
+import { I18nPage, useTranslation } from '../lib/i18n'
 
 const StyledDiv = styled.div`
   margin: ${gts('mdMargin')}px 0 ${gts('xlMargin')}px;
@@ -28,36 +29,44 @@ const StyledDiv = styled.div`
   }
 `
 
-const Credits: NextPage = () => (
-  <StyledDiv>
-    <Head>
-      <title>Credits</title>
-    </Head>
-    <BackToHome />
-    <Heading className="heading">Icon Credits</Heading>
-    <div className="link-container">
-      <div>
-        Icons made by{' '}
-        <a href="https://www.flaticon.com/authors/lucy-g" title="Lucy G">
-          Lucy G
-        </a>{' '}
-        from{' '}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
+const Credits: I18nPage = () => {
+  const { t } = useTranslation()
+
+  return (
+    <StyledDiv>
+      <Head>
+        <title>{t('common:credits')}</title>
+      </Head>
+      <BackToHome />
+      <Heading className="heading">{t('credits:heading')}</Heading>
+      <div className="link-container">
+        <div>
+          {t('credits:iconMadeBy')}{' '}
+          <a href="https://www.flaticon.com/authors/lucy-g" title="Lucy G">
+            Lucy G
+          </a>{' '}
+          {t('credits:from')}{' '}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+        </div>
+        <div>
+          {t('credits:iconMadeBy')}{' '}
+          <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay">
+            GraphicsBay
+          </a>{' '}
+          {t('credits:from')}{' '}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+        </div>
       </div>
-      <div>
-        Icons made by{' '}
-        <a href="https://www.flaticon.com/authors/graphicsbay" title="GraphicsBay">
-          GraphicsBay
-        </a>{' '}
-        from{' '}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
-      </div>
-    </div>
-  </StyledDiv>
-)
+    </StyledDiv>
+  )
+}
+
+Credits.getInitialProps = async () => ({
+  namespacesRequired: ['credits', 'common']
+})
 
 export default Credits

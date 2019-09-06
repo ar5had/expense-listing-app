@@ -40,7 +40,8 @@ const filterExpenseData = (data: ExpenseProps[], text: string) =>
 const getTypewriterStrings: (arr: string[]) => string[] = (arr: string[]) => {
   let res: string[] = []
 
-  const getAllStr: (str: string) => void = (str) => {
+  const getAllStr: (str: string) => void = (normalStr) => {
+    const str = normalStr.toLocaleUpperCase()
     const len = str.length * 2 - 1
     const extraElem = 3
 

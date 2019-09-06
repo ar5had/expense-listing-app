@@ -1,16 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
+
 import PaginationStyles from './styles/PaginationStyles'
 import { PaginationProps } from '../types/components'
 import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
+import { useTranslation, Link } from '../lib/i18n'
 
 const PaginationWrapper = styled.div`
   padding: ${gts('mdMargin')}px 0 0;
 `
 
 const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {
+  const { t } = useTranslation()
+
   const pages = Math.ceil(total / perPage)
   const page = Math.ceil((offset + 1) / perPage)
   const prevOffset = offset - perPage > 0 ? offset - perPage : 0
@@ -21,37 +24,19 @@ const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {
       <PaginationStyles data-test="pagination">
         <Head>
           <title>
-            Expenses — Page {page} of {pages}
+            {t('home:heading')} — {t('home:title', { page, pages })}
           </title>
         </Head>
-        <Link
-          href={{
-            path: '/',
-            query: {
-              offset: prevOffset,
-              limit: perPage
-            }
-          }}
-        >
-          <a className="prev" aria-disabled={page <= 1}>
-            ← Prev
+        <Link href={`/?offset=${prevOffset}&limit=${perPage}`}>
+          <a className="prev" aria-disabled={page <= 1 && offset <= 0}>
+            ← {t('home:prev')}
           </a>
         </Link>
-        <p className="hide-xs">
-          Page {page} of <span className="totalPages">{pages}</span>
-        </p>
-        <p className="hide-sm">{total} Items Total</p>
-        <Link
-          href={{
-            path: '/',
-            query: {
-              offset: nextOffset,
-              limit: perPage
-            }
-          }}
-        >
+        <p className="hide-xs">{t('home:title', { page, pages })}</p>
+        <p className="hide-sm">{t('home:totalItems', { total })}</p>
+        <Link href={`/?offset=${nextOffset}&limit=${perPage}`}>
           <a className="next" aria-disabled={page >= pages}>
-            Next →
+            {t('home:next')} →
           </a>
         </Link>
       </PaginationStyles>
