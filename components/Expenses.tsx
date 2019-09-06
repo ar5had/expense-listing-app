@@ -6,6 +6,7 @@ import { gts } from '../lib/getThemeStyle'
 import { getRelativeTimeString } from '../lib/dateUtils'
 import HeadingText from './styles/HeadingText'
 import NoItemSection from './styles/NoItemSection'
+import { useTranslation } from '../lib/i18n'
 
 const StyledExpenses = styled.div`
   .rel-time {
@@ -28,13 +29,14 @@ const StyledExpenses = styled.div`
 `
 
 const Expenses: React.FC<ExpensesProps> = ({ data }) => {
+  const { t } = useTranslation()
   let timeString = ''
 
   // when there are no expense items
   if (data.length === 0) {
     return (
       <NoItemSection>
-        <HeadingText fontSize="1.6rem">No expense found!</HeadingText>
+        <HeadingText fontSize="1.6rem">{t('common:noExpenseText')}!</HeadingText>
       </NoItemSection>
     )
   }

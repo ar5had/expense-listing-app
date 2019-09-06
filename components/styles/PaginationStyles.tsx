@@ -57,7 +57,7 @@ const PaginationStyles = styled.div`
     pointer-events: none;
   }
   @media (max-width: ${gts('maxWidth')}) {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: 1fr 1fr 1fr;
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     grid-template-columns: repeat(2, 1fr);

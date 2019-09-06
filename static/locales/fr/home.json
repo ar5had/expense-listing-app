@@ -1,11 +1,11 @@
 {
     "heading": "Dépenses",
+    "title": "Page {{page}} de {{pages}}",
     "itemsPerPage": "articles par page",
     "next": "suivante",
     "prev": "précédente",
-    "pageCounter": "page 4 de 24",
-    "itemsTotal": "10 articles au total",
     "timeAgo": "il y a 1 ans",
-    "resultsHeading": "Affichage 0 des résultats pour text",
-    "filterPlaceholder": "Rechercher une dépense par"
+    "resultsHeading": "Affichage {{length}} des résultats pour",
+    "filterPlaceholder": "Rechercher une dépense par",
+    "totalItems": "{{total}} articles"
 }

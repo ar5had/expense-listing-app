@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { FilterResultsHeadingProps } from 'types/components'
 import { gts } from '../lib/getThemeStyle'
+import { useTranslation } from '../lib/i18n'
 
 const Wrapper = styled.div`
   .content {
@@ -17,13 +18,15 @@ const Wrapper = styled.div`
   }
 `
 
-const FilterResultsHeading: React.FC<FilterResultsHeadingProps> = ({ length, filterText }) =>
-  filterText ? (
+const FilterResultsHeading: React.FC<FilterResultsHeadingProps> = ({ length, filterText }) => {
+  const { t } = useTranslation()
+  return filterText ? (
     <Wrapper>
       <p className="content">
-        Showing {length} result{length > 1 ? 's' : ''} for <b>'{filterText}'</b>
+        {t('home:resultsHeading', { length })} <b>'{filterText}'</b>
       </p>
     </Wrapper>
   ) : null
+}
 
 export default FilterResultsHeading

@@ -1,11 +1,11 @@
 {
     "heading": "Expenses",
-    "itemsPerPage": "Items per page",
+    "title": "Page {{page}} of {{pages}}",
+    "itemsPerPage": "items per page",
     "next": "next",
     "prev": "prev",
-    "pageCounter": "page 4 of 24",
-    "itemsTotal": "10 items total",
     "timeAgo": "2 years ago",
-    "resultsHeading": "Showing 10 results for 'asd'",
-    "filterPlaceholder": "Search expense by"
+    "resultsHeading": "Showing {{length}} results for'",
+    "filterPlaceholder": "Search expense by",
+    "totalItems": "{{total}} items total"
 }
