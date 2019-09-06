@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import styled from 'styled-components'
 
 import { I18nPage, useTranslation } from '../lib/i18n'
@@ -22,6 +23,9 @@ const Error: I18nPage = () => {
 
   return (
     <Wrapper>
+      <Head>
+        <title>404 — {t('common:pageNotFound')}</title>
+      </Head>
       <HeadingText>
         <b>404 — </b> {t('common:pageNotFound')}
       </HeadingText>

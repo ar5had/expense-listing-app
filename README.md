@@ -20,7 +20,7 @@ Want to go the extra mile? Here's few suggestion of things we'd like to see (or 
 - [x] Responsive design
 - [x] Implement with a state management library (Redux, Mobx, VueX, ...)
 - [x] Implement solution in TypeScript
-- [ ] Localization: support for multiple languages (English, French, ...)
+- [x] Localization: support for multiple languages (English, French, ...)
 
 ## What we're looking for
 - Using high-quality existing libraries or small amounts of custom code. 
