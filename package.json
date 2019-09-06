@@ -10,8 +10,8 @@
     "build:client": "next build",
     "build:server": "tsc --project tsconfig.server.json",
     "build": "npm run build:client && npm run remove-dist && npm run build:server",
-    "start": "cross-env NODE_ENV=production node dist/app.js",
-    "heroku:start": "node dist/app.js",
+    "start": "cross-env NODE_ENV=production node dist/server/app.js",
+    "heroku:start": "node dist/server/app.js",
     "prettier": "prettier --write './**/*.{ts,tsx}' --config ./.prettierrc"
   },
   "keywords": [

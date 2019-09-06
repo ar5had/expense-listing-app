@@ -3,14 +3,14 @@ import { useTranslation as originalUseTranslation } from 'react-i18next'
 import { NextComponentType, NextPageContext } from 'next'
 
 const NextI18NextInstance = new NextI18Next({
-  browserLanguageDetection: true,
+  browserLanguageDetection: false,
   defaultLanguage: 'en',
   fallbackLng: 'en',
   otherLanguages: ['fr'],
   // localeSubpaths: {
   //   fr: 'fr'
   // },
-  serverLanguageDetection: true
+  serverLanguageDetection: false
 })
 
 export default NextI18NextInstance
