@@ -15,13 +15,16 @@ const StaticExpenseFields: React.FC<StaticExpenseFieldsProps> = ({
   merchant,
   category
 }) => {
-  const { t } = useTranslation()
+  const {
+    t,
+    i18n: { language }
+  } = useTranslation()
 
   return (
     <>
       <div className="currency-row">
         <Heading className="amount">{`${getSymbolFromCurrency(currency)}${value}`}</Heading>
-        <HeadingText className="time">{getFormattedTime(date)}</HeadingText>
+        <HeadingText className="time">{getFormattedTime(date, language)}</HeadingText>
       </div>
       <div className="row">
         <span className="label">{t('common:name')}</span>

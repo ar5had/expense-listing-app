@@ -4,8 +4,8 @@
     "itemsPerPage": "items per page",
     "next": "next",
     "prev": "prev",
-    "timeAgo": "2 years ago",
     "resultsHeading": "Showing {{length}} results for'",
     "filterPlaceholder": "Search expense by",
-    "totalItems": "{{total}} items total"
+    "totalItems": "{{total}} items total",
+    "search": "Search"
 }

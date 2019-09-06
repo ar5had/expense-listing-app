@@ -89,7 +89,9 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
   return (
     <StyledFilter>
       <Head>
-        <title>Search - {filterVal}</title>
+        <title>
+          {t('home:search')} — {filterVal}
+        </title>
       </Head>
       <form onSubmit={onSubmit}>
         <Input

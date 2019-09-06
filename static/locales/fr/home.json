@@ -4,8 +4,8 @@
     "itemsPerPage": "articles par page",
     "next": "suivante",
     "prev": "précédente",
-    "timeAgo": "il y a 1 ans",
     "resultsHeading": "Affichage {{length}} des résultats pour",
     "filterPlaceholder": "Rechercher une dépense par",
-    "totalItems": "{{total}} articles"
+    "totalItems": "{{total}} articles",
+    "search": "Search"
 }

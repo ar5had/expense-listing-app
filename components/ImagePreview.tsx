@@ -1,9 +1,11 @@
-import styled from 'styled-components'
-import { ImagePreviewProps } from '../types/components'
-import { gts } from '../lib/getThemeStyle'
 import { useState } from 'react'
+import styled from 'styled-components'
+
+import { ImagePreviewProps } from '../types/components'
 import TextButton from './styles/TextButton'
 import ImageOverlay from './ImageOverlay'
+import { gts } from '../lib/getThemeStyle'
+import { useTranslation } from '../lib/i18n'
 
 const ImagePreviewStyles = styled.div`
   display: grid;
@@ -37,6 +39,7 @@ const Img = styled.img`
 `
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({ src, deleteReceipt }) => {
+  const { t } = useTranslation()
   const [isOverlayVisible, changeOverlayVisibility] = useState(false)
 
   const hideOverlay = () => changeOverlayVisibility(false)
@@ -46,11 +49,11 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, deleteReceipt }) => {
     <ImagePreviewStyles>
       <Img src={src} alt="Receipt" />
       <TextButton type="button" onClick={showOverlay}>
-        View Receipt
+        {t('expense:viewReceiptBtn')}
       </TextButton>
       {isOverlayVisible && <ImageOverlay hideOverlay={hideOverlay} src={src} />}
       <TextButton type="button" onClick={deleteReceipt}>
-        Delete Receipt
+        {t('expense:deleteReceiptBtn')}
       </TextButton>
     </ImagePreviewStyles>
   )
