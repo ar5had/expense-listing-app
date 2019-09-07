@@ -3,14 +3,14 @@ import { Mutation, MutationResult, MutationFn } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import ErrorMessage from './ErrorMessage'
-import UploadFile from './UploadFile'
-import ImagePreview from './ImagePreview'
 import Notification from './Notification'
+import CommentField from './CommentField'
 import { EXPENSE_QUERY } from '../pages/expense'
-import Input from './styles/Input'
 import Button from './styles/Button'
 import Form from './styles/Form'
+import Spinner from './styles/Spinner'
 import { useTranslation } from '../lib/i18n'
+import ReceiptField from './ReceiptField'
 
 interface DynamicExpenseFieldsProps {
   comment: string
@@ -32,7 +32,6 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
   const [expenseReceipt, changeReceipt] = useState(receipt)
   const [showNotification, changeNotificationVisibility] = useState(false)
   const timeoutRef = useRef<number>()
-  // Clear timeout, to avoid memory leak
   useEffect(() => () => clearTimeout(timeoutRef.current), [])
 
   const commentNotChanged = comment === expenseComment
@@ -43,12 +42,13 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
     await updateExpense()
 
     // NOTE: below code will only be called if expense updated successfully
-    // Shows notification popup to let user know that expense save was successful
+    // Shows the notification popup to let user know that expense save was successful
     changeNotificationVisibility(true)
+    // Hides the notification popup after 3 seconds
     timeoutRef.current = setTimeout(() => changeNotificationVisibility(false), 3000)
   }
   const onCommentChange = (e: ChangeEvent<HTMLInputElement>) => changeComment(e.currentTarget.value)
-  const onReceiptChange = (value: string) => changeReceipt(value)
+  const addReceipt = (value: string) => changeReceipt(value)
   const deleteReceipt = () => changeReceipt('')
 
   return (
@@ -61,34 +61,15 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
         <Form onSubmit={(event) => onFormSubmit(event, updateExpense)}>
           {showNotification && <Notification text={t('expense:successNotification')} />}
           <fieldset disabled={loading || showNotification} aria-busy={loading || showNotification}>
-            <div className="row">
-              <label htmlFor="comment-input" className="label">
-                {t('common:comment')}
-              </label>
-              <Input
-                className="comment-input"
-                placeholder={t('expense:addCommentPlaceholder')}
-                type="text"
-                id="comment-input"
-                autoComplete="off"
-                maxLength={300}
-                value={expenseComment}
-                onChange={onCommentChange}
-              />
-            </div>
-            <div className="row receipt-row">
-              <label htmlFor="image-input" className="label">
-                {t('expense:receipt')}
-              </label>
-              {expenseReceipt ? (
-                <ImagePreview src={expenseReceipt} deleteReceipt={deleteReceipt} />
-              ) : (
-                <UploadFile addReceipt={onReceiptChange} inputId="image-input" />
-              )}
-            </div>
+            <CommentField comment={expenseComment} onChange={onCommentChange} />
+            <ReceiptField
+              receipt={expenseReceipt}
+              addReceipt={addReceipt}
+              deleteReceipt={deleteReceipt}
+            />
             <ErrorMessage error={error} />
             <Button type="submit" disabled={commentNotChanged && receiptNotChanged}>
-              {loading ? <span className="spinner" /> : <span>{t('expense:saveBtn')}</span>}
+              {loading ? <Spinner /> : t('expense:saveBtn')}
             </Button>
           </fieldset>
         </Form>

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, ChangeEvent } from 'react'
 import styled from 'styled-components'
 
 import UploadIcon from './UploadIcon'
@@ -19,8 +19,8 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt, inputId = '' }) => 
   // ref holding the receipt image element
   const inputElem = useRef<HTMLInputElement>(null)
 
-  const onChange = ({ target: { validity, files } }: any) => {
-    const file: any = files[0]
+  const onChange = ({ target: { validity, files } }: ChangeEvent<HTMLInputElement>) => {
+    const file = files && files[0]
     const isValid = validity.valid
     const isImage = file && /^image/.test(file.type)
 
@@ -30,17 +30,18 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt, inputId = '' }) => 
       return
     }
 
-    imageToBase64(file)
-      .then((result: any) => {
-        addReceipt(result)
-      })
-      .catch(() => {
-        console.log("Error: Image can't be converted into base64 format!")
-      })
+    if (file) {
+      imageToBase64(file)
+        .then((result: string) => {
+          addReceipt(result)
+        })
+        .catch(() => {
+          console.log("Error: Image can't be converted into base64 format!")
+        })
+    }
   }
 
-  // @ts-ignore
-  const openImageSelectWindow = () => inputElem.current.click()
+  const openImageSelectWindow = () => inputElem.current && inputElem.current.click()
 
   return (
     <UploadFileWrapper>

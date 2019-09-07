@@ -118,6 +118,7 @@ const GlobalStyle = createGlobalStyle`
   label:hover {
     cursor: text;
   }
+
   /* mobile screen resolution */
   @media(max-width: 479px) {
     html {

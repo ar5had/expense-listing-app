@@ -4,7 +4,7 @@ import Router from 'next/router'
 
 import { useTranslation } from '../lib/i18n'
 import TextButton from './styles/TextButton'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 
 // starts progress bar
 Router.events.on('routeChangeStart', () => {

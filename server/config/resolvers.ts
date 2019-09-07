@@ -1,5 +1,6 @@
-import { expenses } from '../data/expenses'
 import { IResolvers } from 'graphql-tools'
+
+import { expenses } from '../data/expenses'
 
 type ParentQuery = Record<string, any>
 
@@ -18,7 +19,7 @@ interface UpdateExpenseArgs {
   receipt: string
 }
 
-// sort expenses by date
+// Sort expenses by date
 expenses.sort((a, b) => {
   const valA = Date.parse(a.date)
   const valB = Date.parse(b.date)

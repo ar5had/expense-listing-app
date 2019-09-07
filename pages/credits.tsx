@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 
-import Heading from '../components/styles/Heading'
 import BackToHome from '../components/BackToHome'
-import { gts } from '../lib/getThemeStyle'
+import Heading from '../components/styles/Heading'
+import { gts } from '../lib/styledComponentsUtils'
 import { I18nPage, useTranslation } from '../lib/i18n'
 
 const StyledDiv = styled.div`
   margin: ${gts('mdMargin')}px 0 ${gts('xlMargin')}px;
   .heading {
-    margin: ${gts('mdMargin')}px 0;
+    margin: ${gts('xlMargin')}px 0 ${gts('mdMargin')}px;
   }
   line-height: 2;
   text-align: center;

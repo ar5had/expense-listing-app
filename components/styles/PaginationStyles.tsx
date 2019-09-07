@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { gts } from '../../lib/getThemeStyle'
+import { gts } from '../../lib/styledComponentsUtils'
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -41,13 +41,13 @@ const PaginationStyles = styled.div`
   a:first-child {
     border-radius: ${gts('borderRadius')} 0 0 ${gts('borderRadius')};
     &:hover {
-      transform: translateX(-4px) scale(1.1);
+      transform: translateX(-5px) scale(1.1);
     }
   }
   a:last-child {
     border-radius: 0 ${gts('borderRadius')} ${gts('borderRadius')} 0;
     &:hover {
-      transform: translateX(4px) scale(1.1);
+      transform: translateX(5px) scale(1.1);
     }
   }
   a[aria-disabled='true'] {

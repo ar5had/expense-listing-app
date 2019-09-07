@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ApolloError } from 'apollo-boost'
 
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 
 interface ErrorMessageProps {
   error: ApolloError | undefined

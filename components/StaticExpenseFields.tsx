@@ -1,6 +1,6 @@
 import Heading from './styles/Heading'
 import HeadingText from './styles/HeadingText'
-import { getSymbolFromCurrency } from '../lib/currencyMap'
+import { getSymbolFromCurrency } from '../lib/currencySymbolMap'
 import { getFormattedTime } from '../lib/dateUtils'
 import { useTranslation } from '../lib/i18n'
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { gts } from '../../lib/getThemeStyle'
+import { gts } from '../../lib/styledComponentsUtils'
 
 const ExpensePageStyles = styled.div`
   margin: 0 0 ${gts('xlMargin')}px;

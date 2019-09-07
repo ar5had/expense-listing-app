@@ -18,6 +18,7 @@ class MyApp extends App<{ apollo: ApolloClient<{}> }> {
 
     return { pageProps }
   }
+
   render() {
     const { Component, apollo, pageProps } = this.props
 

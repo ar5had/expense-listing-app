@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import TextButton from './styles/TextButton'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 import { useTranslation } from '../lib/i18n'
 
 interface ImageOverlayProps {
@@ -17,15 +17,14 @@ const Overlay = styled.div`
   right: 0;
   bottom: 0;
   z-index: 2;
-  display: grid;
-  align-items: center;
-  justify-items: center;
+  display: flex;
   div {
     padding: 20px;
     max-width: ${gts('maxWidth')};
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto;
   }
   img {
     margin-top: 10px;

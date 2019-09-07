@@ -7,7 +7,6 @@
   "amount": "Amount",
   "currency": "Currency",
   "comment": "Comment",
-  "ExpenseNotFoundText": "Expense not found",
   "expense": "Expense",
   "pageNotFound": "Page not found"
 }

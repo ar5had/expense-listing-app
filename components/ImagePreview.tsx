@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import TextButton from './styles/TextButton'
 import ImageOverlay from './ImageOverlay'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 import { useTranslation } from '../lib/i18n'
 
 interface ImagePreviewProps {

@@ -1,15 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-import { gts } from '../../lib/getThemeStyle'
-
-const loading = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`
+import { gts } from '../../lib/styledComponentsUtils'
 
 const Form = styled.form`
   fieldset {
@@ -19,23 +10,11 @@ const Form = styled.form`
         pointer-events: none;
       }
     }
-
     button[type='submit'] {
       height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
-      .spinner {
-        --dim: 1.6rem;
-        width: var(--dim);
-        height: var(--dim);
-        display: inline-block;
-        border: solid 2px transparent;
-        border-color: rgba(228, 228, 228, 0.15) rgba(228, 228, 228, 0.7) rgba(228, 228, 228, 0.7)
-          rgba(228, 228, 228, 0.15);
-        border-radius: 50%;
-        animation: ${loading} 1s linear infinite;
-      }
     }
     button[disabled],
     button[disabled]:hover,

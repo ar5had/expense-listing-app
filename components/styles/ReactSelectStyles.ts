@@ -1,10 +1,11 @@
 import { StylesConfig } from 'react-select/src/styles'
+import { Theme } from 'react-select/src/types'
 
 import { theme } from './theme'
 
 // Custom style config for react-select, to make it similar to our current theme
 const ReactSelectStyles: StylesConfig = {
-  menu: (provided) => ({ ...provided, boxShadow: theme.simpleBoxShadow, cursor: 'pointer' }),
+  menu: (provided) => ({ ...provided, boxShadow: theme.boxShadow, cursor: 'pointer' }),
   control: (provided, { menuIsOpen, isFocused }) => ({
     ...provided,
     border: 'none',
@@ -17,7 +18,7 @@ const ReactSelectStyles: StylesConfig = {
   option: (provided, { isFocused }) => ({
     ...provided,
     cursor: 'pointer',
-    background: isFocused ? theme.grey : theme.white,
+    background: isFocused ? theme.greyBackground : theme.white,
     color: theme.black,
     textTransform: 'uppercase',
     letterSpacing: '2px',
@@ -36,13 +37,13 @@ const ReactSelectStyles: StylesConfig = {
   })
 }
 
-const ReactSelectTheme = (defaultTheme: any) => ({
+const ReactSelectTheme = (defaultTheme: Theme) => ({
   ...defaultTheme,
   borderRadius: 4,
   borderWidth: 1,
   colors: {
     ...defaultTheme.colors,
-    primary50: '#efefef',
+    primary50: theme.greyBackground,
     primary25: '#f1f1f1',
     primary: theme.grey,
     neutral20: theme.darkGrey,

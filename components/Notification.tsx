@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
 import HeadingText from './styles/HeadingText'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 
 interface NotificationProps {
   text: string

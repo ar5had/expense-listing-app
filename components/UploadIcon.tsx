@@ -1,7 +1,7 @@
 import { SyntheticEvent } from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 
 interface UploadIconProps {
   onClick: (e: SyntheticEvent) => void

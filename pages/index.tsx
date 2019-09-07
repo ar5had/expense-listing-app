@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import { Query, QueryResult } from 'react-apollo'
 
+import AnimationWrapper from '../components/AnimationWrapper'
 import HomePageContent from '../components/HomePageContent'
 import { I18nPage } from '../lib/i18n'
 
@@ -46,18 +47,21 @@ const Home: I18nPage<HomeProps> = ({ query }) => {
         if (loading) {
           return null
         }
+
         if (error) {
           return <p>Error: {error.message}</p>
         }
 
         return (
-          <HomePageContent
-            total={expenses.total}
-            expensesData={expenses.data}
-            filterText={filterText}
-            perPage={perPage}
-            offset={offset}
-          />
+          <AnimationWrapper hasContentLoaded={!loading}>
+            <HomePageContent
+              total={expenses.total}
+              expensesData={expenses.data}
+              filterText={filterText}
+              perPage={perPage}
+              offset={offset}
+            />
+          </AnimationWrapper>
         )
       }}
     </Query>
