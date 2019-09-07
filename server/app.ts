@@ -19,13 +19,9 @@ app.prepare().then(() => {
   const server = express()
 
   server.use(bodyParser.json({ limit: '50mb' }))
-  server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+  server.use(nextI18NextMiddleware(nextI18next))
 
   apolloServer.applyMiddleware({ app: server, path: '/graphql' })
-
-  // nextI18 middleware redirects when `localeSubpaths` are turned on, therefore it is important to
-  // place apollo server middleware before it so that graphql requests are not redirected
-  server.use(nextI18NextMiddleware(nextI18next))
 
   server.get('*', (req, res) => handle(req, res))
 

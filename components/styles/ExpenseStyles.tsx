@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { gts } from '../../lib/getThemeStyle'
+import { gts } from '../../lib/styledComponentsUtils'
 
 const ExpenseStyles = styled.div`
   --dim: 6rem;
@@ -96,7 +96,7 @@ const ExpenseStyles = styled.div`
   @media (max-width: 320px) {
     .image {
       grid-column: 1 / -1;
-      margin: auto;
+      justify-self: center;
     }
     .name-currency-wrapper {
       grid-column: 1 / -1;

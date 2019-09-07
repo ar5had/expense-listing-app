@@ -4,7 +4,7 @@
     "itemsPerPage": "articles par page",
     "next": "suivante",
     "prev": "précédente",
-    "resultsHeading": "Affichage {{length}} des résultats pour",
+    "resultsHeading": "Affichage {{length}} des résultat(s) pour",
     "filterPlaceholder": "Rechercher une dépense par",
     "totalItems": "{{total}} articles",
     "search": "Recherche"

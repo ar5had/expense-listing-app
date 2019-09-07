@@ -1,13 +1,16 @@
 const imageToBase64 = (file: File) =>
-  new Promise((resolve, reject) => {
-    const reader: any = new FileReader()
-    // Read file when loading completes
+  new Promise<string>((resolve, reject) => {
+    const reader: FileReader = new FileReader()
+
     reader.onload = () => {
-      resolve(reader.result)
+      if (reader.result && typeof reader.result === 'string') {
+        resolve(reader.result as string)
+      } else {
+        reject()
+      }
     }
-    // Error handler
+
     reader.onerror = reject
-    // Convert data to base64
     reader.readAsDataURL(file)
   })
 

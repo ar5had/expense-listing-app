@@ -11,9 +11,9 @@ const ExpenseNotFound: React.FC = () => {
   return (
     <NoItemSection>
       <Head>
-        <title>{t('common:ExpenseNotFoundText')}!</title>
+        <title>{t('common:pageNotFound')}!</title>
       </Head>
-      <HeadingText>404 — {t('common:ExpenseNotFoundText')}</HeadingText>
+      <HeadingText>404 — {t('common:pageNotFound')}</HeadingText>
       <BackToHome />
     </NoItemSection>
   )

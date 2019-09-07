@@ -24,8 +24,8 @@ export const typeDefs = gql`
   }
 
   type AllExpensesResponse {
-    data: [Expense]!
-    total: Int
+    data: [Expense]
+    total: Int!
   }
 
   type Query {

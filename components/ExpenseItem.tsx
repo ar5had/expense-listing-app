@@ -1,5 +1,5 @@
 import ExpenseStyles from './styles/ExpenseStyles'
-import { getSymbolFromCurrency } from '../lib/currencyMap'
+import { getSymbolFromCurrency } from '../lib/currencySymbolMap'
 import { ExpenseProps } from './types/common'
 
 const ExpenseItem: React.FC<ExpenseProps> = (props) => {

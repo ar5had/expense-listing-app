@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import PaginationStyles from './styles/PaginationStyles'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 import { useTranslation } from '../lib/i18n'
 
 interface PaginationProps {

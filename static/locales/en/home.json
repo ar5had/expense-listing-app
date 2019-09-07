@@ -4,7 +4,7 @@
     "itemsPerPage": "items per page",
     "next": "next",
     "prev": "prev",
-    "resultsHeading": "Showing {{length}} results for",
+    "resultsHeading": "Showing {{length}} result(s) for",
     "filterPlaceholder": "Search expense by",
     "totalItems": "{{total}} items total",
     "search": "Search"

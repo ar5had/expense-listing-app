@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 import { useTranslation } from '../lib/i18n'
 
 interface FilterResultsInfoProps {

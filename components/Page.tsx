@@ -3,8 +3,8 @@ import styled, { ThemeProvider } from 'styled-components'
 import Meta from './Meta'
 import Header from './Header'
 import { theme } from './styles/theme'
-import GlobalStyle from './styles/globalStyle'
-import { gts } from '../lib/getThemeStyle'
+import GlobalStyle from './styles/GlobalStyle'
+import { gts } from '../lib/styledComponentsUtils'
 
 const StyledPage = styled.div`
   background: ${gts('white')};

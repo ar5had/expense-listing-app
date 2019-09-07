@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { gts } from '../../lib/getThemeStyle'
+import { gts } from '../../lib/styledComponentsUtils'
 
 const HeadingText = styled.h5`
   color: ${gts('darkGrey')};

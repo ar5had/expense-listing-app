@@ -1,6 +1,4 @@
-type SymbolMap = Record<string, string>
-
-const currencySymbolMap: SymbolMap = {
+const currencySymbolMap: Record<string, string> = {
   AED: 'د.إ',
   AFN: '؋',
   ALL: 'L',
@@ -174,7 +172,11 @@ const currencySymbolMap: SymbolMap = {
 
 const getSymbolFromCurrency: (currencyCode: string) => string | undefined = (currencyCode) => {
   const code = currencyCode.toUpperCase()
-  if (!currencySymbolMap.hasOwnProperty(code)) return undefined
+
+  if (!currencySymbolMap.hasOwnProperty(code)) {
+    return undefined
+  }
+
   return currencySymbolMap[code]
 }
 

@@ -3,7 +3,7 @@ import { SelectComponentsProps } from 'react-select/src/Select'
 import styled from 'styled-components'
 
 import { ReactSelectStyles, ReactSelectTheme } from './styles/ReactSelectStyles'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 
 // NOTE: style props approach is preferred over targetting styles using css-classnames, that's why
 // all the styling is done using styles props except few styles that can't be set by styles props.

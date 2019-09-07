@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import ExpenseItem from './ExpenseItem'
 import HeadingText from './styles/HeadingText'
-import { gts } from '../lib/getThemeStyle'
+import { gts } from '../lib/styledComponentsUtils'
 import { getRelativeTimeString } from '../lib/dateUtils'
 import { useTranslation } from '../lib/i18n'
 import { ExpenseProps } from './types/common'

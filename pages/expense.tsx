@@ -1,8 +1,9 @@
 import { Query, QueryResult } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import AnimationWrapper from '../components/AnimationWrapper'
 import ExpensePageContent from '../components/ExpensePageContent'
-import ExpenseNotFound from '../components/ExpenseNotFound'
+import PageNotFound from '../components/PageNotFound'
 import { I18nPage } from '../lib/i18n'
 
 interface ExpenseProps {
@@ -39,14 +40,20 @@ const Expense: I18nPage<ExpenseProps> = ({ query: { id } }) => (
       if (loading) {
         return null
       }
+
       if (error) {
         return <p>Error: {error.message}</p>
       }
+
       if (data.expense) {
-        return <ExpensePageContent expenseData={data.expense} />
+        return (
+          <AnimationWrapper hasContentLoaded={!loading}>
+            <ExpensePageContent expenseData={data.expense} />
+          </AnimationWrapper>
+        )
       }
 
-      return <ExpenseNotFound />
+      return <PageNotFound />
     }}
   </Query>
 )

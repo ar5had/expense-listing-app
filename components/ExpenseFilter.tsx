@@ -4,8 +4,8 @@ import Router from 'next/router'
 import styled from 'styled-components'
 
 import Input from './styles/Input'
-import { gts } from '../lib/getThemeStyle'
-import { getTypewriterStrings } from '../lib/filterUtils'
+import { gts } from '../lib/styledComponentsUtils'
+import { getPlaceholderStrings } from '../lib/filterUtils'
 import { useTranslation } from '../lib/i18n'
 
 interface ExpenseFilterProps {
@@ -54,7 +54,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
 
   // New placeholder strings are only computed when language changes
   useEffect(() => {
-    pStringsRef.current = getTypewriterStrings([
+    pStringsRef.current = getPlaceholderStrings([
       t('common:name'),
       t('common:comment'),
       t('common:merchant'),
@@ -80,7 +80,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
     return () => clearTimeout(timeoutId)
   }, [counter, filterVal])
 
-  // Resets filter when offset and items-per-page values are changed
+  // Resets filter when offset or items-per-page values are changed
   useEffect(() => {
     changeFilterVal('')
   }, [offset, perPage])
@@ -90,7 +90,9 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
     const val = event.currentTarget.search.value.trim()
+
     Router.push(`/?offset=${offset}&limit=${perPage}&search=${val}`)
   }
 
