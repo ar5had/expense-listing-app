@@ -59,7 +59,8 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
       t('common:comment'),
       t('common:merchant'),
       t('common:currency'),
-      t('common:amount')
+      t('common:amount'),
+      t('common:email')
     ])
   }, [i18n.language])
 

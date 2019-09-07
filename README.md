@@ -18,8 +18,9 @@ A full-stack javascript web app with following features -
    - User can't spam changes, proper measures(on the UI side) are taken to avoid new comment request before the old one gets completed.
    - Errors are shown graphically if any
 3. **User can filter on expenses (client-side filters)**
-   - User can filter expenses that are on the page by `email`, `merchant`, `name`, `amount`, and `comment`.
+   - User can filter expenses that are **loaded on the page** by `email`, `merchant`, `name`, `amount`, and `comment`.
    - User can also pass string query like `> 4000 USD` which lists expenses with more than `4000 USD` bill. Supported queries are - `> <amount> <currency>`, `< <amount> <currency>`, and `= <amount> <currency>`. **Only the integer part is considered for simplicity sake.**
+   - If page has 100 expense items, then search filter will filter expenses from thoses 100 loaded items only - **client side filter**. User can change no of items on the page using the items-per-page dropdown to search over a bigger set of expense items.
 4. **User can add a receipt image on an expense**
    - User can add any kind of image format.
    - User can right away see the preview of the image.
@@ -27,7 +28,7 @@ A full-stack javascript web app with following features -
    - User can also delete the receipt image.
    - The user gets notified when the changes in image receipts are made.
    - If the user uploads a photo and then deletes it and then again upload the same photo then there won't be any change to consider as there is no change in the receipt. Adding/deleting image doesn't make any change if the final image is the same as the old one.
-   - Errors are shown graphically if any
+   - Errors are shown graphically if any.
 5. **Multiple language support**
 
    - User can switch the language to `FR` from the default language `EN`.
