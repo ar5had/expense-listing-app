@@ -1,31 +1,34 @@
-import { ExpenseProps } from '../types/components'
-import ExpensePageStyles from './styles/ExpensePageStyles'
-import BackToHome from './BackToHome'
-import StaticExpenseFields from './StaticExpenseFields'
-import DynamicExpenseFields from './DynamicExpenseFields'
+import ExpenseStyles from './styles/ExpenseStyles'
+import { getSymbolFromCurrency } from '../lib/currencyMap'
+import { ExpenseProps } from './types/common'
 
-const ExpenseItem: React.FC<ExpenseProps> = ({
-  user: { first, last, email },
-  amount: { currency, value },
-  comment,
-  category,
-  merchant,
-  date,
-  receipt,
-  id
-}) => {
-  const staticFieldsProps = { first, last, email, currency, value, category, merchant, date }
-  const dynamicFieldProps = { receipt, comment, id }
+const ExpenseItem: React.FC<ExpenseProps> = (props) => {
+  const {
+    amount: { currency, value },
+    comment,
+    user: { first, last },
+    merchant
+  } = props
 
   return (
-    <ExpensePageStyles>
-      <div className="back-btn-row">
-        <BackToHome />
+    <ExpenseStyles>
+      <div className="grid">
+        <span className="image">{first[0]}</span>
+        <div className="name-currency-wrapper">
+          <div>
+            <h3 className="name">
+              {first} {last}
+            </h3>
+            <p className="merchant">{merchant}</p>
+          </div>
+          <div className="amount">
+            <span>{getSymbolFromCurrency(currency)}</span>
+            <span>{value}</span>
+          </div>
+        </div>
+        {comment && <blockquote>{comment}</blockquote>}
       </div>
-      <StaticExpenseFields {...staticFieldsProps} />
-      <DynamicExpenseFields {...dynamicFieldProps} />
-    </ExpensePageStyles>
+    </ExpenseStyles>
   )
 }
-
 export default ExpenseItem

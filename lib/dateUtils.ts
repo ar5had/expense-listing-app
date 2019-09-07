@@ -1,4 +1,5 @@
 import moment from 'moment'
+
 const getRelativeTimeString: (time: string, locale: string) => string = (time, locale) =>
   moment(new Date(time))
     .locale(locale || 'en')

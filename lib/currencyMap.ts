@@ -1,8 +1,6 @@
-interface IMap {
-  [index: string]: string;
-}
+type SymbolMap = Record<string, string>
 
-const currencySymbolMap: IMap = {
+const currencySymbolMap: SymbolMap = {
   AED: 'د.إ',
   AFN: '؋',
   ALL: 'L',

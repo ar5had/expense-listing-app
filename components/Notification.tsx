@@ -1,7 +1,11 @@
 import styled, { keyframes } from 'styled-components'
+
 import HeadingText from './styles/HeadingText'
-import { NotificationProps } from '../types/components'
 import { gts } from '../lib/getThemeStyle'
+
+interface NotificationProps {
+  text: string
+}
 
 const slideIn = keyframes`
   0% {

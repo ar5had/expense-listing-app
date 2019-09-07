@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { gts } from '../../lib/getThemeStyle'
 
 const Input = styled.input`
@@ -8,7 +9,7 @@ const Input = styled.input`
   border-bottom: solid 1px ${gts('grey')};
   &:focus {
     outline: none;
-    border-color: ${gts('black')} !important;
+    border-color: ${gts('black')};
   }
   &::placeholder {
     color: ${gts('darkGrey')};

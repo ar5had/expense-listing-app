@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+
 import { gts } from '../../lib/getThemeStyle'
 
 const loading = keyframes`
@@ -39,7 +40,7 @@ const Form = styled.form`
     button[disabled],
     button[disabled]:hover,
     button[disabled]:focus {
-      background: ${gts('grey')};
+      background: ${gts('greyBackground')};
       color: ${gts('darkGrey')};
       cursor: not-allowed;
       opacity: 1;

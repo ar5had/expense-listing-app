@@ -1,9 +1,19 @@
-import { getSymbolFromCurrency } from '../lib/currencyMap'
 import Heading from './styles/Heading'
 import HeadingText from './styles/HeadingText'
+import { getSymbolFromCurrency } from '../lib/currencyMap'
 import { getFormattedTime } from '../lib/dateUtils'
-import { StaticExpenseFieldsProps } from '../types/components'
 import { useTranslation } from '../lib/i18n'
+
+interface StaticExpenseFieldsProps {
+  currency: string
+  value: string
+  first: string
+  last: string
+  email: string
+  merchant: string
+  category: string
+  date: string
+}
 
 const StaticExpenseFields: React.FC<StaticExpenseFieldsProps> = ({
   currency,
@@ -15,16 +25,13 @@ const StaticExpenseFields: React.FC<StaticExpenseFieldsProps> = ({
   merchant,
   category
 }) => {
-  const {
-    t,
-    i18n: { language }
-  } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <>
       <div className="currency-row">
         <Heading className="amount">{`${getSymbolFromCurrency(currency)}${value}`}</Heading>
-        <HeadingText className="time">{getFormattedTime(date, language)}</HeadingText>
+        <HeadingText className="time">{getFormattedTime(date, i18n.language)}</HeadingText>
       </div>
       <div className="row">
         <span className="label">{t('common:name')}</span>

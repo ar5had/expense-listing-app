@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { gts } from '../../lib/getThemeStyle'
 
 const PaginationStyles = styled.div`
@@ -16,12 +17,12 @@ const PaginationStyles = styled.div`
   background: ${gts('white')};
   border-radius: ${gts('borderRadius')};
   border: solid 1px ${gts('grey')};
-  align-items: stretch;
   & > * {
     margin: 0;
     transition: 0.2s;
     transition-delay: 0.1s;
-    padding: 15px 20px;
+    padding: 15px;
+    color: ${gts('darkGrey')};
     border-right: 1px solid ${gts('grey')};
     line-height: 1.5;
     &:last-child {
@@ -34,11 +35,8 @@ const PaginationStyles = styled.div`
     background: ${gts('white')};
     border-color: transparent;
   }
-  a {
-    color: ${gts('darkGrey')};
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  & > a:focus {
+    color: ${gts('black')};
   }
   a:first-child {
     border-radius: ${gts('borderRadius')} 0 0 ${gts('borderRadius')};
@@ -58,6 +56,9 @@ const PaginationStyles = styled.div`
   }
   @media (max-width: ${gts('maxWidth')}) {
     grid-template-columns: 1fr 1fr 1fr;
+    & > * {
+      padding: 15px 10px;
+    }
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     grid-template-columns: repeat(2, 1fr);

@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
-import { gts } from '../lib/getThemeStyle'
 import TextButton from './styles/TextButton'
-import { ImageOverlayProps } from '../types/components'
+import { gts } from '../lib/getThemeStyle'
 import { useTranslation } from '../lib/i18n'
+
+interface ImageOverlayProps {
+  src: string
+  hideOverlay: () => void
+}
 
 const Overlay = styled.div`
   position: fixed;
@@ -33,6 +37,7 @@ const Overlay = styled.div`
 
 const ImageOverlay: React.FC<ImageOverlayProps> = ({ hideOverlay, src }) => {
   const { t } = useTranslation()
+
   return (
     <Overlay>
       <div>

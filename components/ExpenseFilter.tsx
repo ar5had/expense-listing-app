@@ -1,12 +1,18 @@
 import { useState, useEffect, ChangeEvent, FormEvent, useRef } from 'react'
 import Head from 'next/head'
+import Router from 'next/router'
 import styled from 'styled-components'
 
-import { ExpenseFilterProps } from '../types/components'
 import Input from './styles/Input'
 import { gts } from '../lib/getThemeStyle'
 import { getTypewriterStrings } from '../lib/filterUtils'
-import { useTranslation, Router } from '../lib/i18n'
+import { useTranslation } from '../lib/i18n'
+
+interface ExpenseFilterProps {
+  filterText: string
+  perPage: number
+  offset: number
+}
 
 const StyledFilter = styled.div`
   margin-bottom: ${gts('xlMargin')}px;
@@ -17,13 +23,9 @@ const StyledFilter = styled.div`
     width: 100%;
     padding: 10px calc(2rem + 20px) 10px 5px;
     transition: 0.2s;
-    line-height: 1;
     font-size: 1.5rem;
     &:focus + label {
       opacity: 1;
-    }
-    &:placholder {
-      line-height: 1;
     }
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
@@ -41,30 +43,34 @@ const StyledLabel = styled.label`
   width: var(--dim);
   height: var(--dim);
   background-image: url('/static/images/search.svg');
-  background-color: ${gts('white')};
   background-repeat: no-repeat;
 `
 
 const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offset }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [counter, changeCounter] = useState(0)
   const [filterVal, changeFilterVal] = useState(filterText)
-  const pStringsRef = useRef(
-    getTypewriterStrings([
+  const pStringsRef = useRef<string[]>([''])
+
+  // New placeholder strings are only computed when language changes
+  useEffect(() => {
+    pStringsRef.current = getTypewriterStrings([
       t('common:name'),
       t('common:comment'),
       t('common:merchant'),
       t('common:currency'),
       t('common:amount')
     ])
-  )
+  }, [i18n.language])
 
+  // UI effect for changing the placholder to let user know what filter fields can be searched
   useEffect(() => {
     let timeoutId: number | undefined
+    const placeholderStrings = pStringsRef.current
 
-    if (!filterVal) {
+    if (!filterVal && placeholderStrings) {
       timeoutId = setTimeout(() => {
-        changeCounter((counter + 1) % (pStringsRef.current.length - 1))
+        changeCounter((counter + 1) % (placeholderStrings.length - 1))
       }, 200)
     } else {
       clearTimeout(timeoutId)
@@ -73,6 +79,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
     return () => clearTimeout(timeoutId)
   }, [counter, filterVal])
 
+  // Resets filter when offset and items-per-page values are changed
   useEffect(() => {
     changeFilterVal('')
   }, [offset, perPage])
@@ -83,10 +90,10 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const val = event.currentTarget.search.value.trim()
-    if (val) {
-      Router.push(`/?offset=${offset}&limit=${perPage}&search=${val}`)
-    }
+    Router.push(`/?offset=${offset}&limit=${perPage}&search=${val}`)
   }
+
+  const placeholderStrings = pStringsRef.current
 
   return (
     <StyledFilter>
@@ -97,7 +104,8 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ filterText, perPage, offs
       </Head>
       <form onSubmit={onSubmit}>
         <Input
-          placeholder={`${t('home:filterPlaceholder')} ${pStringsRef.current[counter]}_`}
+          placeholder={`${t('home:filterPlaceholder')} ${placeholderStrings &&
+            placeholderStrings[counter]}_`}
           id="filter"
           type="text"
           name="search"

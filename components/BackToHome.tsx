@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import styled from 'styled-components'
+
 import { gts } from '../lib/getThemeStyle'
-import { Link, useTranslation } from '../lib/i18n'
+import { useTranslation } from '../lib/i18n'
 
 const StyledButton = styled.button`
   background: none;

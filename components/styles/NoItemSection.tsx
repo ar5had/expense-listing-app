@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { gts } from '../../lib/getThemeStyle'
 
 const NoItemSection = styled.div`
