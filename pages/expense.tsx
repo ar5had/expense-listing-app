@@ -34,23 +34,21 @@ const EXPENSE_QUERY = gql`
 `
 
 const Expense: I18nPage<ExpenseProps> = ({ query: { id } }) => (
-  <div>
-    <Query query={EXPENSE_QUERY} variables={{ id }}>
-      {({ data, error, loading }: QueryResult) => {
-        if (loading) {
-          return null
-        }
-        if (error) {
-          return <p>Error: {error.message}</p>
-        }
-        if (data.expense) {
-          return <ExpensePageContent expenseData={data.expense} />
-        }
+  <Query query={EXPENSE_QUERY} variables={{ id }}>
+    {({ data, error, loading }: QueryResult) => {
+      if (loading) {
+        return null
+      }
+      if (error) {
+        return <p>Error: {error.message}</p>
+      }
+      if (data.expense) {
+        return <ExpensePageContent expenseData={data.expense} />
+      }
 
-        return <ExpenseNotFound />
-      }}
-    </Query>
-  </div>
+      return <ExpenseNotFound />
+    }}
+  </Query>
 )
 
 Expense.getInitialProps = async () => ({

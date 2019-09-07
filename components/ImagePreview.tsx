@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { ImagePreviewProps } from '../types/components'
 import TextButton from './styles/TextButton'
 import ImageOverlay from './ImageOverlay'
 import { gts } from '../lib/getThemeStyle'
 import { useTranslation } from '../lib/i18n'
+
+interface ImagePreviewProps {
+  src: string
+  deleteReceipt: () => void
+}
 
 const ImagePreviewStyles = styled.div`
   display: grid;

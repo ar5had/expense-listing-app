@@ -1,6 +1,7 @@
 export const theme = {
   borderColor: '#F7F7F7',
   grey: '#EDEDED',
+  greyBackground: '#F4F4F4',
   black: 'rgba(0, 0, 0, 0.87)',
   lightBlack: 'rgba(0, 0, 0, 0.5)',
   darkGrey: 'rgba(0, 0, 0, 0.3)',

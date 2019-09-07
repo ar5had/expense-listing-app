@@ -7,10 +7,6 @@ const NextI18NextInstance = new NextI18Next({
   defaultLanguage: 'en',
   fallbackLng: 'en',
   otherLanguages: ['fr'],
-  // Allows locale subpaths
-  localeSubpaths: {
-    fr: 'fr'
-  },
   serverLanguageDetection: true
 })
 

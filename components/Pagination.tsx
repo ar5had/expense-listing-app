@@ -1,11 +1,16 @@
-import React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
+import styled from 'styled-components'
 
 import PaginationStyles from './styles/PaginationStyles'
-import { PaginationProps } from '../types/components'
-import styled from 'styled-components'
 import { gts } from '../lib/getThemeStyle'
-import { useTranslation, Link } from '../lib/i18n'
+import { useTranslation } from '../lib/i18n'
+
+interface PaginationProps {
+  total: number
+  perPage: number
+  offset: number
+}
 
 const PaginationWrapper = styled.div`
   padding: ${gts('mdMargin')}px 0 0;
@@ -21,12 +26,12 @@ const Pagination: React.FC<PaginationProps> = ({ offset, total, perPage }) => {
 
   return (
     <PaginationWrapper>
+      <Head>
+        <title>
+          {t('home:heading')} — {t('home:title', { page, pages })}
+        </title>
+      </Head>
       <PaginationStyles data-test="pagination">
-        <Head>
-          <title>
-            {t('home:heading')} — {t('home:title', { page, pages })}
-          </title>
-        </Head>
         <Link href={`/?offset=${prevOffset}&limit=${perPage}`}>
           <a className="prev" aria-disabled={page <= 1 && offset <= 0}>
             ← {t('home:prev')}

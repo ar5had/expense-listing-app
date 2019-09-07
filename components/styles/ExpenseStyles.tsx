@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { gts } from '../../lib/getThemeStyle'
 
 const ExpenseStyles = styled.div`
@@ -42,7 +43,8 @@ const ExpenseStyles = styled.div`
     height: var(--dim);
     border-radius: 50%;
     display: block;
-    background: ${gts('grey')};
+    background: ${gts('greyBackground')};
+    text-shadow: 1px 1px 3px ${gts('grey')};
     line-height: var(--dim);
     text-align: center;
     font-weight: bold;
@@ -69,16 +71,10 @@ const ExpenseStyles = styled.div`
   blockquote {
     font-size: 1.3rem;
     margin: 0;
-    display: flex;
     color: ${gts('lightBlack')};
-    flex-direction: column;
     border-left: solid 5px ${gts('grey')};
     padding: 5px 15px 10px;
     line-height: 1.5;
-    small {
-      margin-top: 10px;
-      font-weight: bold;
-    }
     grid-column: 2 / -1;
   }
   @media (max-width: ${gts('maxWidth')}) {

@@ -1,11 +1,11 @@
-import IndexHeader from './HomeHeader'
+import HomeHeader from './HomeHeader'
 import Expenses from './Expenses'
 import Pagination from './Pagination'
 import ExpenseFilter from './ExpenseFilter'
 import Footer from './Footer'
 import FilterResultsInfo from './FilterResultsInfo'
 import { filterExpenseData } from '../lib/filterUtils'
-import { ExpenseProps } from 'types/components'
+import { ExpenseProps } from './types/common'
 
 interface HomePageContentProps {
   expensesData: ExpenseProps[]
@@ -27,7 +27,7 @@ const HomePageContent: React.FC<HomePageContentProps> = ({
 
   return (
     <>
-      <IndexHeader perPage={perPage} offset={offset} />
+      <HomeHeader perPage={perPage} offset={offset} />
       <ExpenseFilter filterText={filterText} perPage={perPage} offset={offset} />
       <FilterResultsInfo length={filteredData.length} filterText={filterText} />
       <Expenses data={filteredData} />

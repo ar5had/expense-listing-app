@@ -1,13 +1,19 @@
 import styled from 'styled-components'
-import { FilterResultsInfoProps } from 'types/components'
+
 import { gts } from '../lib/getThemeStyle'
 import { useTranslation } from '../lib/i18n'
 
+interface FilterResultsInfoProps {
+  length: number
+  filterText: string
+}
+
 const Wrapper = styled.div`
-  .content {
+  p {
     color: ${gts('black')};
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1.5;
+    word-break: break-word;
   }
   margin-bottom: ${gts('mdMargin')}px;
   @media (max-width: ${gts('mobileScreenRes')}) {
@@ -19,7 +25,7 @@ const FilterResultsInfo: React.FC<FilterResultsInfoProps> = ({ length, filterTex
   const { t } = useTranslation()
   return filterText ? (
     <Wrapper>
-      <p className="content">
+      <p>
         {t('home:resultsHeading', { length })} <b>'{filterText}'</b>
       </p>
     </Wrapper>

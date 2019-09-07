@@ -1,10 +1,16 @@
+import Link from 'next/link'
+import Router from 'next/router'
 import styled from 'styled-components'
 
-import { gts } from '../lib/getThemeStyle'
-import { HomeHeaderProps } from '../types/components'
-import Heading from './styles/Heading'
 import ItemsPerPage from './ItemsPerPage'
-import { useTranslation, Router, Link } from '../lib/i18n'
+import Heading from './styles/Heading'
+import { gts } from '../lib/getThemeStyle'
+import { useTranslation } from '../lib/i18n'
+
+interface HomeHeaderProps {
+  perPage: number
+  offset: number
+}
 
 const Wrapper = styled.div`
   display: flex;

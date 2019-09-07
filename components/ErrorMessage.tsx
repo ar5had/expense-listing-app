@@ -1,6 +1,11 @@
 import styled from 'styled-components'
-import { ErrorMessageProps } from '../types/components'
+import { ApolloError } from 'apollo-boost'
+
 import { gts } from '../lib/getThemeStyle'
+
+interface ErrorMessageProps {
+  error: ApolloError | undefined
+}
 
 const ErrorStyles = styled.div`
   padding: ${gts('smMargin')}px;
@@ -20,19 +25,8 @@ const ErrorStyles = styled.div`
   }
 `
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({ error }) => {
-  if (!error || !error.message) return null
-  if (error.networkError && error.networkError.result && error.networkError.result.errors.length) {
-    return error.networkError.result.errors.map((error: any, i: number) => (
-      <ErrorStyles key={i}>
-        <p>
-          <strong>Error:</strong>
-          {error.message.replace('GraphQL error: ', '')}
-        </p>
-      </ErrorStyles>
-    ))
-  }
-  return (
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ error }) =>
+  !error || !error.message ? null : (
     <ErrorStyles>
       <p>
         <strong>Error:</strong>
@@ -40,6 +34,5 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ error }) => {
       </p>
     </ErrorStyles>
   )
-}
 
 export default ErrorMessage

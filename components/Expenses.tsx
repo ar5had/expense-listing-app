@@ -1,12 +1,16 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
-import { ExpenseProps, ExpensesProps } from '../types/components'
-import Expense from './Expense'
+import ExpenseItem from './ExpenseItem'
+import HeadingText from './styles/HeadingText'
 import { gts } from '../lib/getThemeStyle'
 import { getRelativeTimeString } from '../lib/dateUtils'
-import HeadingText from './styles/HeadingText'
-import NoItemSection from './styles/NoItemSection'
-import { useTranslation, Link } from '../lib/i18n'
+import { useTranslation } from '../lib/i18n'
+import { ExpenseProps } from './types/common'
+
+interface ExpensesProps {
+  data: ExpenseProps[]
+}
 
 const StyledExpenses = styled.div`
   .rel-time {
@@ -32,31 +36,26 @@ const StyledExpenses = styled.div`
 `
 
 const Expenses: React.FC<ExpensesProps> = ({ data }) => {
-  const {
-    t,
-    i18n: { language }
-  } = useTranslation()
+  const { i18n } = useTranslation()
   let timeString = ''
 
-  // when there are no expense items
-  if (data.length === 0) {
-    return (
-      <NoItemSection>
-        <HeadingText>{t('common:ExpenseNotFoundText')}!</HeadingText>
-      </NoItemSection>
-    )
+  // when there aren't any expense item
+  if (!data.length) {
+    return null
   }
 
   const allExpenseItems = data.map((expense: ExpenseProps) => {
-    const newTimeString = getRelativeTimeString(expense.date, language).replace(/^A\s/i, '1 ')
+    const newTimeString = getRelativeTimeString(expense.date, i18n.language)
     const showRelativeTimeString = newTimeString !== timeString
+
     timeString = newTimeString
+
     return (
       <div key={expense.id}>
         {showRelativeTimeString && <HeadingText className="rel-time">{newTimeString}</HeadingText>}
         <Link href={`/expense?id=${expense.id}`}>
           <a>
-            <Expense {...expense} />
+            <ExpenseItem {...expense} />
           </a>
         </Link>
       </div>

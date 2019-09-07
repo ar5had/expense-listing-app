@@ -13,7 +13,6 @@ const ExpensePageStyles = styled.div`
   .time {
     text-align: center;
     margin-top: calc(${gts('xsMargin')}px / 2);
-    letter-spacing: 0;
   }
   .amount {
     text-align: center;
@@ -48,8 +47,8 @@ const ExpensePageStyles = styled.div`
   .row:empty {
     display: none;
   }
-  .error-row > * {
-    grid-column: 1 / -1;
+  button[type='submit'] {
+    width: 100%;
   }
   @media (max-width: ${gts('mobileScreenRes')}) {
     margin: ${gts('smMargin')}px 0 ${gts('mdMargin')}px;

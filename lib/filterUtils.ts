@@ -1,30 +1,31 @@
-import { ExpenseProps } from 'types/components'
+import { ExpenseProps } from '../components/types/common'
 
 const arrHasText = (arr: string[], text: string) => {
   const filterText = text
     .trim()
     .replace(/\s+/g, ' ')
-    .toLowerCase()
+    .toLocaleLowerCase()
 
   return arr.some((elem) => elem.toLowerCase().includes(filterText))
 }
 
 const filterByAmount = (data: ExpenseProps[], text: string) => {
   const filterText = text.trim()
-  const op = text[0]
-  const fCurrency = filterText.trim().slice(-3)
+  const operator = filterText[0]
+  const fCurrency = filterText.slice(-3)
   const fValue = parseInt(filterText.slice(1, -3).trim(), 10)
+
   return data.filter(({ amount: { value, currency } }) => {
     if (currency.toLocaleLowerCase() === fCurrency.toLocaleLowerCase()) {
       const valNum = parseInt(value, 10)
-      switch (op) {
+
+      switch (operator) {
         case '>':
           return valNum > fValue
         case '<':
           return valNum < fValue
         default:
           return valNum === fValue
-          break
       }
     } else {
       return false
@@ -41,9 +42,10 @@ const filterByString = (data: ExpenseProps[], text: string) =>
       amount: { value, currency }
     } = expense
 
-    // By doing this we are supporting multiple formats of name and currency-value pair
-    // for example - <FIRST LAST> and <LAST FIRST> -> Arshad khan, khan arshad
-    // for example - <CURR VAL> and <VAL CURR> -> USD 10, 10 USD
+    // Supporting multiple searching/filterign formats for name and currency-value pair
+    // for example -
+    // <FIRST LAST> and <LAST FIRST> -> arshad khan, khan arshad
+    // <CURR VAL> and <VAL CURR> -> USD 10, 10 USD
     const firstLastName = `${first} ${last}`
     const lastFirstName = `${last} ${first}`
     const currVal = `${value} ${currency}`
@@ -79,26 +81,29 @@ const filterExpenseData = (data: ExpenseProps[], text: string) => {
   return filterByString(data, text)
 }
 
-const getTypewriterStrings: (arr: string[]) => string[] = (arr: string[]) => {
+const getTypewriterStrings: (strArr: string[]) => string[] = (strArr: string[]) => {
   let res: string[] = []
 
-  const getAllStr: (str: string) => void = (normalStr) => {
-    const str = normalStr.toLocaleUpperCase()
-    const len = str.length * 2 - 1
+  // for string 'asd', it returns ['a', 'as', 'asd', 'asd', 'asd', 'asd', 'as', 'a']
+  // the extra 'asd' are the extra elements
+  const getAllStr: (str: string) => void = (str) => {
+    const lStr = str.toLocaleUpperCase()
+    const len = lStr.length * 2 - 1
     const extraElem = 3
 
-    const strArr = new Array(len + extraElem).fill(str)
+    const strArr = new Array(len + extraElem).fill(lStr)
 
     for (let i = 0; i < Math.ceil(len / 2); i++) {
-      const chars = i > 0 ? strArr[i - 1] + str[i] : str[i]
+      const chars = i > 0 ? strArr[i - 1] + lStr[i] : lStr[i]
       strArr[i] = chars
       strArr[len + extraElem - i - 1] = chars
     }
 
+    // extra elems and extra empty spaces gives a STOP effect when updating placeholder string
     res = res.concat(strArr).concat(['', '', '', ''])
   }
 
-  arr.forEach(getAllStr)
+  strArr.forEach(getAllStr)
 
   return res
 }

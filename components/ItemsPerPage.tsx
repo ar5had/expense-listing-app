@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 
-import HeadingText from './styles/HeadingText'
 import Dropdown from './Dropdown'
+import HeadingText from './styles/HeadingText'
 import { gts } from '../lib/getThemeStyle'
 import { useTranslation } from '../lib/i18n'
+
+interface ItemsPerPageProps {
+  perPage: number
+  onChange: (perPage: number) => void
+}
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +20,7 @@ const Wrapper = styled.div`
   }
 `
 
-const ItemsPerPage: React.FC<{ perPage: number; onChange: any }> = ({ perPage, onChange }) => {
+const ItemsPerPage: React.FC<ItemsPerPageProps> = ({ perPage, onChange }) => {
   const { t } = useTranslation()
 
   const options = [
@@ -39,7 +44,7 @@ const ItemsPerPage: React.FC<{ perPage: number; onChange: any }> = ({ perPage, o
 
   let selectedOption = options.find((option) => option.value === perPage)
 
-  // if users sets per-page value in url bar manually, then show that value in the select-menu
+  // If users sets per-page value in url bar manually, then show that value in the select-menu
   if (!selectedOption) {
     selectedOption = { value: perPage, label: `${perPage}` }
     options.push(selectedOption)

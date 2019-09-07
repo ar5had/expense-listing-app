@@ -1,4 +1,5 @@
 import styled, { ThemeProvider } from 'styled-components'
+
 import Meta from './Meta'
 import Header from './Header'
 import { theme } from './styles/theme'
@@ -8,9 +9,9 @@ import { gts } from '../lib/getThemeStyle'
 const StyledPage = styled.div`
   background: ${gts('white')};
   color: ${gts('black')};
-  min-height: calc(100vh - 40px);
   padding: ${gts('smMargin')}px;
-  border: solid ${gts('smMargin')}px ${gts('grey')};
+  min-height: calc(100vh - 40px);
+  border: solid ${gts('smMargin')}px ${gts('greyBackground')};
   @media (max-width: ${gts('maxWidth')}) {
     padding: 0;
     border: none;

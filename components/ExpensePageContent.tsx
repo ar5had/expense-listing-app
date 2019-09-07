@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
 import Footer from './Footer'
-import ExpenseItem from './ExpenseItem'
+import ExpenseData from './ExpenseData'
 import { useTranslation } from '../lib/i18n'
-import { ExpenseProps } from 'types/components'
+import { ExpenseProps } from './types/common'
 
 interface ExpensePageContentProps {
   expenseData: ExpenseProps
@@ -23,7 +23,7 @@ const ExpensePageContent: React.FC<ExpensePageContentProps> = ({ expenseData }) 
           {t('common:expense')} — {first} {last} &lt;{merchant}&gt;
         </title>
       </Head>
-      <ExpenseItem {...expenseData} />
+      <ExpenseData {...expenseData} />
       <Footer />
     </>
   )

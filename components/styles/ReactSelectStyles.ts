@@ -1,6 +1,8 @@
 import { StylesConfig } from 'react-select/src/styles'
+
 import { theme } from './theme'
 
+// Custom style config for react-select, to make it similar to our current theme
 const ReactSelectStyles: StylesConfig = {
   menu: (provided) => ({ ...provided, boxShadow: theme.simpleBoxShadow, cursor: 'pointer' }),
   control: (provided, { menuIsOpen, isFocused }) => ({

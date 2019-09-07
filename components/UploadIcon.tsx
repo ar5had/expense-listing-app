@@ -1,6 +1,11 @@
+import { SyntheticEvent } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { UploadIconProps } from '../types/components'
+
 import { gts } from '../lib/getThemeStyle'
+
+interface UploadIconProps {
+  onClick: (e: SyntheticEvent) => void
+}
 
 const bounce = keyframes`
   0% {
@@ -21,12 +26,12 @@ const UploadIconWrapper = styled.div`
   height: 15rem;
   width: 15rem;
   border-radius: ${gts('borderRadius')};
-  background-color: ${gts('grey')};
+  background-color: ${gts('greyBackground')};
   display: flex;
   justify-content: center;
   align-items: center;
   &:hover {
-    .btn {
+    button {
       animation: ${bounce} 0.4s ease-in-out forwards;
     }
   }
@@ -72,7 +77,7 @@ const CircledButton = styled.button`
 
 const UploadIcon: React.FC<UploadIconProps> = ({ onClick }) => (
   <UploadIconWrapper>
-    <CircledButton className="btn" onClick={onClick} type="button">
+    <CircledButton onClick={onClick} type="button">
       <span className="add-icon" />
     </CircledButton>
   </UploadIconWrapper>
