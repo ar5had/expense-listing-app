@@ -16,3 +16,9 @@ export interface ExpenseProps {
     email: string
   }
 }
+
+export interface Image {
+  preview: string
+  url: string
+  file: File | null
+}

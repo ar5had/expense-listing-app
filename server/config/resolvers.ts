@@ -1,5 +1,9 @@
-import { expenses } from '../data/expenses'
+import fs, { ReadStream } from 'fs'
+import path from 'path'
+import shortid from 'shortid'
 import { IResolvers } from 'graphql-tools'
+
+import { expenses } from '../data/expenses'
 
 type ParentQuery = Record<string, any>
 
@@ -15,8 +19,10 @@ interface ExpenseQueryArgs {
 interface UpdateExpenseArgs {
   id: string
   comment: string
-  receipt: string
+  receipt: File
 }
+
+const UPLOAD_DIR = './server/receipts'
 
 // Sort expenses by date
 expenses.sort((a, b) => {
@@ -25,6 +31,26 @@ expenses.sort((a, b) => {
 
   return valB - valA
 })
+
+const storeFS = ({ stream, ext }: { stream: ReadStream; ext: string }) => {
+  const id = shortid.generate()
+  const fileName = `${id}${ext}`
+  const imagePath = `${UPLOAD_DIR}/${fileName}`
+
+  return new Promise<string>((resolve, reject) =>
+    stream
+      .pipe(fs.createWriteStream(imagePath))
+      .on('error', (error: Error) => reject(error))
+      .on('finish', () => resolve(fileName))
+  )
+}
+
+const processUpload = async (upload: any) => {
+  const { createReadStream, filename } = await upload
+  const stream = createReadStream()
+  const ext = path.extname(filename)
+  return await storeFS({ stream, ext })
+}
 
 const Query = {
   expenses: (_: ParentQuery, { limit = 10, offset = 0 }: ExpensesQueryArgs) => {
@@ -41,12 +67,15 @@ const Query = {
 }
 
 const Mutation = {
-  updateExpense: (_: ParentQuery, { id, comment, receipt }: UpdateExpenseArgs) => {
+  updateExpense: async (_: ParentQuery, { id, comment, receipt }: UpdateExpenseArgs) => {
     const expense = expenses.find((expense) => expense.id === id)
 
     if (expense) {
       expense.comment = comment.trim()
-      expense.receipt = receipt
+      if (receipt) {
+        const fileName = await processUpload(receipt)
+        expense.receipt = `/receipts/${fileName}`
+      }
     }
 
     return expense

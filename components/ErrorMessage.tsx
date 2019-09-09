@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ApolloError } from 'apollo-boost'
+import { ApolloError } from 'apollo-client'
 
 import { gts } from '../lib/styledComponentsUtils'
 

@@ -11,6 +11,7 @@ import Form from './styles/Form'
 import Spinner from './styles/Spinner'
 import { useTranslation } from '../lib/i18n'
 import ReceiptField from './ReceiptField'
+import { Image } from './types/common'
 
 interface DynamicExpenseFieldsProps {
   comment: string
@@ -19,7 +20,7 @@ interface DynamicExpenseFieldsProps {
 }
 
 const UPDATE_EXPENSE_MUTATION = gql`
-  mutation UPDATE_EXPENSE_MUTATION($id: ID!, $comment: String!, $receipt: String!) {
+  mutation UPDATE_EXPENSE_MUTATION($id: ID!, $comment: String!, $receipt: Upload) {
     updateExpense(id: $id, comment: $comment, receipt: $receipt) {
       id
     }
@@ -29,16 +30,14 @@ const UPDATE_EXPENSE_MUTATION = gql`
 const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, receipt, id }) => {
   const { t } = useTranslation()
   const [expenseComment, changeComment] = useState(comment)
-  const [expenseReceipt, changeReceipt] = useState(receipt)
+  const [expenseReceipt, changeReceipt] = useState<Image>({ preview: '', url: receipt, file: null })
   const [showNotification, changeNotificationVisibility] = useState(false)
   const timeoutRef = useRef<number>()
   useEffect(() => () => clearTimeout(timeoutRef.current), [])
 
-  const commentNotChanged = comment === expenseComment
-  const receiptNotChanged = receipt === expenseReceipt
-
   const onFormSubmit = async (event: SyntheticEvent, updateExpense: MutationFn) => {
     event.preventDefault()
+
     await updateExpense()
 
     // NOTE: below code will only be called if expense updated successfully
@@ -48,13 +47,17 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
     timeoutRef.current = setTimeout(() => changeNotificationVisibility(false), 3000)
   }
   const onCommentChange = (e: ChangeEvent<HTMLInputElement>) => changeComment(e.currentTarget.value)
-  const addReceipt = (value: string) => changeReceipt(value)
-  const deleteReceipt = () => changeReceipt('')
+  const addReceipt: (image: Image) => void = (image) => changeReceipt(image)
+  const deleteReceipt = () => changeReceipt({ preview: '', url: '', file: null })
 
   return (
     <Mutation
       mutation={UPDATE_EXPENSE_MUTATION}
-      variables={{ id, comment: expenseComment.trim(), receipt: expenseReceipt }}
+      variables={{
+        id,
+        comment: expenseComment.trim(),
+        receipt: expenseReceipt.file
+      }}
       refetchQueries={[{ query: EXPENSE_QUERY, variables: { id } }]}
     >
       {(updateExpense: MutationFn, { loading, error }: MutationResult) => (
@@ -63,12 +66,12 @@ const DynamicExpenseFields: React.FC<DynamicExpenseFieldsProps> = ({ comment, re
           <fieldset disabled={loading || showNotification} aria-busy={loading || showNotification}>
             <CommentField comment={expenseComment} onChange={onCommentChange} />
             <ReceiptField
-              receipt={expenseReceipt}
+              receipt={expenseReceipt.preview || expenseReceipt.url}
               addReceipt={addReceipt}
               deleteReceipt={deleteReceipt}
             />
             <ErrorMessage error={error} />
-            <Button type="submit" disabled={commentNotChanged && receiptNotChanged}>
+            <Button type="submit" disabled={loading || showNotification}>
               {loading ? <Spinner /> : t('expense:saveBtn')}
             </Button>
           </fieldset>

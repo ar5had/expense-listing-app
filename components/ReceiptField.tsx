@@ -1,11 +1,12 @@
 import UploadFile from './UploadFile'
 import ImagePreview from './ImagePreview'
 import { useTranslation } from '../lib/i18n'
+import { Image } from './types/common'
 
 interface ReceiptFieldProps {
   receipt: string
   deleteReceipt: () => void
-  addReceipt: (value: string) => void
+  addReceipt: ({ preview, file, url }: Image) => void
 }
 
 const ReceiptField: React.FC<ReceiptFieldProps> = ({ receipt, deleteReceipt, addReceipt }) => {

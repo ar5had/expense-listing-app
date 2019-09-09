@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 import UploadIcon from './UploadIcon'
 import { imageToBase64 } from '../lib/base64Utils'
+import { Image } from './types/common'
 
 interface UploadFileProps {
-  addReceipt: (value: string) => void
+  addReceipt: ({ preview, file, url }: Image) => void
   inputId?: string
 }
 
@@ -33,7 +34,7 @@ const UploadFile: React.FC<UploadFileProps> = ({ addReceipt, inputId = '' }) => 
     if (file) {
       imageToBase64(file)
         .then((result: string) => {
-          addReceipt(result)
+          addReceipt({ preview: result, url: '', file })
         })
         .catch(() => {
           console.log("Error: Image can't be converted into base64 format!")
