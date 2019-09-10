@@ -1,7 +1,5 @@
 # Expense List App
 
-**Video overview of app(7 mins long) -** https://youtu.be/ZSJRj-eqFyE
-
 **Link -** - https://pleo-meets-arshad.herokuapp.com
 
 ## Setup
