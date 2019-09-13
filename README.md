@@ -1,6 +1,6 @@
 # Expense List App
 
-**Link -** - https://pleo-meets-arshad.herokuapp.com
+**Link -** https://pleo-meets-arshad.herokuapp.com
 
 ## Setup
 
